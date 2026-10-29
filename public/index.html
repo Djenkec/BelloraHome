@@ -634,10 +634,11 @@ font-family:Manrope,system-ui,sans-serif;color:var(--ink);background:var(--cream
 </template>
 </div>
 
+<template v-if="showList">
 <div class="lst" id="lista">
 <div class="lst-bar">
 <div class="lst-t"><b>{{lstTitle}}</b><span class="muted">{{lstCount}}</span>
-<template v-if="hasFilter"><button class="clr" @click="clearFilter"><svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>Svi proizvodi</button></template>
+<button class="clr" @click="clearFilter"><svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>Zatvori</button>
 </div>
 <div class="lst-tools">
 <label class="lsearch"><svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><input id="bh-lq" type="search" placeholder="Traži među svim proizvodima…" aria-label="Traži među svim proizvodima" :value="lq" @input="onLq"></label>
@@ -656,10 +657,11 @@ font-family:Manrope,system-ui,sans-serif;color:var(--ink);background:var(--cream
 </article>
 </template>
 </div>
-<template v-if="lstEmpty"><div class="lempty"><b class="serif">Nema proizvoda za ovu pretragu.</b><p class="muted">Probaj drugu riječ ili pogledaj sve proizvode.</p><button class="btn btn-l" @click="clearFilter">Prikaži sve proizvode</button></div></template>
+<template v-if="lstEmpty"><div class="lempty"><b class="serif">Nema proizvoda za ovu pretragu.</b><p class="muted">Probaj drugu riječ ili izaberi kategoriju.</p><button class="btn btn-l" @click="clearFilter">Nazad na kategorije</button></div></template>
 <template v-if="katLoading"><p class="muted" style="text-align: center; padding: 40px 0">Učitavam proizvode…</p></template>
 <template v-if="hasMore"><div class="more-w"><span class="muted">Prikazano {{shownN}} od {{lstN}}</span><button class="btn btn-d" @click="loadMore">Prikaži još proizvoda</button></div></template>
 </div>
+</template>
 </section>
 </div>
 
@@ -1017,6 +1019,7 @@ class Component extends DCLogic {
     this.katById = {}; K.forEach((p) => { this.katById[p.id] = p; });
     const cnt = {}; K.forEach((p) => { cnt[p.c] = (cnt[p.c] || 0) + 1; });
     const minP = (p) => Math.min.apply(null, p.v.map((v) => v.p));
+    const toKat = () => { setTimeout(() => { const el = document.getElementById('kategorije'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 30); };
     const toList = () => { setTimeout(() => { const el = document.getElementById('lista'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 30); };
     const pickCat = (c) => { const g = GR.find((x) => x.cats.indexOf(c) > -1); this.setState({ kc: c, grp: g ? g.k : 'sve', shown: 24, lq: '' }); toList(); };
     const gtabs = [{ k: 'sve', name: 'Sve kategorije', cats: Object.keys(CN) }].concat(GR).map((g) => ({ name: g.name, on: s.grp === g.k, cls: s.grp === g.k ? 'gt on' : 'gt',
@@ -1095,11 +1098,11 @@ class Component extends DCLogic {
       slides: slides, heroCls: s.paused ? 'hero paused' : 'hero', hcOn: !!hd, hc: hc, closeSpot: () => this.setState({ spot: '' }),
       pause: () => this.setState({ paused: true }), resume: () => this.setState({ paused: false }),
       prevSlide: () => this.setState({ slide: (s.slide + 3) % 4, spot: '' }), nextSlide: () => this.setState({ slide: (s.slide + 1) % 4, spot: '' }),
-      groups: GR.map((g) => ({ name: g.short, pick: () => { this.setState({ grp: g.k, kc: '', shown: 24 }); toList(); }, subs: g.cats.map((c) => ({ name: CN[c], meta: (cnt[c] || 0) + ' proizvoda', img: TILE[c], pick: () => pickCat(c) })) })),
+      groups: GR.map((g) => ({ name: g.short, pick: () => { this.setState({ grp: g.k, kc: '', lq: '', shown: 24 }); toKat(); }, subs: g.cats.map((c) => ({ name: CN[c], meta: (cnt[c] || 0) + ' proizvoda', img: TILE[c], pick: () => pickCat(c) })) })),
       allSubs: Object.keys(CN).map((c) => ({ name: CN[c], img: TILE[c], pick: () => { this.setState({ menuOpen: false }); pickCat(c); } })),
       katTotal: K.length || 218, gtabs: gtabs, tiles: tiles, lst: lst, lstTitle: lstTitle, lstN: L.length, shownN: Math.min(s.shown, L.length),
-      lstCount: L.length + ' proizvoda', hasMore: L.length > s.shown, lstEmpty: !!s.kat && L.length === 0, katLoading: !s.kat, hasFilter: !!(s.kc || s.lq || s.grp !== 'sve'),
-      clearFilter: () => this.setState({ kc: '', lq: '', grp: 'sve', shown: 24 }), loadMore: () => this.setState({ shown: s.shown + 24 }),
+      lstCount: L.length + ' proizvoda', hasMore: L.length > s.shown, lstEmpty: !!s.kat && L.length === 0, katLoading: !s.kat, hasFilter: !!(s.kc || s.lq || s.grp !== 'sve'), showList: !!(s.kc || (s.lq || '').trim()),
+      clearFilter: () => { this.setState({ kc: '', lq: '', shown: 24 }); toKat(); }, loadMore: () => this.setState({ shown: s.shown + 24 }),
       lq: s.lq, onLq: (e) => this.setState({ lq: e.target.value, shown: 24 }), sort: s.sort, onSort: (e) => this.setState({ sort: e.target.value }),
       qvOn: !!qp, qv: qv, qvClose: () => this.setState({ qv: null }),
  topLoop: top.concat(top), kit: kit,
