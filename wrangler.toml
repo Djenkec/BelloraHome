@@ -1,0 +1,9 @@
+# Postavke za Cloudflare Pages (projekat bellorahome).
+# Tajna ADMIN_PASSWORD se ne drži ovdje, nego u Cloudflare postavkama.
+name = "bellorahome"
+pages_build_output_dir = "public"
+compatibility_date = "2026-10-01"
+
+[[kv_namespaces]]
+binding = "ORDERS"
+id = "bdb15cf1a07e49a6801be28a1e2c1e27"
