@@ -1,0 +1,1139 @@
+<!doctype html>
+<html lang="bs">
+<head>
+<meta charset="utf-8">
+<title>BelloraHome — Dom koji te čeka</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Posteljina, jastuci, posuđe, kućanski aparati i sve za dom. Više od 200 artikala, plaćanje pouzećem, povrat 30 dana.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&amp;family=Manrope:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#f6f1ea}
+a{color:inherit;text-decoration:none}
+.bh{--cream:#f6f1ea;--sand:#ece3d6;--ink:#1e1b18;--ink2:#5b544c;--line:#e0d6c8;--accent:#b5562f;--accentD:#93421f;--sage:#7d8b74;--white:#fffdf9;--photo:#f3ece2;--peach:#f0c3a3;
+font-family:Manrope,system-ui,sans-serif;color:var(--ink);background:var(--cream);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:clip}
+.bh *{box-sizing:border-box}
+:where(.bh) button{font:inherit;color:inherit;cursor:pointer;background:none;border:0;padding:0}
+.bh img{display:block;max-width:100%}
+.serif{font-family:Fraunces,Georgia,serif}
+.wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+.ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ic-s{width:16px;height:16px;stroke-width:1.9}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2)}
+.muted{color:var(--ink2)}
+
+/* ===== header (transparent over hero) ===== */
+.ann{background:var(--ink);color:var(--cream);font-size:13px;height:36px;position:relative;overflow:hidden;z-index:51}
+.ann span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;animation:ann 12s infinite}
+.ann span:nth-child(2){animation-delay:4s}.ann span:nth-child(3){animation-delay:8s}
+@keyframes ann{0%{opacity:0;transform:translateY(100%)}4%,30%{opacity:1;transform:none}34%,100%{opacity:0;transform:translateY(-100%)}}
+.top{position:absolute;left:0;right:0;top:36px;z-index:40;color:#fff}
+.top.solid{position:fixed;top:0;background:rgba(246,241,234,.95);color:var(--ink);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);animation:drop .45s cubic-bezier(.2,.7,.2,1)}
+@keyframes drop{from{transform:translateY(-100%)}to{transform:none}}
+.bar{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:24px;height:80px}
+.logo{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:27px;letter-spacing:-.01em;white-space:nowrap}
+.logo em{font-weight:300;color:var(--peach)}
+.top.solid .logo em{color:var(--accent)}
+.nav{display:flex;justify-content:center;gap:2px}
+.nav-l{white-space:nowrap}
+.nav-i{position:relative}
+.nav-l{display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 14px;border-radius:999px;font-size:14px;font-weight:600;transition:background .25s}
+.nav-l:hover,.nav-i:focus-within .nav-l{background:rgba(255,255,255,.16)}
+.top.solid .nav-l:hover,.top.solid .nav-i:focus-within .nav-l{background:var(--sand)}
+.mega{position:absolute;top:calc(100% + 10px);left:50%;width:600px;transform:translate(-50%,8px);background:var(--white);color:var(--ink);border-radius:18px;box-shadow:0 30px 70px rgba(30,27,24,.22);padding:22px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;opacity:0;visibility:hidden;transition:.28s cubic-bezier(.2,.7,.2,1)}
+.mega::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.nav-i:hover .mega,.nav-i:focus-within .mega{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.mg{display:flex;align-items:center;gap:12px;padding:8px;border-radius:12px;transition:background .2s}
+.mg:hover{background:var(--cream)}
+.mg img{width:52px;height:52px;border-radius:10px;background:var(--photo);object-fit:contain}
+.mg b{display:block;font-size:14px;line-height:1.25}
+.mg span{font-size:12px;color:var(--ink2)}
+.tools{display:flex;align-items:center;gap:6px}
+.tb{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;position:relative;transition:background .25s}
+.tb:hover{background:rgba(255,255,255,.16)}
+.top.solid .tb:hover{background:var(--sand)}
+.cartpill{display:flex;align-items:center;gap:10px;height:46px;padding:0 18px 0 16px;border-radius:999px;background:var(--ink);color:#fff;font-weight:600;font-size:14px;transition:background .25s,transform .25s}
+.cartpill:hover{background:var(--accentD);transform:translateY(-1px)}
+.top:not(.solid) .cartpill{background:rgba(30,27,24,.72);backdrop-filter:blur(8px)}
+.cnt{min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--accent);font-size:12px;font-weight:700;display:grid;place-items:center}
+.bump-a{animation:bA .6s cubic-bezier(.3,1.6,.5,1)}.bump-b{animation:bB .6s cubic-bezier(.3,1.6,.5,1)}
+@keyframes bA{0%{transform:scale(.3)}60%{transform:scale(1.35)}100%{transform:scale(1)}}
+@keyframes bB{0%{transform:scale(.3)}60%{transform:scale(1.35)}100%{transform:scale(1)}}
+.wdot{position:absolute;top:6px;right:6px;width:9px;height:9px;border-radius:50%;background:var(--accent)}
+.menu-btn{display:none}
+
+/* ===== hero slider ===== */
+.hero{position:relative;height:clamp(640px,100vh,900px);overflow:hidden;background:#2a221b;color:#fff}
+.slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity 1.2s ease,visibility 1.2s}
+.slide.on{opacity:1;visibility:visible}
+.frame{position:absolute;inset:0;container-type:size;overflow:hidden}
+.stage{position:absolute;left:50%;top:50%;width:max(100cqw,150cqh);aspect-ratio:3/2;transform:translate(-50%,-50%)}
+.stage-in{position:absolute;inset:0;transform-origin:60% 50%}
+.slide.on .stage-in{animation:kb 16s ease-out both}
+@keyframes kb{from{transform:scale(1.08)}to{transform:scale(1)}}
+.stage-in>img{width:100%;height:100%;object-fit:cover}
+.shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(25,18,12,.72) 0%,rgba(25,18,12,.42) 34%,rgba(25,18,12,0) 62%),linear-gradient(0deg,rgba(25,18,12,.6) 0%,rgba(25,18,12,0) 34%),linear-gradient(180deg,rgba(25,18,12,.5) 0%,rgba(25,18,12,0) 22%)}
+.copy{position:absolute;left:0;right:0;top:50%;transform:translateY(-46%);z-index:3;pointer-events:none}
+.copy .inner{max-width:560px;pointer-events:auto}
+.slide.low .copy{top:60%}
+.slide .copy .inner>*{opacity:0;transform:translateY(24px)}
+.slide.on .copy .inner>*{animation:cIn .9s cubic-bezier(.2,.7,.2,1) forwards}
+.slide.on .copy .inner>*:nth-child(2){animation-delay:.12s}
+.slide.on .copy .inner>*:nth-child(3){animation-delay:.24s}
+.slide.on .copy .inner>*:nth-child(4){animation-delay:.36s}
+@keyframes cIn{to{opacity:1;transform:none}}
+.chip{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 14px;border-radius:999px;background:rgba(255,253,249,.14);border:1px solid rgba(255,253,249,.28);backdrop-filter:blur(6px);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.chip i{width:6px;height:6px;border-radius:50%;background:var(--peach)}
+.h1{font-family:Fraunces,Georgia,serif;font-weight:300;font-size:clamp(54px,6.6vw,98px);line-height:.98;letter-spacing:-.025em;margin:22px 0 0;text-shadow:0 2px 24px rgba(0,0,0,.25)}
+.h1 em{display:block;font-style:italic;color:var(--peach)}
+.lead{font-size:18px;line-height:1.6;color:rgba(255,255,255,.9);max-width:460px;margin:22px 0 32px}
+.btns{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 26px;border-radius:999px;font-weight:600;font-size:15px;transition:transform .25s,background .25s,box-shadow .25s,color .25s}
+.btn:hover{transform:translateY(-2px)}
+.btn .ic{transition:transform .3s}.btn:hover .ic{transform:translateX(4px)}
+.btn-w{background:var(--white);color:var(--ink)}.btn-w:hover{box-shadow:0 14px 30px rgba(0,0,0,.25)}
+.btn-o{border:1px solid rgba(255,255,255,.65);color:#fff}.btn-o:hover{background:rgba(255,255,255,.12)}
+.btn-d{background:var(--ink);color:var(--white)}.btn-d:hover{background:var(--accentD);box-shadow:0 12px 26px rgba(147,66,31,.3)}
+.btn-a{background:var(--accent);color:#fff}.btn-a:hover{background:var(--accentD)}
+.btn-l{border:1px solid var(--ink);color:var(--ink)}.btn-l:hover{background:var(--ink);color:var(--white)}
+.hs{position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;display:grid;place-items:center;z-index:2}
+.hs .dot{width:20px;height:20px;border-radius:50%;background:rgba(255,253,249,.95);box-shadow:0 2px 12px rgba(0,0,0,.35);display:grid;place-items:center;position:relative;transition:transform .3s cubic-bezier(.3,1.6,.5,1),background .25s}
+.hs .dot::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);transition:background .25s}
+.hs .dot::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1.5px solid rgba(255,253,249,.9);animation:ping 2.4s ease-out infinite}
+.hs:nth-child(odd) .dot::after{animation-delay:1.2s}
+@keyframes ping{0%{transform:scale(.6);opacity:1}100%{transform:scale(2);opacity:0}}
+.hs:hover .dot{transform:scale(1.2)}
+.hs.on .dot{background:var(--accent);transform:scale(1.25)}.hs.on .dot::before{background:#fff}
+.hs .pill{position:absolute;left:36px;top:50%;transform:translate(-6px,-50%);white-space:nowrap;padding:6px 12px;border-radius:999px;background:var(--white);color:var(--ink);font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;box-shadow:0 8px 20px rgba(0,0,0,.18)}
+.hs:hover .pill,.hs:focus-visible .pill{opacity:1;transform:translate(0,-50%)}
+.stats{position:absolute;left:40px;bottom:40px;z-index:4;display:flex;background:rgba(30,24,18,.38);border:1px solid rgba(255,253,249,.2);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:20px;padding:16px 8px}
+.st{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;padding:0 22px;min-width:130px}
+.st + .st{border-left:1px solid rgba(255,253,249,.2)}
+.st .ic{color:var(--peach)}
+.st b{font-family:Fraunces,serif;font-weight:400;font-size:24px;line-height:1.1}
+.st span{font-size:12px;color:rgba(255,255,255,.78)}
+.dots{position:absolute;left:50%;bottom:40px;transform:translateX(-50%);z-index:4;display:flex;gap:10px;align-items:center}
+.dt{width:44px;height:44px;display:grid;place-items:center}
+.dt i{display:block;width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.5);transition:width .4s,background .3s;overflow:hidden;position:relative}
+.dt.on i{width:46px;background:rgba(255,255,255,.35)}
+.dt.on i::after{content:"";position:absolute;inset:0;background:#fff;transform-origin:left;animation:prog 8s linear forwards}
+.hero.paused .dt.on i::after{animation-play-state:paused}
+@keyframes prog{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.arrows{position:absolute;right:40px;bottom:40px;z-index:4;display:flex;gap:10px}
+.ar{width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.5);display:grid;place-items:center;transition:background .25s}
+.ar:hover{background:rgba(255,255,255,.16)}
+.hcard{position:absolute;right:40px;bottom:112px;z-index:6;width:330px;background:var(--white);color:var(--ink);border-radius:18px;padding:14px;display:flex;gap:14px;box-shadow:0 26px 60px rgba(0,0,0,.3);animation:pop .35s ease both}
+@keyframes pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.hc-i{width:86px;height:86px;border-radius:12px;background:var(--photo);display:grid;place-items:center;overflow:hidden;flex:none}
+.hc-i img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.hc-i .ic{width:30px;height:30px;color:var(--accent)}
+.hc-c{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.hc-n{font-family:Fraunces,serif;font-size:19px;line-height:1.2;margin-top:2px}
+.hc-p{font-weight:700;margin-top:4px}
+.hc-s{font-size:13px;color:var(--accent);font-weight:600;margin-top:4px}
+.hc-b{margin-top:10px;height:38px;padding:0 14px;border-radius:999px;background:var(--ink);color:#fff;font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:6px;transition:background .2s}
+.hc-b:hover{background:var(--accent)}
+.hc-x{position:absolute;top:6px;right:6px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center}
+.hc-x:hover{background:var(--sand)}
+
+/* ===== trust ===== */
+.trust{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:28px}
+.tr{display:flex;align-items:center;gap:14px;padding:18px 20px;background:var(--white);border:1px solid var(--line);border-radius:14px;transition:transform .3s,box-shadow .3s}
+.tr:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(30,27,24,.08)}
+.tr-i{width:46px;height:46px;border-radius:50%;background:var(--sand);color:var(--accentD);display:grid;place-items:center;flex:none}
+.tr b{display:block;font-size:15px}
+.tr span{font-size:13px;color:var(--ink2)}
+
+/* ===== sections ===== */
+.sec{padding-top:96px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:30px}
+.h2{font-family:Fraunces,Georgia,serif;font-weight:400;font-size:clamp(34px,3.6vw,52px);line-height:1.05;letter-spacing:-.02em;margin:8px 0 0}
+.h2 em{font-weight:300;color:var(--accent)}
+.more{display:inline-flex;align-items:center;gap:8px;font-weight:600;border-bottom:1.5px solid currentColor;padding-bottom:3px}
+.more .ic{transition:transform .3s}.more:hover .ic{transform:translateX(4px)}
+
+/* ===== categories ===== */
+.groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:22px}
+.grp{display:flex;align-items:center;gap:14px;padding:12px;border-radius:16px;background:var(--white);border:1.5px solid var(--line);text-align:left;transition:border-color .25s,box-shadow .25s,transform .25s}
+.grp:hover{transform:translateY(-2px)}
+.grp.on{border-color:var(--ink);box-shadow:0 12px 30px rgba(30,27,24,.08)}
+.grp img{width:64px;height:64px;border-radius:12px;object-fit:cover;flex:none}
+.grp b{display:block;font-family:Fraunces,serif;font-weight:400;font-size:21px;line-height:1.15}
+.grp span{font-size:13px;color:var(--ink2)}
+.grp .go{margin-left:auto;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--sand);transition:background .25s,color .25s,transform .3s}
+.grp.on .go{background:var(--ink);color:#fff;transform:rotate(90deg)}
+.catbox{display:grid;grid-template-columns:330px 1fr;gap:18px}
+.lead-card{position:relative;border-radius:18px;overflow:hidden;min-height:440px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:26px}
+.lead-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.lead-card:hover img{transform:scale(1.05)}
+.lead-card::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(25,18,12,.8) 0%,rgba(25,18,12,.1) 60%)}
+.lead-card>div{position:relative;z-index:1}
+.lead-card b{display:block;font-family:Fraunces,serif;font-weight:400;font-size:30px;line-height:1.05}
+.lead-card p{font-size:14px;color:rgba(255,255,255,.85);margin:10px 0 18px}
+.subs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;align-content:start}
+.sub{display:block;animation:subIn .55s cubic-bezier(.2,.7,.2,1) both}
+.sub:nth-child(2){animation-delay:.04s}.sub:nth-child(3){animation-delay:.08s}.sub:nth-child(4){animation-delay:.12s}.sub:nth-child(5){animation-delay:.16s}.sub:nth-child(6){animation-delay:.2s}.sub:nth-child(7){animation-delay:.24s}.sub:nth-child(8){animation-delay:.28s}
+@keyframes subIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.sub-i{aspect-ratio:1;border-radius:14px;background:var(--photo);overflow:hidden;display:grid;place-items:center}
+.sub-i img{width:84%;height:84%;object-fit:contain;mix-blend-mode:multiply;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.sub:hover .sub-i img{transform:scale(1.08)}
+.sub b{display:block;margin-top:10px;font-size:15px;line-height:1.3}
+.sub span{font-size:13px;color:var(--ink2)}
+
+/* ===== top products marquee ===== */
+.mq{overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.mq-t{display:flex;gap:20px;width:max-content;padding:8px 0 16px;animation:mq 70s linear infinite}
+.mq:hover .mq-t,.mq:focus-within .mq-t{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(calc(-50% - 10px))}}
+.card{width:258px;flex:none;background:var(--white);border:1px solid var(--line);border-radius:16px;padding:10px 10px 14px;transition:transform .3s,box-shadow .3s}
+.card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(30,27,24,.1)}
+.c-img{position:relative;aspect-ratio:1;border-radius:12px;background:var(--photo);display:grid;place-items:center;overflow:hidden}
+.c-img img{width:86%;height:86%;object-fit:contain;mix-blend-mode:multiply;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.card:hover .c-img img{transform:scale(1.07)}
+.rank{position:absolute;top:10px;left:10px;height:26px;padding:0 10px;border-radius:999px;background:var(--white);font-size:12px;font-weight:700;display:flex;align-items:center;gap:5px}
+.rank i{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.heart{position:absolute;top:4px;right:4px;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;transition:transform .25s}
+.heart:hover{transform:scale(1.12)}
+.heart.on{color:var(--accent)}.heart.on .ic{fill:var(--accent);animation:hb .45s cubic-bezier(.3,1.6,.5,1)}
+@keyframes hb{0%{transform:scale(.4)}60%{transform:scale(1.3)}100%{transform:scale(1)}}
+.c-cat{margin-top:12px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.c-name{font-weight:600;font-size:15px;line-height:1.3;margin-top:4px;min-height:39px}
+.c-row{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+.c-price{font-weight:700;font-size:18px}
+.c-price small{font-size:13px;font-weight:500;color:var(--ink2);margin-right:2px}
+.c-add{width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;transition:background .2s,transform .3s}
+.c-add:hover{background:var(--accent);transform:rotate(90deg)}
+
+
+/* ===== category showcase ===== */
+.cs-head{text-align:center;margin-bottom:22px}
+.pills{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.pill-b{height:44px;padding:0 20px;border-radius:999px;border:1px solid var(--line);background:var(--white);font-size:14px;font-weight:600;color:var(--ink2);transition:background .3s,color .3s,border-color .3s,transform .2s}
+.pill-b:hover{border-color:var(--ink);color:var(--ink)}
+.pill-b.on{background:var(--ink);border-color:var(--ink);color:var(--white)}
+.cs{position:relative}
+.cs-stage{position:relative;height:clamp(380px,40vw,540px);overflow:hidden}
+.cs-s{position:absolute;top:0;left:50%;width:58%;height:100%;border-radius:24px;overflow:hidden;cursor:pointer;transform:translateX(-50%) scale(.72);opacity:0;transition:transform .9s cubic-bezier(.2,.7,.2,1),opacity .9s,filter .9s;filter:saturate(.6) brightness(.9);pointer-events:none}
+.cs-s img{width:100%;height:100%;object-fit:cover}
+.cs-s.on{transform:translateX(-50%) scale(1);opacity:1;filter:none;pointer-events:auto;z-index:2;cursor:default}
+.cs-s.prev{transform:translateX(-128%) scale(.8);opacity:.55;pointer-events:auto;z-index:1}
+.cs-s.next{transform:translateX(28%) scale(.8);opacity:.55;pointer-events:auto;z-index:1}
+.cs-s.prev:hover,.cs-s.next:hover{opacity:.8}
+.cs-s::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(25,18,12,.72) 0%,rgba(25,18,12,0) 55%);opacity:0;transition:opacity .9s}
+.cs-s.on::after{opacity:1}
+.cs-cap{position:absolute;left:34px;right:34px;bottom:30px;z-index:1;color:#fff;opacity:0;transform:translateY(16px);transition:opacity .6s .3s,transform .6s .3s}
+.cs-s.on .cs-cap{opacity:1;transform:none}
+.cs-n{display:block;font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--peach)}
+.cs-cap b{display:block;font-family:Fraunces,serif;font-weight:300;font-size:clamp(34px,3.6vw,52px);line-height:1.02;letter-spacing:-.02em;margin-top:6px}
+.cs-m{font-size:15px;color:rgba(255,255,255,.85)}
+.cs-ar{position:absolute;top:50%;z-index:3;width:54px;height:54px;border-radius:50%;background:var(--white);display:grid;place-items:center;transform:translateY(-50%);box-shadow:0 10px 26px rgba(30,27,24,.15);transition:transform .25s,background .25s,color .25s}
+.cs-ar:hover{background:var(--ink);color:#fff}
+.cs-ar.l{left:calc(21% - 27px)}.cs-ar.r{right:calc(21% - 27px)}
+.cs-prog{width:180px;height:3px;border-radius:3px;background:var(--line);margin:22px auto 0;overflow:hidden}
+.cs-prog i{display:block;height:100%;background:var(--accent);transform-origin:left;animation:csP 5s linear forwards}
+.cs.hold .cs-prog i{animation-play-state:paused}
+@keyframes csP{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes csP2{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.cp{margin-top:34px}
+.cp-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.cp-head b{font-family:Fraunces,serif;font-weight:400;font-size:22px;margin-left:4px}
+.cp-ar{display:flex;gap:8px}
+.cp-ar button{width:44px;height:44px;border-radius:50%;border:1px solid var(--ink);display:grid;place-items:center;transition:background .2s,color .2s,opacity .2s}
+.cp-ar button:hover{background:var(--ink);color:#fff}
+.cp-ar button:disabled{opacity:.25;pointer-events:none}
+.cp-wrap{overflow:hidden;margin:-8px;padding:8px}
+.cp-track{display:flex;gap:18px;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.cp-card,.cp-all{flex:0 0 calc((100% - 72px)/5);width:auto;animation:subIn .5s cubic-bezier(.2,.7,.2,1) both}
+.cp-all{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:6px;padding:24px;border-radius:16px;background:var(--sand);transition:background .3s}
+.cp-all:hover{background:var(--line)}
+.cp-all .serif{font-size:30px}
+.cp-go{margin-top:12px;width:48px;height:48px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;transition:transform .3s}
+.cp-all:hover .cp-go{transform:translateX(6px)}
+@media (max-width:1100px){.cp-card,.cp-all{flex-basis:calc((100% - 36px)/3)}.cs-s{width:70%}.cs-s.prev{transform:translateX(-134%) scale(.8)}.cs-s.next{transform:translateX(34%) scale(.8)}.cs-ar.l{left:calc(15% - 27px)}.cs-ar.r{right:calc(15% - 27px)}}
+@media (max-width:720px){.pills{justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -16px 22px;padding:0 16px}.pill-b{flex:none}.cs-stage{height:440px}.cs-s{width:84%}.cs-s.prev,.cs-s.next{opacity:.35}.cs-ar{width:46px;height:46px}.cs-ar.l{left:4px}.cs-ar.r{right:4px}.cs-cap{left:20px;right:20px;bottom:22px}.cp-wrap{overflow-x:auto;scroll-snap-type:x mandatory}.cp-track{transform:none !important}.cp-card,.cp-all{flex-basis:70%;scroll-snap-align:start}.cp-ar{display:none}}
+
+
+/* ===== shop: categories + product list ===== */
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.shop-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px 40px;flex-wrap:wrap;margin-bottom:24px}
+.shop-head p{margin:0;max-width:380px;font-size:15px}
+.gtabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;margin-bottom:18px}
+.gt{flex:none;display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:var(--white);font-size:15px;font-weight:600;transition:background .25s,color .25s,border-color .25s}
+.gt span{font-size:12px;font-weight:700;color:var(--ink2);background:var(--cream);border-radius:999px;padding:2px 8px;transition:background .25s,color .25s}
+.gt:hover{border-color:var(--ink)}
+.gt.on{background:var(--ink);border-color:var(--ink);color:var(--white)}
+.gt.on span{background:rgba(255,253,249,.18);color:var(--white)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+.tile{display:flex;flex-direction:column;align-items:flex-start;text-align:left;padding:10px 10px 12px;border-radius:16px;background:var(--white);border:1.5px solid var(--line);transition:border-color .2s,transform .25s,box-shadow .25s;animation:subIn .45s cubic-bezier(.2,.7,.2,1) both}
+.tile:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(30,27,24,.08)}
+.tile.on{border-color:var(--accent);box-shadow:0 0 0 3px rgba(181,86,47,.14)}
+.tile-i{width:100%;aspect-ratio:1;border-radius:11px;background:var(--photo);display:grid;place-items:center;overflow:hidden}
+.tile-i img{width:84%;height:84%;object-fit:contain;mix-blend-mode:multiply;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.tile:hover .tile-i img{transform:scale(1.08)}
+.tile-n{font-weight:700;font-size:14px;line-height:1.25;margin-top:10px}
+.tile-c{font-size:12px;color:var(--ink2);margin-top:2px}
+.lst{margin-top:40px;scroll-margin-top:90px}
+.lst-bar{position:sticky;top:80px;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:12px 20px;flex-wrap:wrap;padding:14px 0;background:var(--cream);border-bottom:1px solid var(--line);margin-bottom:22px}
+.lst-t{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.lst-t b{font-family:Fraunces,serif;font-weight:400;font-size:26px;line-height:1.1}
+.clr{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 12px;border-radius:999px;background:var(--sand);font-size:13px;font-weight:600;align-self:center}
+.clr:hover{background:var(--line)}
+.lst-tools{display:flex;gap:10px;flex-wrap:wrap}
+.lsearch{display:flex;align-items:center;gap:8px;height:46px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:var(--white);min-width:240px}
+.lsearch:focus-within{border-color:var(--accent)}
+.lsearch input{border:0;outline:0;background:transparent;font:inherit;font-size:15px;color:var(--ink);width:100%;min-width:0}
+.lsort select{height:46px;padding:0 38px 0 16px;border-radius:999px;border:1px solid var(--line);background:var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%231e1b18' stroke-width='2.4'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center;font:inherit;font-size:15px;color:var(--ink);-webkit-appearance:none;appearance:none;cursor:pointer}
+.lsort select:focus{outline:2px solid var(--accent);outline-offset:1px}
+.pgrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
+@media (max-width:1280px){.pgrid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.pc2{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:box-shadow .3s,transform .3s;animation:subIn .4s cubic-bezier(.2,.7,.2,1) both}
+.pc2:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(30,27,24,.09)}
+.pc2-i{position:relative;display:grid;place-items:center;aspect-ratio:1;background:var(--photo);margin:8px 8px 0;border-radius:11px;overflow:hidden}
+.pc2-i img{width:86%;height:86%;object-fit:contain;mix-blend-mode:multiply;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.pc2:hover .pc2-i img{transform:scale(1.06)}
+.pc2-v{position:absolute;left:8px;bottom:8px;padding:4px 9px;border-radius:999px;background:var(--white);font-size:12px;font-weight:700}
+.pc2-b{padding:10px 14px 14px;display:flex;flex-direction:column;flex:1}
+.pc2-n{text-align:left;font-weight:600;font-size:15px;line-height:1.3;margin-top:4px;flex:1}
+.pc2-n:hover{color:var(--accentD)}
+.more-w{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:30px}
+.lempty{text-align:center;padding:50px 10px}
+.lempty b{display:block;font-size:24px;font-weight:400}
+.qv{position:fixed;left:50%;top:50%;z-index:72;width:min(920px,calc(100% - 32px));max-height:calc(100% - 40px);overflow:auto;transform:translate(-50%,-50%);background:var(--white);border-radius:22px;display:grid;grid-template-columns:1fr 1fr;box-shadow:0 40px 90px rgba(0,0,0,.3);animation:qvIn .4s cubic-bezier(.2,.7,.2,1) both}
+@keyframes qvIn{from{opacity:0;transform:translate(-50%,-46%)}to{opacity:1;transform:translate(-50%,-50%)}}
+.qv-x{position:absolute;top:10px;right:10px;z-index:1;background:var(--white)}
+.qv-i{background:var(--photo);display:grid;place-items:center;min-height:360px}
+.qv-i img{width:88%;height:88%;max-height:460px;object-fit:contain;mix-blend-mode:multiply}
+.qv-b{padding:34px 30px 28px;display:flex;flex-direction:column}
+.qv-n{font-weight:400;font-size:30px;line-height:1.1;margin:6px 0 0}
+.qv-p{font-weight:700;font-size:24px;margin-top:10px}
+.qv-d{font-size:15px;margin:10px 0 0}
+.qv-l{margin-top:18px;font-size:14px}
+.qv-vs{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.vb{min-height:40px;padding:6px 14px;border-radius:999px;border:1px solid var(--line);font-size:14px;font-weight:600;transition:border-color .2s,background .2s,color .2s}
+.vb:hover{border-color:var(--ink)}
+.vb.on{background:var(--ink);border-color:var(--ink);color:var(--white)}
+.qv-row{display:flex;gap:10px;margin-top:22px;align-items:center}
+.qv-q{height:54px}
+.qv-q button{height:52px}
+.qv-tr{list-style:none;padding:0;margin:16px 0 0;display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--ink2)}
+.qv-tr li::before{content:"✓ ";color:var(--sage);font-weight:700}
+@media (max-width:1100px){.pgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:720px){
+.tiles{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -16px;padding:0 16px 6px;scrollbar-width:none}
+.tile{flex:0 0 130px;scroll-snap-align:start}
+.pgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.pc2-b{padding:8px 10px 10px}
+.pc2-n{font-size:14px}
+.lst-bar{position:static}.lst-tools{width:100%;flex-direction:column}.lsearch{min-width:0}.lsort select{width:100%}
+.qv{grid-template-columns:1fr;top:auto;bottom:0;left:0;right:0;width:100%;max-height:92%;transform:none;border-radius:22px 22px 0 0;animation:qvUp .4s cubic-bezier(.2,.7,.2,1) both}
+@keyframes qvUp{from{transform:translateY(100%)}to{transform:none}}
+.qv-i{min-height:240px}.qv-b{padding:20px 18px 24px}
+}
+
+
+/* ===== checkout ===== */
+.promo{display:flex;gap:8px;margin-bottom:12px}
+.promo input{flex:1;min-width:0;height:42px;border-radius:999px;border:1px solid var(--line);padding:0 16px;font:inherit;font-size:14px;background:var(--white);color:var(--ink);outline:0}
+.promo input:focus{border-color:var(--accent)}
+.promo button{height:42px;padding:0 16px;border-radius:999px;background:var(--sand);font-size:13px;font-weight:700}
+.promo-msg{margin:-4px 0 10px;font-size:13px;color:var(--ink2)}
+.co{grid-template-columns:1fr;width:min(640px,calc(100% - 32px))}
+.co-f,.co-done{padding:30px 28px 26px}
+.co-h{font-weight:400;font-size:30px;margin:0}
+.co-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.fld{display:flex;flex-direction:column;gap:5px;font-size:13px;font-weight:600}
+.fld.full{grid-column:1/-1}
+.fld input,.fld textarea{font:inherit;font-size:15px;font-weight:400;padding:11px 14px;border-radius:12px;border:1px solid var(--line);background:var(--white);color:var(--ink);outline:0;resize:vertical}
+.fld input:focus,.fld textarea:focus{border-color:var(--accent)}
+.fld .bad{border-color:#c0392b;background:#fdf2f0}
+.co-sum{margin-top:18px;padding:14px 16px;border-radius:14px;background:var(--cream);font-size:14px}
+.co-err{margin:12px 0 0;color:#a5321f;font-size:14px;font-weight:600}
+.co-done{text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px}
+.co-done p{margin:0;max-width:420px}
+.co-done .btn{margin-top:16px}
+.co-ok{width:64px;height:64px;border-radius:50%;background:var(--sage);color:#fff;display:grid;place-items:center;margin-bottom:8px}
+.co-ok .ic{width:30px;height:30px;stroke-width:2.4}
+@media (max-width:720px){.co-g{grid-template-columns:1fr}.co-f,.co-done{padding:22px 18px 22px}}
+
+/* ===== shop the look ===== */
+.look{display:grid;grid-template-columns:7fr 5fr;background:var(--white);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.look-i{position:relative;aspect-ratio:3/2;overflow:hidden}
+.look-i>img{width:100%;height:100%;object-fit:cover}
+.look-b{padding:36px 34px;display:flex;flex-direction:column;justify-content:center}
+.li{display:flex;align-items:center;gap:12px;padding:11px 10px;border-radius:12px;transition:background .2s}
+.li.on{background:var(--cream)}
+.li-n{width:30px;height:30px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font-weight:700;font-size:13px;flex:none;transition:background .2s,color .2s}
+.li.on .li-n{background:var(--accent);color:#fff}
+.li-t{font-weight:600;font-size:15px;line-height:1.25}
+.li-c{font-size:13px;color:var(--ink2)}
+.li-p{margin-left:auto;font-weight:700;white-space:nowrap}
+.li-add{width:40px;height:40px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;flex:none;transition:background .2s}
+.li-add:hover{background:var(--accent)}
+.li-soon{margin-left:auto;font-size:12px;font-weight:700;color:var(--accentD);padding:5px 10px;border-radius:999px;background:#f6e2d6;white-space:nowrap}
+
+/* ===== duo banners ===== */
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.ban{position:relative;min-height:380px;border-radius:22px;overflow:hidden;color:#fff;display:flex;align-items:flex-end;padding:32px}
+.ban img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.ban:hover img{transform:scale(1.05)}
+.ban::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(25,18,12,.75) 0%,rgba(25,18,12,0) 65%)}
+.ban>div{position:relative;z-index:1}
+.ban b{display:block;font-family:Fraunces,serif;font-weight:400;font-size:34px;line-height:1.05;margin:8px 0 6px}
+.ban b em{font-weight:300;color:var(--peach)}
+.ban span.e{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.85)}
+.ban .lnk{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-weight:600;border-bottom:1.5px solid rgba(255,255,255,.7);padding-bottom:3px}
+
+/* ===== steps / news / footer ===== */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.step{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:30px;transition:transform .3s,box-shadow .3s}
+.step:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(30,27,24,.07)}
+.step-n{font-family:Fraunces,serif;font-weight:300;font-size:56px;line-height:1;color:var(--accent)}
+.step b{display:block;font-size:18px;margin-top:16px}
+.step p{margin:6px 0 0;color:var(--ink2);font-size:15px}
+.news{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:52px;border-radius:22px;background:var(--sand);position:relative;overflow:hidden}
+.news::after{content:"";position:absolute;width:360px;height:360px;border-radius:50%;background:var(--peach);opacity:.35;right:-120px;top:-160px;animation:drift 12s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(-40px,30px) scale(1.08)}}
+.nf{display:flex;gap:10px;position:relative;z-index:1}
+.nf label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.nf input{flex:1;min-width:0;height:54px;border-radius:999px;border:1px solid var(--line);background:var(--white);padding:0 22px;font:inherit;outline:0;color:var(--ink)}
+.nf input:focus{border-color:var(--accent)}
+.nok{position:relative;z-index:1;background:var(--white);border-radius:16px;padding:18px 20px;animation:pop .4s both}
+.foot{margin-top:96px;background:var(--ink);color:#cfc6bb;padding:60px 0 24px;font-size:14px}
+.fg{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:36px}
+.foot h4{margin:0 0 14px;color:var(--cream);font-size:15px}
+.foot a{display:block;padding:4px 0}.foot a:hover{color:var(--cream)}
+.foot .logo{color:var(--cream)}
+.fb{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid #39342f;margin-top:44px;padding-top:20px;font-size:13px}
+
+/* ===== overlays ===== */
+.chat{position:fixed;right:22px;bottom:22px;z-index:45;display:flex;align-items:center;gap:10px;height:54px;padding:0 20px 0 16px;border-radius:999px;background:var(--sage);color:#fff;font-weight:600;font-size:14px;box-shadow:0 14px 30px rgba(30,27,24,.22);transition:transform .25s}
+.chat:hover{transform:translateY(-3px)}
+.chat::before{content:"";position:absolute;inset:0;border-radius:999px;border:2px solid var(--sage);animation:ring 2.6s ease-out infinite}
+@keyframes ring{to{transform:scale(1.2,1.45);opacity:0}}
+.toast{position:fixed;left:50%;bottom:26px;z-index:60;display:flex;align-items:center;gap:12px;padding:10px 10px 10px 16px;border-radius:16px;background:var(--ink);color:var(--cream);font-size:14px;font-weight:500;box-shadow:0 20px 50px rgba(0,0,0,.3);animation:tIn .45s cubic-bezier(.2,.7,.2,1) both}
+@keyframes tIn{from{opacity:0;transform:translate(-50%,24px)}to{opacity:1;transform:translate(-50%,0)}}
+.toast i{width:28px;height:28px;border-radius:50%;background:var(--sage);display:grid;place-items:center;flex:none}
+.toast button{height:36px;padding:0 14px;border-radius:999px;background:var(--cream);color:var(--ink);font-weight:700;font-size:13px}
+.scrim{position:fixed;inset:0;z-index:70;background:rgba(30,27,24,.45);animation:fo .3s both}
+@keyframes fo{from{opacity:0}}
+.drawer{position:fixed;top:0;bottom:0;right:0;z-index:71;width:min(440px,100%);background:var(--white);display:flex;flex-direction:column;animation:dR .5s cubic-bezier(.2,.7,.1,1) both}
+.drawer.left{right:auto;left:0;animation-name:dL}
+@keyframes dR{from{transform:translateX(100%)}}
+@keyframes dL{from{transform:translateX(-100%)}}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid var(--line)}
+.dh .serif{font-size:28px}
+.xb{width:44px;height:44px;border-radius:50%;display:grid;place-items:center}.xb:hover{background:var(--sand)}
+.ship{margin:16px 24px 4px;padding:14px 16px;border-radius:14px;background:var(--cream);font-size:14px;font-weight:600}
+.sbar{height:6px;border-radius:999px;background:var(--line);margin-top:10px;overflow:hidden}
+.sbar i{display:block;height:100%;border-radius:999px;background:var(--sage);transition:width .7s cubic-bezier(.2,.7,.2,1)}
+.dl{flex:1;overflow:auto;padding:6px 24px}
+.ci{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);animation:pop .3s both}
+.ci-i{width:78px;height:78px;border-radius:12px;background:var(--photo);display:grid;place-items:center;flex:none}
+.ci-i img{width:88%;height:88%;object-fit:contain;mix-blend-mode:multiply}
+.ci-n{font-weight:600;font-size:15px;line-height:1.3}
+.ci-r{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.qty{display:flex;align-items:center;border:1px solid var(--line);border-radius:999px;height:40px}
+.qty button{width:40px;height:40px;display:grid;place-items:center;border-radius:50%}
+.qty span{min-width:22px;text-align:center;font-weight:700}
+.rm{margin-top:6px;font-size:13px;color:var(--ink2);text-decoration:underline}
+.df{padding:20px 24px 24px;border-top:1px solid var(--line)}
+.ds{display:flex;justify-content:space-between;margin-bottom:6px}
+.ds.t{font-weight:700;font-size:18px}
+.df .btn{width:100%;margin-top:14px}
+.empty{text-align:center;padding:60px 10px;color:var(--ink2)}
+.srch{position:fixed;left:0;right:0;top:0;z-index:72;background:var(--white);padding:24px 0 30px;box-shadow:0 30px 60px rgba(0,0,0,.18);animation:sD .4s cubic-bezier(.2,.7,.1,1) both}
+@keyframes sD{from{transform:translateY(-100%)}}
+.sf{display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:999px;padding:0 8px 0 22px;height:62px;background:var(--cream)}
+.sf:focus-within{border-color:var(--accent)}
+.sf input{flex:1;border:0;outline:0;background:transparent;font-family:Fraunces,serif;font-size:24px;color:var(--ink);min-width:0}
+.sres{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;margin-top:20px}
+.sr{text-align:left}
+.sr .c-img{aspect-ratio:1}
+.sr b{display:block;font-size:14px;margin-top:8px;line-height:1.3}
+.sr span{font-size:13px;color:var(--ink2)}
+.sugg{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.sugg button{height:38px;padding:0 16px;border-radius:999px;border:1px solid var(--line);font-size:14px;transition:border-color .2s,background .2s}
+.sugg button:hover{border-color:var(--ink);background:var(--cream)}
+.ml a{display:flex;align-items:center;gap:14px;padding:12px 24px;font-weight:600;transition:background .2s}
+.ml a:hover{background:var(--cream)}
+.ml img{width:48px;height:48px;border-radius:10px;object-fit:contain;background:#f3ece2}
+.ml .ic{margin-left:auto;color:var(--accent)}
+
+@supports (animation-timeline: view()){
+.rv{animation:rv linear both;animation-timeline:view();animation-range:entry 0% cover 22%}
+@keyframes rv{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:none}}
+}
+@media (max-width:1100px){
+.nav{display:none}.menu-btn{display:grid}
+.bar{grid-template-columns:auto auto 1fr auto}
+.tools{justify-content:flex-end;grid-column:4}
+.catbox,.look,.news{grid-template-columns:1fr}
+.lead-card{min-height:260px}
+.subs{grid-template-columns:repeat(3,minmax(0,1fr))}
+.trust{grid-template-columns:repeat(2,minmax(0,1fr))}
+.fg{grid-template-columns:1fr 1fr}
+.sres{grid-template-columns:repeat(3,minmax(0,1fr))}
+.hcard{bottom:150px}
+}
+@media (max-width:720px){
+.wrap{padding:0 16px}
+.bar{height:66px;gap:8px}
+.logo{font-size:23px}
+.cartpill .lbl-t{display:none}
+.cartpill{padding:0 12px}
+.stats{left:16px;right:16px;bottom:96px;padding:12px 4px}
+.st{min-width:0;flex:1;padding:0 8px}
+.st b{font-size:18px}
+.dots{bottom:28px}
+.arrows{display:none}
+.copy{top:40%}
+.groups{grid-template-columns:1fr}
+.subs{grid-template-columns:repeat(2,minmax(0,1fr))}
+.duo,.steps{grid-template-columns:1fr}
+.news,.look-b{padding:28px 20px}
+.hcard{left:16px;right:16px;width:auto;bottom:16px}
+.fg{grid-template-columns:1fr}
+.sres{grid-template-columns:repeat(2,minmax(0,1fr))}
+.chat span{display:none}.chat{padding:0 16px}
+.sec{padding-top:72px}
+}
+@media (prefers-reduced-motion:reduce){
+.bh *,.bh *::before,.bh *::after{animation:none !important;transition:none !important}
+.ann span:first-child,.slide.on .copy .inner>*{opacity:1;transform:none}
+}
+</style>
+
+<style>[v-cloak]{display:none}</style>
+</head>
+<body>
+<div id="app" v-cloak>
+<div class="bh">
+
+<div class="ann" aria-label="Pogodnosti">
+<span>Plaćanje pouzećem — plaćaš kad paket stigne</span>
+<span>Besplatna dostava za narudžbe iznad 100 KM</span>
+<span>30 dana za povrat — bez pitanja</span>
+</div>
+
+<header :class="topCls">
+<div class="wrap bar">
+<button class="tb menu-btn" @click="openMenu" aria-label="Otvori meni"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"></path></svg></button>
+<a class="logo" href="#">Bellora<em>Home</em></a>
+<nav class="nav" aria-label="Glavna navigacija">
+<a class="nav-l" href="#kategorije">Sve</a>
+<template v-for="(g, $index) in groups">
+<div class="nav-i">
+<a class="nav-l" href="#lista" @click="g.pick">{{g.name}}<svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></a>
+<div class="mega">
+<template v-for="(s, $index) in g.subs">
+<a class="mg" href="#lista" @click="s.pick"><img :src="s.img" alt=""><span><b>{{s.name}}</b><span>{{s.meta}}</span></span></a>
+</template>
+</div>
+</div>
+</template>
+</nav>
+<div class="tools">
+<button class="tb" @click="openSearch" aria-label="Pretraži proizvode"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></button>
+<button class="tb" aria-label="Lista želja"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg><template v-if="hasWish"><i class="wdot"></i></template></button>
+<button class="cartpill" @click="openCart" aria-label="Otvori korpu"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg><span class="lbl-t">{{cartLabel}}</span><span :class="cntCls">{{cartCount}}</span></button>
+</div>
+</div>
+</header>
+
+<main>
+<section :class="heroCls" @mouseenter="pause" @mouseleave="resume" aria-label="Izdvojeno">
+<template v-for="(sl, $index) in slides">
+<div :class="sl.cls" :aria-hidden="sl.hidden">
+<div class="frame"><div class="stage"><div class="stage-in">
+<img :src="sl.img" :alt="sl.alt">
+<template v-for="(h, $index) in sl.spots">
+<button :class="h.cls" :style="h.pos" @click="h.pick" :aria-label="h.name" :aria-pressed="h.on"><span class="dot"></span><span class="pill">{{h.name}}</span></button>
+</template>
+</div></div></div>
+<div class="shade"></div>
+<div class="copy"><div class="wrap"><div class="inner">
+<span class="chip"><i></i>{{sl.chip}}</span>
+<h2 class="h1">{{sl.t1}}<em>{{sl.t2}}</em></h2>
+<p class="lead">{{sl.lead}}</p>
+<div class="btns">
+<a class="btn btn-w" href="#top">{{sl.cta}}<svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+<a class="btn btn-o" href="#kategorije">Sve kategorije</a>
+</div>
+</div></div></div>
+</div>
+</template>
+
+<div class="stats" aria-label="Zašto BelloraHome">
+<div class="st"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-6 9 6v11H3z"></path><path d="M9 20v-6h6v6"></path></svg><b>200+</b><span>artikala za dom</span></div>
+<div class="st"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"></rect><circle cx="12" cy="12" r="2.5"></circle></svg><b>Pouzećem</b><span>plaćaš na vratima</span></div>
+<div class="st"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.3-5.7"></path><path d="M4 4v4h4"></path></svg><b>30 dana</b><span>za povrat</span></div>
+</div>
+<div class="dots" role="tablist" aria-label="Slajdovi">
+<template v-for="(sl, $index) in slides"><button :class="sl.dotCls" role="tab" :aria-selected="sl.on" :aria-label="sl.dotLabel" @click="sl.go"><i></i></button></template>
+</div>
+<div class="arrows">
+<button class="ar" @click="prevSlide" aria-label="Prethodni slajd"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></button>
+<button class="ar" @click="nextSlide" aria-label="Sljedeći slajd"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button>
+</div>
+<template v-if="hcOn">
+<div class="hcard" role="dialog" :aria-label="hc.name">
+<button class="hc-x" @click="closeSpot" aria-label="Zatvori"><svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+<div class="hc-i">
+<template v-if="hc.hasImg"><img :src="hc.img" alt=""></template>
+<template v-if="hc.noImg"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"></path></svg></template>
+</div>
+<div style="padding-right: 24px">
+<div class="hc-c">{{hc.cat}}</div>
+<div class="hc-n">{{hc.name}}</div>
+<template v-if="hc.buyable"><div class="hc-p">{{hc.priceText}}</div><button class="hc-b" @click="hc.add"><svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Dodaj u korpu</button></template>
+<template v-if="hc.soon"><div class="hc-s">Nova kolekcija — uskoro</div><button class="hc-b" @click="hc.notify">{{hc.notifyLabel}}</button></template>
+</div>
+</div>
+</template>
+</section>
+
+<div class="wrap">
+<section class="trust">
+<div class="tr"><span class="tr-i"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"></rect><circle cx="12" cy="12" r="2.5"></circle></svg></span><div><b>Plaćanje pouzećem</b><span>Plaćaš kad paket stigne</span></div></div>
+<div class="tr"><span class="tr-i"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"></path><circle cx="7" cy="18" r="1.6"></circle><circle cx="17" cy="18" r="1.6"></circle></svg></span><div><b>Besplatna dostava</b><span>Za narudžbe iznad 100 KM</span></div></div>
+<div class="tr"><span class="tr-i"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.3-5.7"></path><path d="M4 4v4h4"></path></svg></span><div><b>30 dana za povrat</b><span>Bez pitanja</span></div></div>
+<div class="tr"><span class="tr-i"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"></path></svg></span><div><b>Tu smo za vas</b><span>Pitajte nas prije kupovine</span></div></div>
+</section>
+
+<section class="sec" id="top">
+<div class="head rv"><div><div class="eyebrow">Najtraženije</div><h2 class="h2">Top proizvodi <em>ove sezone</em></h2></div><span class="muted" style="font-size: 14px">Pređi mišem da zaustaviš traku</span></div>
+</section>
+</div>
+<div class="mq" aria-label="Top proizvodi">
+<div class="mq-t">
+<template v-for="(p, $index) in topLoop">
+<article class="card">
+<div class="c-img"><img :src="p.img" :alt="p.name"><span class="rank"><i></i>Top</span>
+<button :class="p.heartCls" @click="p.toggleWish" :aria-pressed="p.wished" aria-label="Dodaj na listu želja"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg></button></div>
+<div class="c-cat">{{p.cat}}</div>
+<div class="c-name">{{p.name}}</div>
+<div class="c-row"><div class="c-price"><template v-if="p.from"><small>od</small></template>{{p.priceText}}</div><button class="c-add" @click="p.add" aria-label="Dodaj u korpu"><svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button></div>
+</article>
+</template>
+</div>
+</div>
+
+<div class="wrap">
+<section class="sec shop" id="kategorije">
+<div class="shop-head">
+<div><div class="eyebrow">Sve na jednom mjestu</div><h2 class="h2">Izaberi <em>kategoriju</em></h2></div>
+<p class="muted">{{katTotal}} proizvoda u 20 kategorija. Klikni na kategoriju i pregledaj proizvode.</p>
+</div>
+<div class="gtabs" role="tablist" aria-label="Grupe kategorija">
+<template v-for="(g, $index) in gtabs"><button :class="g.cls" role="tab" :aria-selected="g.on" @click="g.pick">{{g.name}}<span>{{g.count}}</span></button></template>
+</div>
+<div class="tiles">
+<template v-for="(t, $index) in tiles">
+<button :class="t.cls" @click="t.pick" :aria-pressed="t.on"><span class="tile-i"><img :src="t.img" alt="" loading="lazy"></span><span class="tile-n">{{t.name}}</span><span class="tile-c">{{t.count}} proizvoda</span></button>
+</template>
+</div>
+
+<div class="lst" id="lista">
+<div class="lst-bar">
+<div class="lst-t"><b>{{lstTitle}}</b><span class="muted">{{lstCount}}</span>
+<template v-if="hasFilter"><button class="clr" @click="clearFilter"><svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>Svi proizvodi</button></template>
+</div>
+<div class="lst-tools">
+<label class="lsearch"><svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><input id="bh-lq" type="search" placeholder="Traži među svim proizvodima…" aria-label="Traži među svim proizvodima" :value="lq" @input="onLq"></label>
+<label class="lsort"><span class="sr-only">Sortiraj</span><select id="bh-sort" :value="sort" @change="onSort"><option value="rec">Preporučeno</option><option value="asc">Cijena: od najniže</option><option value="desc">Cijena: od najviše</option><option value="az">Naziv: A–Ž</option></select></label>
+</div>
+</div>
+<div class="pgrid">
+<template v-for="(p, $index) in lst">
+<article class="pc2">
+<button class="pc2-i" @click="p.open" :aria-label="p.aria"><img :src="p.img" :alt="p.name" loading="lazy"><template v-if="p.hasVar"><span class="pc2-v">{{p.varText}}</span></template></button>
+<div class="pc2-b">
+<div class="c-cat">{{p.cat}}</div>
+<button class="pc2-n" @click="p.open">{{p.name}}</button>
+<div class="c-row"><div class="c-price"><template v-if="p.from"><small>od</small></template>{{p.priceText}}</div><button class="c-add" @click="p.quick" :aria-label="p.addAria"><svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button></div>
+</div>
+</article>
+</template>
+</div>
+<template v-if="lstEmpty"><div class="lempty"><b class="serif">Nema proizvoda za ovu pretragu.</b><p class="muted">Probaj drugu riječ ili pogledaj sve proizvode.</p><button class="btn btn-l" @click="clearFilter">Prikaži sve proizvode</button></div></template>
+<template v-if="katLoading"><p class="muted" style="text-align: center; padding: 40px 0">Učitavam proizvode…</p></template>
+<template v-if="hasMore"><div class="more-w"><span class="muted">Prikazano {{shownN}} od {{lstN}}</span><button class="btn btn-d" @click="loadMore">Prikaži još proizvoda</button></div></template>
+</div>
+</section>
+</div>
+
+<div class="wrap">
+<section class="sec">
+<div class="look rv">
+<div class="look-i">
+<img :src="img.kitchen" alt="Kuhinja s visećim lampama od jute, tavama na zidu i drvenim stolom">
+<template v-for="(k, $index) in kit">
+<button :class="k.cls" :style="k.pos" @click="k.pick" :aria-label="k.name" :aria-pressed="k.on"><span class="dot"></span><span class="pill">{{k.n}}. {{k.name}}</span></button>
+</template>
+</div>
+<div class="look-b">
+<div class="eyebrow">Kupi izgled</div>
+<h2 class="h2">Kuhinja koja <em>okuplja</em></h2>
+<p class="muted" style="margin: 10px 0 16px">Sve sa fotografije na jednom mjestu.</p>
+<template v-for="(k, $index) in kit">
+<div :class="k.liCls" @mouseenter="k.pick">
+<span class="li-n">{{k.n}}</span>
+<span><span class="li-t" style="display: block">{{k.name}}</span><span class="li-c">{{k.cat}}</span></span>
+<template v-if="k.buyable"><span class="li-p">{{k.priceText}}</span><button class="li-add" @click="k.add" aria-label="Dodaj u korpu"><svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button></template>
+<template v-if="k.soon"><span class="li-soon">Uskoro</span></template>
+</div>
+</template>
+</div>
+</div>
+</section>
+
+<section class="sec duo">
+<a class="ban rv" href="#"><img :src="img.c085" alt="Sofa s prekrivačem"><div><span class="e">Prekrivači za sofu</span><b>Nova sofa — <em>bez nove sofe</em></b><span>Više boja i veličina, od 19,78 KM</span><br><span class="lnk">Pogledaj prekrivače<svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></div></a>
+<a class="ban rv" href="#"><img :src="img.canopy" alt="Krevet s mekanom posteljinom" style="object-position: 50% 70%"><div><span class="e">Spavaća soba</span><b>Noći koje <em>se pamte</em></b><span>Posteljina, jorgani i jastuci, od 9,10 KM</span><br><span class="lnk">Pogledaj sobni asortiman<svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></div></a>
+</section>
+
+<section class="sec">
+<div class="head rv"><div><div class="eyebrow">Kako kupovati</div><h2 class="h2">Naruči za minutu, <em>plati na vratima</em></h2></div></div>
+<div class="steps">
+<div class="step rv"><div class="step-n">01</div><b>Izaberi</b><p>Više od 200 artikala za spavaću sobu, kuhinju, kupatilo i putovanja.</p></div>
+<div class="step rv"><div class="step-n">02</div><b>Naruči bez kartice</b><p>Dovoljni su ime, broj telefona i adresa. Bez registracije.</p></div>
+<div class="step rv"><div class="step-n">03</div><b>Plati kad stigne</b><p>Plaćaš kuriru pouzećem i imaš 30 dana da se predomisliš.</p></div>
+</div>
+</section>
+
+<section class="sec">
+<div class="news rv">
+<div style="position: relative; z-index: 1"><div class="eyebrow">Newsletter</div><h2 class="h2">10% popusta <em>na prvu kupovinu</em></h2><p class="muted" style="margin: 10px 0 0">Prvi saznaj za novitete i akcije. Bez spama.</p></div>
+<div>
+<template v-if="notSubscribed">
+<form class="nf" @submit="subscribe"><label for="bh-mail">Email adresa</label><input id="bh-mail" type="email" required placeholder="tvoj@email.com" :value="email" @input="onEmail"><button class="btn btn-d" type="submit">Prijavi me</button></form>
+</template>
+<template v-if="subscribed"><div class="nok"><b>Hvala na prijavi!</b><div class="muted" style="margin-top: 4px">Tvoj kod za 10% popusta: BELLORA10</div></div></template>
+</div>
+</div>
+</section>
+</div>
+</main>
+
+<footer class="foot">
+<div class="wrap">
+<div class="fg">
+<div><a class="logo" href="#">Bellora<em>Home</em></a><p style="margin: 14px 0 0; max-width: 300px">Sve za tvoj dom na jednom mjestu — s plaćanjem pouzećem i povratom u roku od 30 dana.</p></div>
+<div><h4>Kupovina</h4><a href="#">Sobni asortiman</a><a href="#">Kuhinjski asortiman</a><a href="#">Ostali asortiman</a><a href="#">Svi proizvodi</a></div>
+<div><h4>Pomoć</h4><a href="#">Dostava</a><a href="#">Povrat i zamjena</a><a href="#">Plaćanje pouzećem</a><a href="#">Česta pitanja</a></div>
+<div><h4>Kontakt</h4><span style="display: block; padding: 4px 0">bellora.home1@gmail.com</span><span style="display: block; padding: 4px 0">Plaćanje pouzećem na cijeloj teritoriji BiH</span></div>
+</div>
+<div class="fb"><span>© 2026 BelloraHome. Sva prava zadržana.</span><span>Cijene su izražene u KM.</span></div>
+</div>
+</footer>
+
+<a class="chat" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"></path></svg><span>Pišite nam</span></a>
+
+<template v-if="toastOn">
+<div class="toast" role="status"><i><svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></i><span>{{toastText}}</span><button @click="openCart">Korpa</button></div>
+</template>
+
+<template v-if="searchOpen">
+<div class="scrim" @click="closeSearch"></div>
+<div class="srch" role="dialog" aria-label="Pretraga"><div class="wrap">
+<div class="sf"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><input type="search" placeholder="Šta tražiš za svoj dom?" aria-label="Pretraži proizvode" :value="query" @input="onQuery"><button class="xb" @click="closeSearch" aria-label="Zatvori pretragu"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
+<template v-if="noQuery"><div class="sugg"><template v-for="(g, $index) in sugg"><button @click="g.pick">{{g.t}}</button></template></div></template>
+<div class="sres"><template v-for="(r, $index) in results"><button class="sr" @click="r.open"><div class="c-img"><img :src="r.img" alt=""></div><b>{{r.name}}</b><span>{{r.priceText}}</span></button></template></div>
+<template v-if="noResults"><p class="muted">Nema rezultata. Probaj „jastuk“, „šerpa“ ili „prekrivač“.</p></template>
+</div></div>
+</template>
+
+<template v-if="menuOpen">
+<div class="scrim" @click="closeMenu"></div>
+<aside class="drawer left" aria-label="Meni">
+<div class="dh"><span class="serif">Kategorije</span><button class="xb" @click="closeMenu" aria-label="Zatvori meni"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
+<div class="ml" style="overflow: auto; padding: 8px 0">
+<template v-for="(s, $index) in allSubs"><a href="#lista" @click="s.pick"><img :src="s.img" alt="">{{s.name}}<svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></a></template>
+</div>
+</aside>
+</template>
+
+<template v-if="qvOn">
+<div class="scrim" @click="qvClose"></div>
+<div class="qv" role="dialog" :aria-label="qv.name">
+<button class="xb qv-x" @click="qvClose" aria-label="Zatvori"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+<div class="qv-i"><img :src="qv.img" :alt="qv.name"></div>
+<div class="qv-b">
+<div class="c-cat">{{qv.cat}}</div>
+<h3 class="qv-n serif">{{qv.name}}</h3>
+<div class="qv-p">{{qv.priceText}}</div>
+<p class="muted qv-d">{{qv.desc}}</p>
+<template v-if="qv.hasVar">
+<div class="qv-l">{{qv.varLabel}}: <b>{{qv.varName}}</b></div>
+<div class="qv-vs"><template v-for="(v, $index) in qv.vars"><button :class="v.cls" @click="v.pick" :aria-pressed="v.on">{{v.label}}</button></template></div>
+</template>
+<div class="qv-row">
+<div class="qty qv-q"><button @click="qv.dec" aria-label="Manje"><svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path></svg></button><span>{{qv.qty}}</span><button @click="qv.inc" aria-label="Više"><svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button></div>
+<button class="btn btn-a" @click="qv.add" style="flex: 1">Dodaj u korpu · {{qv.lineText}}</button>
+</div>
+<ul class="qv-tr"><li>Plaćanje pouzećem</li><li>Besplatna dostava iznad 100 KM</li><li>30 dana za povrat</li></ul>
+</div>
+</div>
+</template>
+
+<template v-if="coOn">
+<div class="scrim" @click="coClose"></div>
+<div class="qv co" role="dialog" aria-label="Naplata">
+<button class="xb qv-x" @click="coClose" aria-label="Zatvori"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+<template v-if="coForm">
+<form class="co-f" @submit="coSubmit" novalidate>
+<h3 class="serif co-h">Naplata</h3>
+<p class="muted" style="margin: 4px 0 18px">Bez registracije. Plaćaš kuriru gotovinom kad paket stigne.</p>
+<div class="co-g">
+<label class="fld"><span>Ime i prezime *</span><input id="co-name" autocomplete="name" maxlength="80" :value="co.name" @input="coSet.name" :class="coErr.name"></label>
+<label class="fld"><span>Telefon *</span><input id="co-phone" type="tel" autocomplete="tel" maxlength="30" placeholder="06x xxx xxx" :value="co.phone" @input="coSet.phone" :class="coErr.phone"></label>
+<label class="fld full"><span>Adresa *</span><input id="co-address" autocomplete="street-address" maxlength="150" :value="co.address" @input="coSet.address" :class="coErr.address"></label>
+<label class="fld"><span>Grad *</span><input id="co-city" autocomplete="address-level2" maxlength="60" :value="co.city" @input="coSet.city" :class="coErr.city"></label>
+<label class="fld"><span>Poštanski broj *</span><input id="co-zip" autocomplete="postal-code" maxlength="10" :value="co.zip" @input="coSet.zip" :class="coErr.zip"></label>
+<label class="fld full"><span>Email (nije obavezno, za potvrdu)</span><input id="co-email" type="email" autocomplete="email" maxlength="120" :value="co.email" @input="coSet.email" :class="coErr.email"></label>
+<label class="fld full"><span>Napomena (nije obavezno)</span><textarea id="co-note" rows="2" maxlength="500" :value="co.note" @input="coSet.note"></textarea></label>
+</div>
+<div class="co-sum">
+<template v-for="(c, $index) in cartItems"><div class="ds"><span>{{c.qty}} × {{c.name}}</span><span>{{c.lineText}}</span></div></template>
+<div class="ds" style="margin-top: 8px"><span>Međuzbir</span><span>{{subtotalText}}</span></div>
+<template v-if="hasDisc"><div class="ds"><span>Popust ({{promoCode}})</span><span>−{{discText}}</span></div></template>
+<div class="ds"><span>Dostava</span><span>{{deliveryText}}</span></div>
+<div class="ds t"><span>Ukupno za plaćanje</span><span>{{totalText}}</span></div>
+</div>
+<template v-if="coErrMsg"><p class="co-err" role="alert">{{coErrMsg}}</p></template>
+<button class="btn btn-a" type="submit" :disabled="coSending" style="width: 100%; margin-top: 14px">{{coBtn}}</button>
+</form>
+</template>
+<template v-if="coDone">
+<div class="co-done">
+<div class="co-ok"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></div>
+<h3 class="serif co-h">Hvala, {{coThanksName}}!</h3>
+<p>Narudžba <b>{{coNr}}</b> je primljena. Za plaćanje pouzećem: <b>{{coTotal}}</b>.</p>
+<p class="muted">Javit ćemo ti se telefonom da potvrdimo narudžbu prije slanja.</p>
+<button class="btn btn-d" @click="coClose">Nazad u shop</button>
+</div>
+</template>
+</div>
+</template>
+
+<template v-if="cartOpen">
+<div class="scrim" @click="closeCart"></div>
+<aside class="drawer" aria-label="Korpa">
+<div class="dh"><span class="serif">Korpa ({{cartCount}})</span><button class="xb" @click="closeCart" aria-label="Zatvori korpu"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
+<div class="ship">{{shipText}}<div class="sbar"><i :style="shipBar"></i></div></div>
+<div class="dl">
+<template v-for="(c, $index) in cartItems">
+<div class="ci"><div class="ci-i"><img :src="c.img" alt=""></div><div style="flex: 1; min-width: 0"><div class="ci-n">{{c.name}}</div><div class="ci-r"><div class="qty"><button @click="c.dec" aria-label="Manje"><svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path></svg></button><span>{{c.qty}}</span><button @click="c.inc" aria-label="Više"><svg class="ic ic-s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button></div><b>{{c.lineText}}</b></div><button class="rm" @click="c.remove">Ukloni</button></div></div>
+</template>
+<template v-if="cartEmpty"><div class="empty"><div class="serif" style="font-size: 26px; color: #1e1b18">Korpa je prazna</div><p>Dodaj nešto lijepo za svoj dom.</p><button class="btn btn-l" @click="closeCart">Nastavi kupovinu</button></div></template>
+</div>
+<template v-if="hasCart">
+<div class="df">
+<form class="promo" @submit="applyPromo"><label for="bh-promo" class="sr-only">Kod za popust</label><input id="bh-promo" placeholder="Kod za popust" :value="promoIn" @input="onPromoIn"><button type="submit">Primijeni</button></form>
+<template v-if="promoMsg"><p class="promo-msg">{{promoMsg}}</p></template>
+<div class="ds"><span>Međuzbir</span><span>{{subtotalText}}</span></div>
+<template v-if="hasDisc"><div class="ds"><span>Popust ({{promoCode}})</span><span>−{{discText}}</span></div></template>
+<div class="ds"><span>Dostava</span><span>{{deliveryText}}</span></div>
+<div class="ds t"><span>Ukupno</span><span>{{totalText}}</span></div>
+<button class="btn btn-a" @click="coOpen">Naruči — plaćam pouzećem</button>
+<p class="muted" style="text-align: center; font-size: 13px; margin: 10px 0 0">Bez kartice. Plaćaš kuriru kad paket stigne.</p>
+</div>
+</template>
+</aside>
+</template>
+
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.4.21/vue.global.prod.min.js"></script>
+<script>
+window.__IMG={"76f5bc10fd89bc1c94497f8449c90a87": "img/E0pZm6b2z7A.webp", "e33f44b3f0b706031e5b5f04e5346770": "img/ml-068.webp", "c6e867bb84073bf28f8ac960ba39b49b": "img/jerLmkgxQhA.webp", "b8cb17d6b6e49daa3ed9d94c1a4624a1": "img/ml-062.webp", "62bb0ee7d44f882061164c564fc0c6a3": "img/rj-036.webp", "358377e9573b0eadd80ddaf65c65c6be": "img/uFGtWKaD1u8.webp", "29746ab89879c0dbcbecf386cf8161ae": "img/kn-25.webp", "2de52b1275e9368badb41c47965c993e": "img/rj-071.webp", "6817daf973c66a7cdcf58bd3dbe909e3": "img/ml-041.webp", "b8239708ff70940ef5becf4710febce7": "img/ml-055.webp", "9be5204342fb63076c16f3164041bbce": "img/kn-23.webp", "6685d88fa63609657f5963964da8c7c3": "img/kn-66.webp", "25a9f578da8bfeed772932a7d11d4718": "img/kn-17.webp", "edf3f6c946bbe0b86d4f394ce61dee3a": "img/WHwu_Pzo37s.webp", "561aff6e1f88cfbe9f1f615344a2a2b4": "img/j7Uv1Y_A7dY.webp", "ead38cd82136403353cfed9d3c970142": "img/KL.webp", "3f1729b8e1cdf02bbc05df135e3fca27": "img/hi-kit.webp", "243175d66b3b2e543df21b4dcb19ca22": "img/rj-005.webp", "5cc95c850ea4286016af95c91809464c": "img/ml-120.webp", "6db456270ab55ce4e12f2c240bbb4caa": "img/rj-046.webp", "46da8b2174fe071ba2febb67c44ad0bc": "img/eBN71NgyPU8.webp", "d96d5439f441bb3b702ded9499000068": "img/0Qv4fUvlSrI.webp", "fa0e425cb844601616b25dee95814664": "img/kn-59.webp", "cdd5b013fc105285acefd5eca65820f9": "img/pg3.webp", "5078501b987c5e7ab919711965b7f41c": "img/rj-009.webp", "698bf972c737cd30de04516ad57dda4a": "img/kn-38.webp", "80288f8fa21d58ccb924e4cfb6b8b014": "img/4CnaFQRDI0A.webp", "2e49b497f1845445f7a61c3d2ca3c6da": "img/rj-065.webp", "5db0220c8c3919d810e0d21852372445": "img/kn-55.webp", "0691d103cc7a574ad8d1e6144a83c2c0": "img/kn-54.webp", "ce50172106af629b4d8a113644769b0d": "img/rj-001.webp", "ade2b32c61fe7c880253dbe295d23e02": "img/gVKmonDbotU.webp", "1479dd5f1d0f0b48e565702c2372123f": "img/ml-048.webp", "7d031af84e70f4c4685aa66b64a334ec": "img/kn-60.webp", "8d0aa466b0778fa6b7bfbd5ba6c7d6c6": "img/kn-46.webp", "75542fb7257bc273a5b9dd2c050be972": "img/kn-70.webp", "9ed66f530efa52f45713f114f8730cb9": "img/kn-61.webp", "b48f26245ab04ca621ec2ecb5de6aee5": "img/kn-05.webp", "00e743c2efadaf07a653ed36861cf066": "img/kn-26.webp", "9f8dfd04b7fc3ebe79eb7b5699efcf24": "img/rj-085-crop.webp", "b4d3c99f75c42165e7190a592798e3c2": "img/kn-65.webp", "f928b990bcb014bc2bf30a9d3b779f39": "img/ml-106.webp", "91d4f53e0cbafeb55d535508d67e791c": "img/ml-015.webp", "c796fe116918d5b0e938dcfcf958150d": "img/bed2f.webp", "ef27a1459a9f4d1c86045b4996a151fc": "img/AG2_v_uPMKk.webp", "0ddab84885ac3a1eb68ce5037b9ce0d2": "img/ml-093.webp", "760786c8b0df65ba38595afb8a0dab0d": "img/ml-001.webp", "f23ab624a6d3e2174ce11ee591001eb5": "img/ml-049.webp", "f4c2cc441e3b9b5672e76c95cc3f7fa3": "img/rj-016.webp", "8e912f0b22ad6d7fe0cf5f83a249ebbc": "img/rj-031.webp", "2869cecc1196e46fc5ff1a0ce74beddb": "img/ml-021.webp", "03f057c6ffc5c8dc721abb46860a31be": "img/hi-bath.webp", "dd6269f5ea0b7f837732ed1c831f430b": "img/ml-011.webp", "c735e28fa2b33d4b67f64017d51a0aa8": "img/ml-052.webp"};
+class DCLogic { constructor(props) { this.props = props || {}; } setState(p) { Object.assign(this.state, typeof p === 'function' ? p(this.state) : p); } forceUpdate() {} }
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { cart: {}, wish: {}, query: '', email: '', subscribed: false, cartOpen: false, menuOpen: false, searchOpen: false,
+      toast: '', bump: false, spot: '', kspot: 'k2', notified: {}, slide: 0, paused: false, group: 'sobni', scrolled: false, co: { name: '', phone: '', address: '', city: '', zip: '', email: '', note: '' }, coOpen: false, coStep: 'form', coBad: {}, coErr: '', coSending: false, coRes: null, promo: null, promoIn: '', promoMsg: '', kat: null, grp: 'sve', kc: '', lq: '', sort: 'rec', shown: 24, qv: null };
+    this.timer = null;
+    this.onScroll = () => { const s = window.scrollY > 120; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
+  }
+  componentDidMount() {
+    this.iv = setInterval(() => { if (!this.state.paused && !this.state.spot) this.setState({ slide: (this.state.slide + 1) % 4 }); }, 8000);
+    try { const c = JSON.parse(localStorage.getItem('bh_cart3') || 'null'); const pr = localStorage.getItem('bh_promo3'); if (c && typeof c === 'object') this.setState({ cart: c }); if (pr) this.setState({ promo: pr }); } catch (e) {}
+    fetch('katalog.json').then((r) => r.json()).then((k) => this.setState({ kat: k })).catch(() => this.setState({ kat: [] }));
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+  }
+  componentWillUnmount() { clearInterval(this.iv);  clearTimeout(this.timer); window.removeEventListener('scroll', this.onScroll); }
+  setState(p) { super.setState(p); if (p && (p.cart || p.promo !== undefined)) { try { localStorage.setItem('bh_cart3', JSON.stringify(this.state.cart)); localStorage.setItem('bh_promo3', this.state.promo || ''); } catch (e) {} } }
+  fmt(n) { return n.toFixed(2).replace('.', ',') + ' KM'; }
+  norm(s) { return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd'); }
+  flash(msg, extra) { clearTimeout(this.timer); this.timer = setTimeout(() => this.setState({ toast: '' }), 2800); this.setState(Object.assign({ toast: msg, bump: !this.state.bump }, extra || {})); }
+  add(id) { const kp = this.katById && this.katById[id]; if (kp) { this.addK(id, 0, 1); return; } const cart = Object.assign({}, this.state.cart); cart[id] = (cart[id] || 0) + 1; this.flash(this.byId[id].name + ' je u korpi', { cart: cart }); }
+  addK(id, vi, q) { const k = 'k:' + id + ':' + vi; const cart = Object.assign({}, this.state.cart); cart[k] = (cart[k] || 0) + (q || 1); this.flash(this.katById[id].n + ' je u korpi', { cart: cart, qv: null }); }
+  setQty(id, q) { const cart = Object.assign({}, this.state.cart); if (q <= 0) delete cart[id]; else cart[id] = q; this.setState({ cart: cart, bump: !this.state.bump }); }
+
+  renderVals() {
+    const B = (id) => (window.__IMG[id] || '');
+    const img = {
+      s1: B('76f5bc10fd89bc1c94497f8449c90a87'), s2: B('cdd5b013fc105285acefd5eca65820f9'), s3: B('ead38cd82136403353cfed9d3c970142'),
+      kitchen: B('edf3f6c946bbe0b86d4f394ce61dee3a'), bedLamp: B('ef27a1459a9f4d1c86045b4996a151fc'), bath: B('561aff6e1f88cfbe9f1f615344a2a2b4'),
+      canopy: B('358377e9573b0eadd80ddaf65c65c6be'), c085: B('9f8dfd04b7fc3ebe79eb7b5699efcf24'),
+      rj005: B('243175d66b3b2e543df21b4dcb19ca22'), rj009: B('5078501b987c5e7ab919711965b7f41c'), ml041: B('6817daf973c66a7cdcf58bd3dbe909e3'),
+      rj016: B('f4c2cc441e3b9b5672e76c95cc3f7fa3'), rj046: B('6db456270ab55ce4e12f2c240bbb4caa'), ml021: B('2869cecc1196e46fc5ff1a0ce74beddb'),
+      rj065: B('2e49b497f1845445f7a61c3d2ca3c6da'), rj071: B('2de52b1275e9368badb41c47965c993e'),
+      kn46: B('8d0aa466b0778fa6b7bfbd5ba6c7d6c6'), kn05: B('b48f26245ab04ca621ec2ecb5de6aee5'), kn25: B('29746ab89879c0dbcbecf386cf8161ae'),
+      kn54: B('0691d103cc7a574ad8d1e6144a83c2c0'), ml011: B('dd6269f5ea0b7f837732ed1c831f430b'), ml055: B('b8239708ff70940ef5becf4710febce7'),
+      ml049: B('f23ab624a6d3e2174ce11ee591001eb5'), ml015: B('91d4f53e0cbafeb55d535508d67e791c'), ml001: B('760786c8b0df65ba38595afb8a0dab0d'),
+      ml062: B('b8cb17d6b6e49daa3ed9d94c1a4624a1'), ml068: B('e33f44b3f0b706031e5b5f04e5346770'), ml120: B('5cc95c850ea4286016af95c91809464c'),
+      ml093: B('0ddab84885ac3a1eb68ce5037b9ce0d2'), ml106: B('f928b990bcb014bc2bf30a9d3b779f39'), kn26: B('00e743c2efadaf07a653ed36861cf066'),
+      kn55: B('5db0220c8c3919d810e0d21852372445'), kn66: B('6685d88fa63609657f5963964da8c7c3'), kn23: B('9be5204342fb63076c16f3164041bbce'),
+      kn17: B('25a9f578da8bfeed772932a7d11d4718'), kn59: B('fa0e425cb844601616b25dee95814664'), kn70: B('75542fb7257bc273a5b9dd2c050be972'),
+      kn60: B('7d031af84e70f4c4685aa66b64a334ec')
+    };
+    const P = [
+      { id: 6, name: 'Jastuk Alina', cat: 'Jastuci', price: 34.3, img: img.rj009 },
+      { id: 5, name: 'Jastuk Royal Jelly 50x70', cat: 'Jastuci', price: 24.5, img: img.rj005 },
+      { id: 28, name: 'Jorgan Belize 200x200', cat: 'Jorgani', price: 77, img: img.rj016 },
+      { id: 34, name: 'Štep deka Tahiti 200x200', cat: 'Deke', price: 66.5, img: img.rj046 },
+      { id: 46, name: 'Prekrivač za sofu Alina', cat: 'Prekrivači', price: 19.78, img: img.rj065, from: true },
+      { id: 47, name: 'Prekrivač za sofu Santorini', cat: 'Prekrivači', price: 19.78, img: img.rj071, from: true },
+      { id: 149, name: 'Šerpa Luxury duboka König Line', cat: 'Posuđe', price: 98, img: img.kn46, from: true },
+      { id: 160, name: 'Set 3 džezve emajl sa poklopcem', cat: 'Posuđe', price: 84, img: img.kn55 },
+      { id: 164, name: 'Servis porcelanski 32 dijela', cat: 'Servisi', price: 367.5, img: img.kn54 },
+      { id: 165, name: 'Šolje set 6/1, 180 cc', cat: 'Servisi', price: 87.5, img: img.kn66 },
+      { id: 190, name: 'Blender Swiss Haus', cat: 'Aparati', price: 171.5, img: img.kn05 },
+      { id: 198, name: 'Kuhalo za vodu Swiss Haus 1,7 L', cat: 'Aparati', price: 87.5, img: img.kn23 },
+      { id: 174, name: 'Escajg König u drvenom koferu', cat: 'Pribor', price: 472.5, img: img.kn17 },
+      { id: 175, name: 'Set noževa Zepter 6/1', cat: 'Pribor', price: 35, img: img.kn59 },
+      { id: 59, name: 'Maxi mop sa kantom', cat: 'Čišćenje', price: 42, img: img.ml049 },
+      { id: 70, name: 'Putni kofer', cat: 'Putovanja', price: 157.5, img: img.ml001, from: true },
+      { id: 78, name: 'Pokućne papuče ženske', cat: 'Papuče', price: 7.35, img: img.ml062 },
+      { id: 65, name: 'Peškir frotir', cat: 'Kupatilo', price: 3.5, img: img.ml015, from: true },
+      { id: 156, name: 'Tava granit duboka s poklopcem 30 cm', cat: 'Posuđe', price: 87.5, img: img.kn70 },
+      { id: 147, name: 'Set šerpi 3/1 Excellent', cat: 'Posuđe', price: 129.5, img: img.kn60 },
+      { id: 177, name: 'Kuhinjski set 19/1', cat: 'Pribor', price: 70, img: img.kn25 },
+      { id: 1, name: 'Štepani jastuk 60x80', cat: 'Jastuci', price: 31.5, img: B('ce50172106af629b4d8a113644769b0d') },
+      { id: 20, name: 'Posteljina set', cat: 'Posteljina', price: 43.75, img: img.ml041, from: true },
+      { id: 19, name: 'Posteljina Velora, 100% saten', cat: 'Posteljina', price: 160.65, img: B('8e912f0b22ad6d7fe0cf5f83a249ebbc'), from: true },
+      { id: 40, name: 'Čaršaf soft set sa dvije jastučnice', cat: 'Čaršafi', price: 33.25, img: B('62bb0ee7d44f882061164c564fc0c6a3'), from: true },
+      { id: 43, name: 'Plahta Gold', cat: 'Čaršafi', price: 24.5, img: img.ml021, from: true },
+      { id: 188, name: 'Sokovnik Royalty Line 700W', cat: 'Aparati', price: 227.5, img: B('b4d3c99f75c42165e7190a592798e3c2') },
+      { id: 144, name: 'Set šerpi Excel 12/1', cat: 'Posuđe', price: 227.5, img: B('9ed66f530efa52f45713f114f8730cb9') },
+      { id: 51, name: 'Kuhinjska krpa, kocke', cat: 'Kuhinjski tekstil', price: 2.27, img: img.ml011 },
+      { id: 214, name: 'Polica iznad WC-a ili veš mašine', cat: 'Kupatilo', price: 59.5, img: B('698bf972c737cd30de04516ad57dda4a'), from: true },
+      { id: 66, name: 'Peškir 100x165', cat: 'Kupatilo', price: 26.25, img: '' },
+      { id: 67, name: 'Trodijelni WC set', cat: 'Kupatilo', price: 45.5, img: B('c735e28fa2b33d4b67f64017d51a0aa8') },
+      { id: 58, name: 'Mop za pod FLOOR', cat: 'Čišćenje', price: 49, img: B('1479dd5f1d0f0b48e565702c2372123f') },
+      { id: 8, name: 'Ukrasni jastuk 45x45 sa navlakom', cat: 'Jastuci', price: 17.15, img: '' },
+      { id: 13, name: 'Ukrasna jastučnica 40x40', cat: 'Jastuci', price: 10.5, img: '' }
+    ];
+    this.byId = {}; P.forEach((p) => { this.byId[p.id] = p; });
+    const s = this.state; const fmt = (n) => this.fmt(n);
+    const priceOf = (p) => (p.from ? 'od ' : '') + fmt(p.price);
+    const meta = (n, m) => n + ' proizvoda · od ' + fmt(m);
+
+    const G = [
+      { k: 'sobni', name: 'Sobni asortiman', img: img.bedLamp, count: 48, desc: 'Jastuci, posteljina, jorgani, deke, čaršafi i prekrivači za sofu.', subs: [
+        { name: 'Jastuci', meta: meta(14, 9.1), img: img.rj009 }, { name: 'Posteljina i jastučnice', meta: meta(12, 5.25), img: img.ml041 },
+        { name: 'Jorgani i deke', meta: meta(12, 35), img: img.rj016 }, { name: 'Čaršafi i plahte', meta: meta(7, 24.5), img: img.ml021 },
+        { name: 'Prekrivači za sofu', meta: meta(3, 19.78), img: img.rj071 } ] },
+      { k: 'kuhinjski', name: 'Kuhinjski asortiman', img: img.kitchen, count: 86, desc: 'Šerpe, tave, kućanski aparati, escajg, čaše, krpe i sve za čišćenje doma.', subs: [
+        { name: 'Šerpe, tave i posuđe', meta: meta(20, 15.75), img: img.kn46 }, { name: 'Mali kućanski aparati', meta: meta(23, 31.5), img: img.kn05 },
+        { name: 'Escajg, noževi i pribor', meta: meta(13, 10.5), img: img.kn25 }, { name: 'Čaše, šolje i servisi', meta: meta(8, 17.5), img: img.kn54 },
+        { name: 'Krpe, stolnjaci, kecelje', meta: meta(5, 2.27), img: img.ml011 }, { name: 'Navlake i sjedalice za stolice', meta: meta(4, 12.25), img: img.ml055 },
+        { name: 'Čišćenje i domaćinstvo', meta: meta(13, 3.5), img: img.ml049 } ] },
+      { k: 'ostali', name: 'Ostali asortiman', img: img.bath, count: 84, desc: 'Kupatilo, putovanje, papuče, odjeća, pidžame, čarape i veš.', subs: [
+        { name: 'Kupatilo', meta: meta(7, 3.5), img: img.ml015 }, { name: 'Putovanje i kamp', meta: meta(7, 14), img: img.ml001 },
+        { name: 'Papuče i klompe', meta: meta(6, 7.35), img: img.ml062 }, { name: 'Odjeća', meta: meta(11, 7), img: img.ml068 },
+        { name: 'Pidžame', meta: meta(11, 12.25), img: img.ml120 }, { name: 'Čarape', meta: meta(17, 1.4), img: img.ml093 },
+        { name: 'Donji veš', meta: meta(22, 3.5), img: img.ml106 }, { name: 'Poklon i razno', meta: meta(3, 63), img: img.kn26 } ] }
+    ];
+    const groups = G.map((g) => ({ name: g.name, img: g.img, count: g.count, subCount: g.subs.length, subs: g.subs, on: s.group === g.k,
+      cls: s.group === g.k ? 'grp on' : 'grp', pick: () => this.setState({ group: g.k }) }));
+    const cur = G.find((g) => g.k === s.group);
+    const allSubs = [].concat(G[0].subs, G[1].subs, G[2].subs);
+
+    const notify = (k) => { const n = Object.assign({}, s.notified); n[k] = true; this.flash('Javit ćemo ti čim stigne', { notified: n }); };
+    const SL = [
+      { img: img.s1, alt: 'Topli otvoreni prostor: dnevni boravak, trpezarija s visećom lampom i kuhinja', chip: 'Jesen / Zima 2026', t1: 'Dom koji te', t2: 'čeka.',
+        lead: 'Posteljina, jastuci, šerpe, kućanski aparati i sve za dom — više od 200 artikala na jednom mjestu.', cta: 'Pogledaj proizvode', spots: [
+        { k: 'a1', x: 59.3, y: 30.5, name: 'Viseća lampa', cat: 'Rasvjeta' }, { k: 'a2', x: 43.5, y: 49, name: 'Prekrivač za sofu', cat: 'Prekrivači', pid: 46 },
+        { k: 'a3', x: 51, y: 56, name: 'Ukrasni jastuk', cat: 'Jastuci', pid: 8 }, { k: 'a4', x: 66, y: 44, name: 'Šolje za trpezu', cat: 'Servisi', pid: 165 },
+        { k: 'a5', x: 87, y: 42, name: 'Posuđe', cat: 'Kuhinja', pid: 149 } ] },
+      { img: B('3f1729b8e1cdf02bbc05df135e3fca27'), low: true, alt: 'Kuhinja s blenderom, noževima, šerpama i cjedilom na radnoj ploči', chip: 'Kuhinjski asortiman', t1: 'Kuhinja u kojoj', t2: 'se okuplja.',
+        lead: 'Šerpe, setovi posuđa, blenderi, sokovnici, noževi i krpe — sve za kuhinju na jednom mjestu.', cta: 'Pogledaj kuhinju', spots: [
+        { k: 'b1', x: 15, y: 31, name: 'Blender', cat: 'Mali kućanski aparati', pid: 190 }, { k: 'b2', x: 4, y: 22, name: 'Sokovnik', cat: 'Mali kućanski aparati', pid: 188 },
+        { k: 'b3', x: 78, y: 37, name: 'Set noževa', cat: 'Noževi i pribor', pid: 175 }, { k: 'b4', x: 64, y: 47, name: 'Set šerpi', cat: 'Posuđe', pid: 147 },
+        { k: 'b5', x: 40, y: 48, name: 'Šerpa König', cat: 'Posuđe', pid: 149 }, { k: 'b6', x: 57, y: 64, name: 'Set posuđa 12/1', cat: 'Posuđe', pid: 144 },
+        { k: 'b7', x: 66, y: 84, name: 'Kuhinjske krpe', cat: 'Kuhinjski tekstil', pid: 51 } ] },
+      { img: B('03f057c6ffc5c8dc721abb46860a31be'), alt: 'Kupatilo s policom iznad WC-a, peškirima i lavaboom', chip: 'Kupatilo i domaćinstvo', t1: 'Čisto, uredno,', t2: 'domaće.',
+        lead: 'Peškiri, police iznad WC-a, mopovi i sve za blistav dom — peškiri već od 3,50 KM.', cta: 'Pogledaj kupatilo', spots: [
+        { k: 'c1', x: 57, y: 30, name: 'Polica iznad WC-a', cat: 'Kupatilo', pid: 214 }, { k: 'c2', x: 61, y: 57, name: 'Peškir', cat: 'Kupatilo', pid: 65 },
+        { k: 'c3', x: 93, y: 55, name: 'Peškir 100x165', cat: 'Kupatilo', pid: 66 }, { k: 'c4', x: 54, y: 86, name: 'WC set', cat: 'Kupatilo', pid: 67 },
+        { k: 'c5', x: 46, y: 74, name: 'Mop za pod', cat: 'Čišćenje', pid: 58 }, { k: 'c6', x: 40, y: 86, name: 'Maxi mop sa kantom', cat: 'Čišćenje', pid: 59 } ] },
+      { img: B('c796fe116918d5b0e938dcfcf958150d'), alt: 'Topla spavaća soba pod svjetlom noćne lampe: jastuci, bijela posteljina i deka na krevetu', chip: 'Sobni asortiman', t1: 'Noći koje', t2: 'se pamte.',
+        lead: 'Jastuci, jorgani, posteljina, čaršafi i deke za najmekši san — jastuci već od 9,10 KM.', cta: 'Pogledaj spavaću sobu', spots: [
+        { k: 'd1', x: 70, y: 38, name: 'Jastuk', cat: 'Jastuci', pid: 6 }, { k: 'd2', x: 62, y: 22, name: 'Jastuk 50x70', cat: 'Jastuci', pid: 5 },
+        { k: 'd3', x: 70, y: 55, name: 'Jorgan', cat: 'Jorgani', pid: 28 }, { k: 'd4', x: 84, y: 70, name: 'Posteljina', cat: 'Posteljina', pid: 20 },
+        { k: 'd5', x: 62, y: 74, name: 'Deka', cat: 'Deke', pid: 34 }, { k: 'd6', x: 50, y: 76, name: 'Čaršaf', cat: 'Čaršafi', pid: 40 } ] }
+    ];
+    let hd = null;
+    const slides = SL.map((sl, i) => {
+      const on = s.slide === i;
+      return { img: sl.img, alt: sl.alt, chip: sl.chip, t1: sl.t1, t2: sl.t2, lead: sl.lead, cta: sl.cta, on: on, hidden: !on,
+        cls: (on ? 'slide on' : 'slide') + (sl.low ? ' low' : ''), dotCls: on ? 'dt on' : 'dt', dotLabel: 'Slajd ' + (i + 1), go: () => this.setState({ slide: i, spot: '' }),
+        spots: sl.spots.map((d) => { if (s.spot === d.k) hd = d; return { name: d.name, on: s.spot === d.k, cls: s.spot === d.k ? 'hs on' : 'hs',
+          pos: 'left: ' + d.x + '%; top: ' + d.y + '%', pick: () => this.setState({ spot: s.spot === d.k ? '' : d.k }) }; }) };
+    });
+    const hp = hd && hd.pid ? this.byId[hd.pid] : null;
+    const hc = hd ? { cat: hd.cat, name: hp ? hp.name : hd.name, img: hp ? hp.img : '', hasImg: !!(hp && hp.img), noImg: !(hp && hp.img), buyable: !!hp, soon: !hp,
+      priceText: hp ? priceOf(hp) : '', add: () => hp && this.add(hp.id), notify: () => notify(hd.k), notifyLabel: s.notified[hd.k] ? 'Javit ćemo ti ✓' : 'Javi mi kad stigne' } : {};
+
+    const topIds = [6, 46, 149, 28, 190, 164, 47, 5, 160, 198, 34, 175, 59, 70, 165, 78, 174, 65];
+    const card = (p) => ({ name: p.name, cat: p.cat, img: p.img, priceText: fmt(p.price), from: !!p.from, wished: !!s.wish[p.id],
+      heartCls: s.wish[p.id] ? 'heart on' : 'heart', add: () => this.add(p.id),
+      toggleWish: () => { const w = Object.assign({}, s.wish); if (w[p.id]) delete w[p.id]; else w[p.id] = true; this.setState({ wish: w }); } });
+    const top = topIds.map((id) => card(this.byId[id]));
+
+
+
+
+    // ---- catalog: groups, categories, product list ----
+    const CN = { jastuci: 'Jastuci', posteljina: 'Posteljina i jastučnice', jorgani: 'Jorgani i deke', carsafi: 'Čaršafi i plahte', prekrivaci: 'Prekrivači za sofu',
+      posudje: 'Šerpe, tave i posuđe', aparati: 'Mali kućanski aparati', pribor: 'Escajg, noževi i pribor', servis: 'Čaše, šolje i servisi', 'kuh-tekstil': 'Krpe i stolnjaci', stolice: 'Navlake za stolice',
+      kupatilo: 'Kupatilo', ciscenje: 'Čišćenje i domaćinstvo', odjeca: 'Odjeća', pidzame: 'Pidžame', carape: 'Čarape', ves: 'Donji veš', obuca: 'Papuče i klompe', putovanje: 'Putovanje i kamp', razno: 'Pokloni i razno' };
+    const GR = [
+      { k: 'soba', short: 'Spavaća soba', name: 'Spavaća soba', cats: ['jastuci', 'posteljina', 'jorgani', 'carsafi', 'prekrivaci'] },
+      { k: 'kuhinja', short: 'Kuhinja', name: 'Kuhinja', cats: ['posudje', 'aparati', 'pribor', 'servis', 'kuh-tekstil', 'stolice'] },
+      { k: 'dom', short: 'Kupatilo i dom', name: 'Kupatilo i domaćinstvo', cats: ['kupatilo', 'ciscenje'] },
+      { k: 'odjeca', short: 'Odjeća', name: 'Odjeća i obuća', cats: ['pidzame', 'odjeca', 'ves', 'carape', 'obuca'] },
+      { k: 'put', short: 'Putovanja', name: 'Putovanja i pokloni', cats: ['putovanje', 'razno'] }
+    ];
+    const TILE = { jastuci: 'p/rj-009.webp', posteljina: 'p/ml-041.webp', jorgani: 'p/rj-016.webp', carsafi: 'p/rj-036.webp', prekrivaci: 'p/rj-071.webp', posudje: 'p/kn-46.webp', aparati: 'p/kn-05.webp',
+      pribor: 'p/kn-59.webp', servis: 'p/kn-54.webp', 'kuh-tekstil': 'p/ml-011.webp', stolice: 'p/ml-055.webp', kupatilo: 'p/ml-015.webp', ciscenje: 'p/ml-049.webp', odjeca: 'p/ml-068.webp',
+      pidzame: 'p/ml-120.webp', carape: 'p/ml-093.webp', ves: 'p/ml-106.webp', obuca: 'p/ml-062.webp', putovanje: 'p/ml-001.webp', razno: 'p/kn-26.webp' };
+    const K = s.kat || [];
+    this.katById = {}; K.forEach((p) => { this.katById[p.id] = p; });
+    const cnt = {}; K.forEach((p) => { cnt[p.c] = (cnt[p.c] || 0) + 1; });
+    const minP = (p) => Math.min.apply(null, p.v.map((v) => v.p));
+    const toList = () => { setTimeout(() => { const el = document.getElementById('lista'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 30); };
+    const pickCat = (c) => { const g = GR.find((x) => x.cats.indexOf(c) > -1); this.setState({ kc: c, grp: g ? g.k : 'sve', shown: 24, lq: '' }); toList(); };
+    const gtabs = [{ k: 'sve', name: 'Sve kategorije', cats: Object.keys(CN) }].concat(GR).map((g) => ({ name: g.name, on: s.grp === g.k, cls: s.grp === g.k ? 'gt on' : 'gt',
+      count: g.cats.reduce((a, c) => a + (cnt[c] || 0), 0), pick: () => this.setState({ grp: g.k, kc: '', shown: 24 }) }));
+    const gsel = s.grp === 'sve' ? Object.keys(CN) : (GR.find((g) => g.k === s.grp) || { cats: [] }).cats;
+    const tiles = gsel.map((c) => ({ name: CN[c], count: cnt[c] || 0, img: TILE[c], on: s.kc === c, cls: s.kc === c ? 'tile on' : 'tile', pick: () => pickCat(c) }));
+    const VL = (v) => [v.s, v.k].filter(Boolean).join(' · ') || 'Standard';
+    const openQv = (p) => this.setState({ qv: { id: p.id, vi: 0, q: 1 } });
+    const qn = this.norm(s.lq.trim());
+    let L = K.filter((p) => qn ? this.norm(p.n + ' ' + (CN[p.c] || '')).indexOf(qn) > -1 : (s.kc ? p.c === s.kc : gsel.indexOf(p.c) > -1));
+    if (s.sort === 'asc') L = L.slice().sort((a, b) => minP(a) - minP(b));
+    if (s.sort === 'desc') L = L.slice().sort((a, b) => minP(b) - minP(a));
+    if (s.sort === 'az') L = L.slice().sort((a, b) => a.n.localeCompare(b.n, 'bs'));
+    const lst = L.slice(0, s.shown).map((p) => {
+      const nv = p.v.length; const sizes = p.v.some((v) => v.s); const colors = p.v.some((v) => v.k);
+      return { name: p.n, cat: CN[p.c], img: p.v[0].i, priceText: fmt(minP(p)), from: nv > 1 && p.v.some((v) => v.p !== p.v[0].p), hasVar: nv > 1,
+        varText: nv + ' ' + (colors && !sizes ? 'boja' : sizes && !colors ? 'veličina' : 'varijanti'), aria: 'Pogledaj ' + p.n, addAria: 'Dodaj ' + p.n + ' u korpu',
+        open: () => openQv(p), quick: () => { if (nv > 1) openQv(p); else this.addK(p.id, 0, 1); } };
+    });
+    const lstTitle = qn ? 'Rezultati za „' + s.lq.trim() + '“' : s.kc ? CN[s.kc] : (s.grp === 'sve' ? 'Svi proizvodi' : (GR.find((g) => g.k === s.grp) || {}).name);
+    let qv = {}; const qp = s.qv && this.katById[s.qv.id];
+    if (qp) {
+      const v = qp.v[s.qv.vi] || qp.v[0]; const hasS = qp.v.some((x) => x.s); const hasC = qp.v.some((x) => x.k);
+      qv = { name: qp.n, cat: CN[qp.c], desc: qp.d, img: v.i, priceText: fmt(v.p), qty: s.qv.q, lineText: fmt(v.p * s.qv.q), hasVar: qp.v.length > 1,
+        varLabel: hasS && hasC ? 'Varijanta' : hasC ? 'Boja' : 'Veličina', varName: VL(v),
+        vars: qp.v.map((x, i) => ({ label: VL(x), on: i === s.qv.vi, cls: i === s.qv.vi ? 'vb on' : 'vb', pick: () => this.setState({ qv: Object.assign({}, s.qv, { vi: i }) }) })),
+        inc: () => this.setState({ qv: Object.assign({}, s.qv, { q: s.qv.q + 1 }) }), dec: () => this.setState({ qv: Object.assign({}, s.qv, { q: Math.max(1, s.qv.q - 1) }) }),
+        add: () => this.addK(qp.id, s.qv.vi, s.qv.q) };
+    }
+
+    const kitDefs = [
+      { k: 'k1', x: 68, y: 18, name: 'Viseća lampa od jute', cat: 'Rasvjeta' }, { k: 'k2', x: 26, y: 54, name: 'Tava granit s poklopcem', cat: 'Posuđe', pid: 156 },
+      { k: 'k3', x: 38.5, y: 56, name: 'Kuhinjski set 19/1', cat: 'Pribor', pid: 177 }, { k: 'k4', x: 67, y: 50, name: 'Drvena daska za rezanje', cat: 'Pribor' },
+      { k: 'k5', x: 55, y: 90, name: 'Set šerpi 3/1 Excellent', cat: 'Posuđe', pid: 147 } ];
+    const kit = kitDefs.map((d, i) => { const p = d.pid ? this.byId[d.pid] : null; const on = s.kspot === d.k;
+      return { n: i + 1, name: d.name, cat: d.cat, on: on, cls: on ? 'hs on' : 'hs', liCls: on ? 'li on' : 'li', pos: 'left: ' + d.x + '%; top: ' + d.y + '%',
+        priceText: p ? fmt(p.price) : '', buyable: !!p, soon: !p, pick: () => this.setState({ kspot: d.k }), add: () => p && this.add(p.id) }; });
+
+    const q = this.norm(s.query.trim());
+    const results = q.length > 1 ? K.filter((p) => this.norm(p.n + ' ' + (CN[p.c] || '')).indexOf(q) > -1).slice(0, 10).map((p) => ({ name: p.n, img: p.v[0].i, priceText: (p.v.length > 1 ? 'od ' : '') + fmt(minP(p)), open: () => this.setState({ qv: { id: p.id, vi: 0, q: 1 }, searchOpen: false, query: '' }) })) : [];
+    const sugg = ['Jastuk', 'Prekrivač', 'Šerpa', 'Kuhalo', 'Peškir'].map((t) => ({ t: t, pick: () => this.setState({ query: t }) }));
+
+    let subtotal = 0, cartCount = 0;
+    const cartItems = Object.keys(s.cart).map((id) => { const qn2 = s.cart[id]; let name, im, price;
+      if (String(id).indexOf('k:') === 0) { const pr = id.split(':'); const kp = this.katById[pr[1]]; if (!kp) return null; const v = kp.v[+pr[2]] || kp.v[0]; name = kp.n + (kp.v.length > 1 ? ' — ' + VL(v) : ''); im = v.i; price = v.p; }
+      else { const p = this.byId[id]; name = p.name; im = p.img || img.rj009; price = p.price; }
+      subtotal += price * qn2; cartCount += qn2;
+      return { name: name, img: im, qty: qn2, lineText: fmt(price * qn2), inc: () => this.setQty(id, qn2 + 1), dec: () => this.setQty(id, qn2 - 1), remove: () => this.setQty(id, 0) }; }).filter(Boolean);
+    const PROMOS = { BELLORA10: 0.10 };
+    const disc = s.promo && PROMOS[s.promo] ? Math.round(subtotal * PROMOS[s.promo] * 100) / 100 : 0;
+    const free = subtotal - disc >= 100;
+    const ship = subtotal === 0 || free ? 0 : 8;
+    const grand = subtotal - disc + ship;
+    const coFields = ['name', 'phone', 'address', 'city', 'zip', 'email', 'note'];
+    const coSet = {}; coFields.forEach((f) => { coSet[f] = (e) => { const co = Object.assign({}, s.co); co[f] = e.target.value; const b = Object.assign({}, s.coBad); delete b[f]; this.setState({ co: co, coBad: b, coErr: '' }); }; });
+    const coErr = {}; coFields.forEach((f) => { coErr[f] = s.coBad[f] ? 'bad' : ''; });
+    const coSubmit = async (e) => {
+      e.preventDefault(); if (s.coSending) return;
+      const c = s.co; const bad = {};
+      ['name', 'phone', 'address', 'city', 'zip'].forEach((f) => { if (!String(c[f] || '').trim()) bad[f] = 1; });
+      if (c.email.trim() && !/^\S+@\S+\.\S+$/.test(c.email.trim())) bad.email = 1;
+      if (Object.keys(bad).length) { this.setState({ coBad: bad, coErr: 'Popuni označena polja.' }); return; }
+      const items = Object.keys(s.cart).map((k) => { const q = s.cart[k]; if (String(k).indexOf('k:') === 0) { const pr = k.split(':'); return { id: +pr[1], v: +pr[2], qty: q }; } return { id: +k, v: 0, qty: q }; });
+      this.setState({ coSending: true, coErr: '' });
+      try {
+        const r = await fetch('/api/order', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ customer: c, pay: 'cod', promo: s.promo, website: '', items: items }) });
+        const data = await r.json().catch(() => ({}));
+        if (!r.ok || !data.ok) throw new Error(data.error || 'Narudžba nije poslana. Pokušaj ponovo za minut.');
+        if (data.notify) { try { fetch(data.notify.url, { method: 'POST', headers: { 'content-type': 'application/json', accept: 'application/json' }, body: JSON.stringify(data.notify.body), keepalive: true }).catch(() => {}); } catch (x) {} }
+        this.setState({ coSending: false, coStep: 'done', coRes: { nr: data.nr, total: data.total, name: c.name.trim().split(' ')[0] }, cart: {}, promo: null, cartOpen: false });
+      } catch (err) { this.setState({ coSending: false, coErr: err.message || 'Greška pri slanju.' }); }
+    };
+
+    return {
+      img: img, topCls: s.scrolled ? 'top solid' : 'top',
+      slides: slides, heroCls: s.paused ? 'hero paused' : 'hero', hcOn: !!hd, hc: hc, closeSpot: () => this.setState({ spot: '' }),
+      pause: () => this.setState({ paused: true }), resume: () => this.setState({ paused: false }),
+      prevSlide: () => this.setState({ slide: (s.slide + 3) % 4, spot: '' }), nextSlide: () => this.setState({ slide: (s.slide + 1) % 4, spot: '' }),
+      groups: GR.map((g) => ({ name: g.short, pick: () => { this.setState({ grp: g.k, kc: '', shown: 24 }); toList(); }, subs: g.cats.map((c) => ({ name: CN[c], meta: (cnt[c] || 0) + ' proizvoda', img: TILE[c], pick: () => pickCat(c) })) })),
+      allSubs: Object.keys(CN).map((c) => ({ name: CN[c], img: TILE[c], pick: () => { this.setState({ menuOpen: false }); pickCat(c); } })),
+      katTotal: K.length || 218, gtabs: gtabs, tiles: tiles, lst: lst, lstTitle: lstTitle, lstN: L.length, shownN: Math.min(s.shown, L.length),
+      lstCount: L.length + ' proizvoda', hasMore: L.length > s.shown, lstEmpty: !!s.kat && L.length === 0, katLoading: !s.kat, hasFilter: !!(s.kc || s.lq || s.grp !== 'sve'),
+      clearFilter: () => this.setState({ kc: '', lq: '', grp: 'sve', shown: 24 }), loadMore: () => this.setState({ shown: s.shown + 24 }),
+      lq: s.lq, onLq: (e) => this.setState({ lq: e.target.value, shown: 24 }), sort: s.sort, onSort: (e) => this.setState({ sort: e.target.value }),
+      qvOn: !!qp, qv: qv, qvClose: () => this.setState({ qv: null }),
+ topLoop: top.concat(top), kit: kit,
+      searchOpen: s.searchOpen, openSearch: () => this.setState({ searchOpen: true }), closeSearch: () => this.setState({ searchOpen: false, query: '' }),
+      query: s.query, onQuery: (e) => this.setState({ query: e.target.value }), results: results, sugg: sugg, noQuery: q.length < 2, noResults: q.length > 1 && results.length === 0,
+      hasWish: Object.keys(s.wish).length > 0,
+      cartItems: cartItems, cartCount: cartCount, hasCart: cartCount > 0, cartEmpty: cartCount === 0, cntCls: 'cnt ' + (s.bump ? 'bump-a' : 'bump-b'),
+      cartLabel: cartCount > 0 ? fmt(subtotal) : 'Korpa',
+      subtotalText: fmt(subtotal), deliveryText: ship ? fmt(ship) : 'Besplatna', totalText: fmt(grand), hasDisc: disc > 0, discText: fmt(disc), promoCode: s.promo || '',
+      promoIn: s.promoIn, onPromoIn: (e) => this.setState({ promoIn: e.target.value }), promoMsg: s.promoMsg,
+      applyPromo: (e) => { e.preventDefault(); const c = s.promoIn.trim().toUpperCase(); if (PROMOS[c]) this.setState({ promo: c, promoMsg: 'Kod ' + c + ' je primijenjen: −10%.' }); else this.setState({ promo: null, promoMsg: c ? 'Kod nije važeći.' : '' }); },
+      coOn: s.coOpen, coForm: s.coStep === 'form', coDone: s.coStep === 'done', co: s.co, coSet: coSet, coErr: coErr, coErrMsg: s.coErr, coSending: s.coSending,
+      coBtn: s.coSending ? 'Šaljem narudžbu…' : 'Potvrdi narudžbu · ' + fmt(grand), coSubmit: coSubmit,
+      coOpen: () => this.setState({ coOpen: true, coStep: 'form', cartOpen: false, coErr: '' }), coClose: () => this.setState({ coOpen: false, coStep: 'form' }),
+      coNr: s.coRes ? s.coRes.nr : '', coTotal: s.coRes ? fmt(s.coRes.total) : '', coThanksName: s.coRes ? s.coRes.name : '',
+      shipText: free ? 'Super! Ostvario si besplatnu dostavu.' : 'Još ' + fmt(100 - (subtotal - disc)) + ' do besplatne dostave', shipBar: 'width: ' + Math.min(100, subtotal - disc) + '%',
+      cartOpen: s.cartOpen, openCart: () => this.setState({ cartOpen: true, toast: '', searchOpen: false }), closeCart: () => this.setState({ cartOpen: false }),
+      menuOpen: s.menuOpen, openMenu: () => this.setState({ menuOpen: true }), closeMenu: () => this.setState({ menuOpen: false }),
+      toastOn: !!s.toast, toastText: s.toast,
+      email: s.email, onEmail: (e) => this.setState({ email: e.target.value }), subscribed: s.subscribed, notSubscribed: !s.subscribed,
+      subscribe: (e) => { e.preventDefault(); if (s.email.indexOf('@') > 0) this.setState({ subscribed: true }); }
+    };
+  }
+}
+
+(function(){
+  const { createApp, reactive, watchEffect, onMounted, onBeforeUnmount } = Vue;
+  createApp({ setup() {
+    const comp = new Component({}); comp.state = reactive(comp.state); const R = reactive({});
+    watchEffect(() => { Object.assign(R, comp.renderVals()); });
+    onMounted(() => { comp.componentDidMount && comp.componentDidMount(); });
+    onBeforeUnmount(() => { comp.componentWillUnmount && comp.componentWillUnmount(); });
+    return R; } }).mount('#app');
+})();
+</script>
+</body>
+</html>
