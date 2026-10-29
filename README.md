@@ -14,6 +14,6 @@ Web shop za bellorahome.com (Cloudflare Pages).
 - KV binding: `ORDERS` → `bellorahome-orders`
 - Tajna: `ADMIN_PASSWORD` (lozinka za /admin)
 
-Dostava 8 KM, besplatna od 100 KM. Kod za popust `BELLORA10` (−10%). Obavijesti o narudžbama idu na bellora.home1@gmail.com preko FormSubmit.
+Dostava 8 KM, besplatna od 100 KM. Kod za popust `BELLORA10` (−10%). Obavijesti o narudžbama idu na bellora.home1@gmail.com preko Web3Forms (ključ u `functions/api/order.js`).
 
 Kad se mijenjaju cijene ili proizvodi, ažuriraj i `public/katalog.json` i `functions/_lib/products.js`.

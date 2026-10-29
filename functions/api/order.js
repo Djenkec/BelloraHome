@@ -5,7 +5,8 @@ import { PRODUCTS } from "../_lib/products.js";
 const FREE_SHIP = 100;
 const SHIP_COST = 8;
 const PROMOS = { BELLORA10: 0.1 };
-const NOTIFY_EMAIL = "bellora.home1@gmail.com";
+// Obavijesti idu preko Web3Forms na bellora.home1@gmail.com (javni ključ, nije tajna).
+const WEB3FORMS_KEY = "c00081f8-2e26-4152-963f-f15308caa13a";
 const MAX_ORDERS_PER_IP_PER_10_MIN = 8;
 
 const json = (data, status = 200) =>
@@ -77,14 +78,14 @@ export async function onRequestPost({ request, env }) {
   };
   await env.ORDERS.put(key, JSON.stringify(order));
 
-  // Obavijest na mail šalje preglednik kupca (FormSubmit), da narudžba nikad ne čeka na mail servis.
+  // Obavijest na mail šalje preglednik kupca (Web3Forms), da narudžba nikad ne čeka na mail servis.
   const lines = items.map((i) => `${i.qty} × ${i.name}${i.variant ? " (" + i.variant + ")" : ""}${i.code ? " [" + i.code + "]" : ""} — ${km(i.sum)}`).join("\n");
   const notify = {
-    url: "https://formsubmit.co/ajax/" + NOTIFY_EMAIL,
+    url: "https://api.web3forms.com/submit",
     body: {
-      _subject: `Nova narudžba ${nr} — ${km(total)}`,
-      _template: "box",
-      _captcha: "false",
+      access_key: env.WEB3FORMS_KEY || WEB3FORMS_KEY,
+      subject: `Nova narudžba ${nr} — ${km(total)}`,
+      from_name: "BelloraHome narudžbe",
       Narudzba: nr,
       Kupac: customer.name,
       Telefon: customer.phone,
