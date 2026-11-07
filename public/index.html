@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>BelloraHome — Dom koji te čeka</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Posteljina, jastuci, posuđe, kućanski aparati i sve za dom. Više od 200 artikala, plaćanje pouzećem, povrat 30 dana.">
+<meta name="description" content="Posteljina, jastuci, posuđe, kućanski aparati i sve za dom. Više od 100 artikala, plaćanje pouzećem, povrat 30 dana.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&amp;family=Manrope:wght@400;500;600;700&amp;display=swap">
@@ -565,7 +565,7 @@ font-family:Manrope,system-ui,sans-serif;color:var(--ink);background:var(--cream
 </template>
 
 <div class="stats" aria-label="Zašto BelloraHome">
-<div class="st"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-6 9 6v11H3z"></path><path d="M9 20v-6h6v6"></path></svg><b>200+</b><span>artikala za dom</span></div>
+<div class="st"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-6 9 6v11H3z"></path><path d="M9 20v-6h6v6"></path></svg><b>100+</b><span>artikala za dom</span></div>
 <div class="st"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"></rect><circle cx="12" cy="12" r="2.5"></circle></svg><b>Pouzećem</b><span>plaćaš na vratima</span></div>
 <div class="st"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.3-5.7"></path><path d="M4 4v4h4"></path></svg><b>30 dana</b><span>za povrat</span></div>
 </div>
@@ -623,7 +623,7 @@ font-family:Manrope,system-ui,sans-serif;color:var(--ink);background:var(--cream
 <section class="sec shop" id="kategorije">
 <div class="shop-head">
 <div><div class="eyebrow">Sve na jednom mjestu</div><h2 class="h2">Izaberi <em>kategoriju</em></h2></div>
-<p class="muted">{{katTotal}} proizvoda u 20 kategorija. Klikni na kategoriju i pregledaj proizvode.</p>
+<p class="muted">{{katTotal}} proizvoda u 12 kategorija. Klikni na kategoriju i pregledaj proizvode.</p>
 </div>
 <div class="gtabs" role="tablist" aria-label="Grupe kategorija">
 <template v-for="(g, $index) in gtabs"><button :class="g.cls" role="tab" :aria-selected="g.on" @click="g.pick">{{g.name}}<span>{{g.count}}</span></button></template>
@@ -698,7 +698,7 @@ font-family:Manrope,system-ui,sans-serif;color:var(--ink);background:var(--cream
 <section class="sec">
 <div class="head rv"><div><div class="eyebrow">Kako kupovati</div><h2 class="h2">Naruči za minutu, <em>plati na vratima</em></h2></div></div>
 <div class="steps">
-<div class="step rv"><div class="step-n">01</div><b>Izaberi</b><p>Više od 200 artikala za spavaću sobu, kuhinju, kupatilo i putovanja.</p></div>
+<div class="step rv"><div class="step-n">01</div><b>Izaberi</b><p>Više od 100 artikala za spavaću sobu, kuhinju, kupatilo i dom.</p></div>
 <div class="step rv"><div class="step-n">02</div><b>Naruči bez kartice</b><p>Dovoljni su ime, broj telefona i adresa. Bez registracije.</p></div>
 <div class="step rv"><div class="step-n">03</div><b>Plati kad stigne</b><p>Plaćaš kuriru pouzećem i imaš 30 dana da se predomisliš.</p></div>
 </div>
@@ -908,27 +908,21 @@ class Component extends DCLogic {
       { id: 198, name: 'Kuhalo za vodu Swiss Haus 1,7 L', cat: 'Aparati', price: 87.5, img: img.kn23 },
       { id: 174, name: 'Escajg König u drvenom koferu', cat: 'Pribor', price: 472.5, img: img.kn17 },
       { id: 175, name: 'Set noževa Zepter 6/1', cat: 'Pribor', price: 35, img: img.kn59 },
-      { id: 59, name: 'Maxi mop sa kantom', cat: 'Čišćenje', price: 42, img: img.ml049 },
-      { id: 70, name: 'Putni kofer', cat: 'Putovanja', price: 157.5, img: img.ml001, from: true },
-      { id: 78, name: 'Pokućne papuče ženske', cat: 'Papuče', price: 7.35, img: img.ml062 },
-      { id: 65, name: 'Peškir frotir', cat: 'Kupatilo', price: 3.5, img: img.ml015, from: true },
       { id: 156, name: 'Tava granit duboka s poklopcem 30 cm', cat: 'Posuđe', price: 87.5, img: img.kn70 },
       { id: 147, name: 'Set šerpi 3/1 Excellent', cat: 'Posuđe', price: 129.5, img: img.kn60 },
       { id: 177, name: 'Kuhinjski set 19/1', cat: 'Pribor', price: 70, img: img.kn25 },
       { id: 1, name: 'Štepani jastuk 60x80', cat: 'Jastuci', price: 31.5, img: B('ce50172106af629b4d8a113644769b0d') },
-      { id: 20, name: 'Posteljina set', cat: 'Posteljina', price: 43.75, img: img.ml041, from: true },
       { id: 19, name: 'Posteljina Velora, 100% saten', cat: 'Posteljina', price: 160.65, img: B('8e912f0b22ad6d7fe0cf5f83a249ebbc'), from: true },
       { id: 40, name: 'Čaršaf soft set sa dvije jastučnice', cat: 'Čaršafi', price: 33.25, img: B('62bb0ee7d44f882061164c564fc0c6a3'), from: true },
-      { id: 43, name: 'Plahta Gold', cat: 'Čaršafi', price: 24.5, img: img.ml021, from: true },
       { id: 188, name: 'Sokovnik Royalty Line 700W', cat: 'Aparati', price: 227.5, img: B('b4d3c99f75c42165e7190a592798e3c2') },
       { id: 144, name: 'Set šerpi Excel 12/1', cat: 'Posuđe', price: 227.5, img: B('9ed66f530efa52f45713f114f8730cb9') },
-      { id: 51, name: 'Kuhinjska krpa, kocke', cat: 'Kuhinjski tekstil', price: 2.27, img: img.ml011 },
       { id: 214, name: 'Polica iznad WC-a ili veš mašine', cat: 'Kupatilo', price: 59.5, img: B('698bf972c737cd30de04516ad57dda4a'), from: true },
-      { id: 66, name: 'Peškir 100x165', cat: 'Kupatilo', price: 26.25, img: '' },
-      { id: 67, name: 'Trodijelni WC set', cat: 'Kupatilo', price: 45.5, img: B('c735e28fa2b33d4b67f64017d51a0aa8') },
-      { id: 58, name: 'Mop za pod FLOOR', cat: 'Čišćenje', price: 49, img: B('1479dd5f1d0f0b48e565702c2372123f') },
+      { id: 208, name: 'Rotacioni mop sa kantom', cat: 'Čišćenje', price: 35, img: 'p/kn-44.webp' },
+      { id: 211, name: 'Mop ravni sa drškom', cat: 'Čišćenje', price: 9.8, img: 'p/kn-29.webp' },
+      { id: 15, name: 'Posteljina Royal Jelly soft, mikrofiber', cat: 'Posteljina', price: 48.65, img: 'p/rj-021.webp', from: true },
+      { id: 217, name: 'Shiatsu masažer', cat: 'Pokloni', price: 101.5, img: 'p/kn-64.webp' },
+      { id: 210, name: 'Mop trouglasti mikrofiber', cat: 'Čišćenje', price: 15.75, img: 'p/kn-31.webp' },
       { id: 8, name: 'Ukrasni jastuk 45x45 sa navlakom', cat: 'Jastuci', price: 17.15, img: '' },
-      { id: 13, name: 'Ukrasna jastučnica 40x40', cat: 'Jastuci', price: 10.5, img: '' }
     ];
     this.byId = {}; P.forEach((p) => { this.byId[p.id] = p; });
     const s = this.state; const fmt = (n) => this.fmt(n);
@@ -959,25 +953,23 @@ class Component extends DCLogic {
     const notify = (k) => { const n = Object.assign({}, s.notified); n[k] = true; this.flash('Javit ćemo ti čim stigne', { notified: n }); };
     const SL = [
       { img: img.s1, alt: 'Topli otvoreni prostor: dnevni boravak, trpezarija s visećom lampom i kuhinja', chip: 'Jesen / Zima 2026', t1: 'Dom koji te', t2: 'čeka.',
-        lead: 'Posteljina, jastuci, šerpe, kućanski aparati i sve za dom — više od 200 artikala na jednom mjestu.', cta: 'Pogledaj proizvode', spots: [
+        lead: 'Posteljina, jastuci, šerpe, kućanski aparati i sve za dom — više od 100 artikala na jednom mjestu.', cta: 'Pogledaj proizvode', spots: [
         { k: 'a1', x: 59.3, y: 30.5, name: 'Viseća lampa', cat: 'Rasvjeta' }, { k: 'a2', x: 43.5, y: 49, name: 'Prekrivač za sofu', cat: 'Prekrivači', pid: 46 },
         { k: 'a3', x: 51, y: 56, name: 'Ukrasni jastuk', cat: 'Jastuci', pid: 8 }, { k: 'a4', x: 66, y: 44, name: 'Šolje za trpezu', cat: 'Servisi', pid: 165 },
         { k: 'a5', x: 87, y: 42, name: 'Posuđe', cat: 'Kuhinja', pid: 149 } ] },
       { img: B('3f1729b8e1cdf02bbc05df135e3fca27'), low: true, alt: 'Kuhinja s blenderom, noževima, šerpama i cjedilom na radnoj ploči', chip: 'Kuhinjski asortiman', t1: 'Kuhinja u kojoj', t2: 'se okuplja.',
-        lead: 'Šerpe, setovi posuđa, blenderi, sokovnici, noževi i krpe — sve za kuhinju na jednom mjestu.', cta: 'Pogledaj kuhinju', spots: [
+        lead: 'Šerpe, setovi posuđa, blenderi, sokovnici i noževi — sve za kuhinju na jednom mjestu.', cta: 'Pogledaj kuhinju', spots: [
         { k: 'b1', x: 15, y: 31, name: 'Blender', cat: 'Mali kućanski aparati', pid: 190 }, { k: 'b2', x: 4, y: 22, name: 'Sokovnik', cat: 'Mali kućanski aparati', pid: 188 },
         { k: 'b3', x: 78, y: 37, name: 'Set noževa', cat: 'Noževi i pribor', pid: 175 }, { k: 'b4', x: 64, y: 47, name: 'Set šerpi', cat: 'Posuđe', pid: 147 },
-        { k: 'b5', x: 40, y: 48, name: 'Šerpa König', cat: 'Posuđe', pid: 149 }, { k: 'b6', x: 57, y: 64, name: 'Set posuđa 12/1', cat: 'Posuđe', pid: 144 },
-        { k: 'b7', x: 66, y: 84, name: 'Kuhinjske krpe', cat: 'Kuhinjski tekstil', pid: 51 } ] },
+        { k: 'b5', x: 40, y: 48, name: 'Šerpa König', cat: 'Posuđe', pid: 149 }, { k: 'b6', x: 57, y: 64, name: 'Set posuđa 12/1', cat: 'Posuđe', pid: 144 } ] },
       { img: B('03f057c6ffc5c8dc721abb46860a31be'), alt: 'Kupatilo s policom iznad WC-a, peškirima i lavaboom', chip: 'Kupatilo i domaćinstvo', t1: 'Čisto, uredno,', t2: 'domaće.',
-        lead: 'Peškiri, police iznad WC-a, mopovi i sve za blistav dom — peškiri već od 3,50 KM.', cta: 'Pogledaj kupatilo', spots: [
-        { k: 'c1', x: 57, y: 30, name: 'Polica iznad WC-a', cat: 'Kupatilo', pid: 214 }, { k: 'c2', x: 61, y: 57, name: 'Peškir', cat: 'Kupatilo', pid: 65 },
-        { k: 'c3', x: 93, y: 55, name: 'Peškir 100x165', cat: 'Kupatilo', pid: 66 }, { k: 'c4', x: 54, y: 86, name: 'WC set', cat: 'Kupatilo', pid: 67 },
-        { k: 'c5', x: 46, y: 74, name: 'Mop za pod', cat: 'Čišćenje', pid: 58 }, { k: 'c6', x: 40, y: 86, name: 'Maxi mop sa kantom', cat: 'Čišćenje', pid: 59 } ] },
+        lead: 'Police iznad WC-a, mopovi i sve za blistav dom — mopovi već od 9,80 KM.', cta: 'Pogledaj kupatilo', spots: [
+        { k: 'c1', x: 57, y: 30, name: 'Polica iznad WC-a', cat: 'Kupatilo', pid: 214 }, 
+        { k: 'c5', x: 46, y: 74, name: 'Mop za pod', cat: 'Čišćenje', pid: 211 }, { k: 'c6', x: 40, y: 86, name: 'Mop sa kantom', cat: 'Čišćenje', pid: 208 } ] },
       { img: B('c796fe116918d5b0e938dcfcf958150d'), alt: 'Topla spavaća soba pod svjetlom noćne lampe: jastuci, bijela posteljina i deka na krevetu', chip: 'Sobni asortiman', t1: 'Noći koje', t2: 'se pamte.',
         lead: 'Jastuci, jorgani, posteljina, čaršafi i deke za najmekši san — jastuci već od 9,10 KM.', cta: 'Pogledaj spavaću sobu', spots: [
         { k: 'd1', x: 70, y: 38, name: 'Jastuk', cat: 'Jastuci', pid: 6 }, { k: 'd2', x: 62, y: 22, name: 'Jastuk 50x70', cat: 'Jastuci', pid: 5 },
-        { k: 'd3', x: 70, y: 55, name: 'Jorgan', cat: 'Jorgani', pid: 28 }, { k: 'd4', x: 84, y: 70, name: 'Posteljina', cat: 'Posteljina', pid: 20 },
+        { k: 'd3', x: 70, y: 55, name: 'Jorgan', cat: 'Jorgani', pid: 28 }, { k: 'd4', x: 84, y: 70, name: 'Posteljina', cat: 'Posteljina', pid: 15 },
         { k: 'd5', x: 62, y: 74, name: 'Deka', cat: 'Deke', pid: 34 }, { k: 'd6', x: 50, y: 76, name: 'Čaršaf', cat: 'Čaršafi', pid: 40 } ] }
     ];
     let hd = null;
@@ -992,7 +984,7 @@ class Component extends DCLogic {
     const hc = hd ? { cat: hd.cat, name: hp ? hp.name : hd.name, img: hp ? hp.img : '', hasImg: !!(hp && hp.img), noImg: !(hp && hp.img), buyable: !!hp, soon: !hp,
       priceText: hp ? priceOf(hp) : '', add: () => hp && this.add(hp.id), notify: () => notify(hd.k), notifyLabel: s.notified[hd.k] ? 'Javit ćemo ti ✓' : 'Javi mi kad stigne' } : {};
 
-    const topIds = [6, 46, 149, 28, 190, 164, 47, 5, 160, 198, 34, 175, 59, 70, 165, 78, 174, 65];
+    const topIds = [6, 46, 149, 28, 190, 164, 47, 5, 160, 198, 34, 175, 208, 15, 165, 217, 174, 211];
     const card = (p) => ({ name: p.name, cat: p.cat, img: p.img, priceText: fmt(p.price), from: !!p.from, wished: !!s.wish[p.id],
       heartCls: s.wish[p.id] ? 'heart on' : 'heart', add: () => this.add(p.id),
       toggleWish: () => { const w = Object.assign({}, s.wish); if (w[p.id]) delete w[p.id]; else w[p.id] = true; this.setState({ wish: w }); } });
@@ -1003,18 +995,17 @@ class Component extends DCLogic {
 
     // ---- catalog: groups, categories, product list ----
     const CN = { jastuci: 'Jastuci', posteljina: 'Posteljina i jastučnice', jorgani: 'Jorgani i deke', carsafi: 'Čaršafi i plahte', prekrivaci: 'Prekrivači za sofu',
-      posudje: 'Šerpe, tave i posuđe', aparati: 'Mali kućanski aparati', pribor: 'Escajg, noževi i pribor', servis: 'Čaše, šolje i servisi', 'kuh-tekstil': 'Krpe i stolnjaci', stolice: 'Navlake za stolice',
-      kupatilo: 'Kupatilo', ciscenje: 'Čišćenje i domaćinstvo', odjeca: 'Odjeća', pidzame: 'Pidžame', carape: 'Čarape', ves: 'Donji veš', obuca: 'Papuče i klompe', putovanje: 'Putovanje i kamp', razno: 'Pokloni i razno' };
+      posudje: 'Šerpe, tave i posuđe', aparati: 'Mali kućanski aparati', pribor: 'Escajg, noževi i pribor', servis: 'Čaše, šolje i servisi',
+      kupatilo: 'Kupatilo', ciscenje: 'Čišćenje i domaćinstvo', razno: 'Pokloni i razno' };
     const GR = [
       { k: 'soba', short: 'Spavaća soba', name: 'Spavaća soba', cats: ['jastuci', 'posteljina', 'jorgani', 'carsafi', 'prekrivaci'] },
-      { k: 'kuhinja', short: 'Kuhinja', name: 'Kuhinja', cats: ['posudje', 'aparati', 'pribor', 'servis', 'kuh-tekstil', 'stolice'] },
+      { k: 'kuhinja', short: 'Kuhinja', name: 'Kuhinja', cats: ['posudje', 'aparati', 'pribor', 'servis'] },
       { k: 'dom', short: 'Kupatilo i dom', name: 'Kupatilo i domaćinstvo', cats: ['kupatilo', 'ciscenje'] },
-      { k: 'odjeca', short: 'Odjeća', name: 'Odjeća i obuća', cats: ['pidzame', 'odjeca', 'ves', 'carape', 'obuca'] },
-      { k: 'put', short: 'Putovanja', name: 'Putovanja i pokloni', cats: ['putovanje', 'razno'] }
+      { k: 'put', short: 'Pokloni', name: 'Pokloni i razno', cats: ['razno'] }
     ];
-    const TILE = { jastuci: 'p/rj-009.webp', posteljina: 'p/ml-041.webp', jorgani: 'p/rj-016.webp', carsafi: 'p/rj-036.webp', prekrivaci: 'p/rj-071.webp', posudje: 'p/kn-46.webp', aparati: 'p/kn-05.webp',
-      pribor: 'p/kn-59.webp', servis: 'p/kn-54.webp', 'kuh-tekstil': 'p/ml-011.webp', stolice: 'p/ml-055.webp', kupatilo: 'p/ml-015.webp', ciscenje: 'p/ml-049.webp', odjeca: 'p/ml-068.webp',
-      pidzame: 'p/ml-120.webp', carape: 'p/ml-093.webp', ves: 'p/ml-106.webp', obuca: 'p/ml-062.webp', putovanje: 'p/ml-001.webp', razno: 'p/kn-26.webp' };
+    const TILE = { jastuci: 'p/rj-009.webp', posteljina: 'p/rj-021.webp', jorgani: 'p/rj-016.webp', carsafi: 'p/rj-036.webp', prekrivaci: 'p/rj-071.webp', posudje: 'p/kn-46.webp', aparati: 'p/kn-05.webp',
+      pribor: 'p/kn-59.webp', servis: 'p/kn-54.webp', kupatilo: 'p/kn-38.webp', ciscenje: 'p/kn-44.webp',
+      razno: 'p/kn-26.webp' };
     const K = s.kat || [];
     this.katById = {}; K.forEach((p) => { this.katById[p.id] = p; });
     const cnt = {}; K.forEach((p) => { cnt[p.c] = (cnt[p.c] || 0) + 1; });
@@ -1060,12 +1051,12 @@ class Component extends DCLogic {
 
     const q = this.norm(s.query.trim());
     const results = q.length > 1 ? K.filter((p) => this.norm(p.n + ' ' + (CN[p.c] || '')).indexOf(q) > -1).slice(0, 10).map((p) => ({ name: p.n, img: p.v[0].i, priceText: (p.v.length > 1 ? 'od ' : '') + fmt(minP(p)), open: () => this.setState({ qv: { id: p.id, vi: 0, q: 1 }, searchOpen: false, query: '' }) })) : [];
-    const sugg = ['Jastuk', 'Prekrivač', 'Šerpa', 'Kuhalo', 'Peškir'].map((t) => ({ t: t, pick: () => this.setState({ query: t }) }));
+    const sugg = ['Jastuk', 'Prekrivač', 'Šerpa', 'Kuhalo', 'Mop'].map((t) => ({ t: t, pick: () => this.setState({ query: t }) }));
 
     let subtotal = 0, cartCount = 0;
     const cartItems = Object.keys(s.cart).map((id) => { const qn2 = s.cart[id]; let name, im, price;
       if (String(id).indexOf('k:') === 0) { const pr = id.split(':'); const kp = this.katById[pr[1]]; if (!kp) return null; const v = kp.v[+pr[2]] || kp.v[0]; name = kp.n + (kp.v.length > 1 ? ' — ' + VL(v) : ''); im = v.i; price = v.p; }
-      else { const p = this.byId[id]; name = p.name; im = p.img || img.rj009; price = p.price; }
+      else { const p = this.byId[id]; if (!p) return null; name = p.name; im = p.img || img.rj009; price = p.price; }
       subtotal += price * qn2; cartCount += qn2;
       return { name: name, img: im, qty: qn2, lineText: fmt(price * qn2), inc: () => this.setQty(id, qn2 + 1), dec: () => this.setQty(id, qn2 - 1), remove: () => this.setQty(id, 0) }; }).filter(Boolean);
     const PROMOS = { BELLORA10: 0.10 };
@@ -1100,7 +1091,7 @@ class Component extends DCLogic {
       prevSlide: () => this.setState({ slide: (s.slide + 3) % 4, spot: '' }), nextSlide: () => this.setState({ slide: (s.slide + 1) % 4, spot: '' }),
       groups: GR.map((g) => ({ name: g.short, pick: () => { this.setState({ grp: g.k, kc: '', lq: '', shown: 24 }); toKat(); }, subs: g.cats.map((c) => ({ name: CN[c], meta: (cnt[c] || 0) + ' proizvoda', img: TILE[c], pick: () => pickCat(c) })) })),
       allSubs: Object.keys(CN).map((c) => ({ name: CN[c], img: TILE[c], pick: () => { this.setState({ menuOpen: false }); pickCat(c); } })),
-      katTotal: K.length || 218, gtabs: gtabs, tiles: tiles, lst: lst, lstTitle: lstTitle, lstN: L.length, shownN: Math.min(s.shown, L.length),
+      katTotal: K.length || 106, gtabs: gtabs, tiles: tiles, lst: lst, lstTitle: lstTitle, lstN: L.length, shownN: Math.min(s.shown, L.length),
       lstCount: L.length + ' proizvoda', hasMore: L.length > s.shown, lstEmpty: !!s.kat && L.length === 0, katLoading: !s.kat, hasFilter: !!(s.kc || s.lq || s.grp !== 'sve'), showList: !!(s.kc || (s.lq || '').trim()),
       clearFilter: () => { this.setState({ kc: '', lq: '', shown: 24 }); toKat(); }, loadMore: () => this.setState({ shown: s.shown + 24 }),
       lq: s.lq, onLq: (e) => this.setState({ lq: e.target.value, shown: 24 }), sort: s.sort, onSort: (e) => this.setState({ sort: e.target.value }),
