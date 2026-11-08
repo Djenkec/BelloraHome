@@ -279,6 +279,36 @@ button{cursor:pointer;background:none;border:0;padding:0}
 .zb-g figcaption{position:absolute;left:10px;bottom:10px;background:rgba(246,241,234,.92);color:var(--ink);font-size:12px;font-weight:800;padding:5px 10px;border-radius:999px}
 @media (max-width:900px){.zb{grid-template-columns:1fr;padding:22px}.zb-g{min-height:0;grid-template-rows:none;grid-auto-rows:150px}.zb-g .zb-big{grid-column:1/-1;grid-row:span 2}}
 @media (max-width:720px){.zb{margin-inline:-6px;border-radius:20px;padding:20px 16px}.zb-g{grid-template-columns:1fr 1fr;grid-auto-rows:130px}}
+
+.nl-b{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:8px;font-weight:600}
+.nl-b li{display:flex;gap:10px;align-items:center}
+.nl-b .ic{color:var(--tera)}
+#klub{scroll-margin-top:140px}
+.clubok{display:flex;align-items:center;gap:10px;background:#e9f0e6;color:#35502f;border-radius:12px;padding:10px 12px;margin-bottom:10px;font-size:14px}
+.clubok span{flex:1}
+.clubok small{color:#55704e}
+.clubok button{font-size:13px;text-decoration:underline;color:#55704e}
+.joinl{font-size:13px;color:var(--muted);margin:0 0 10px}
+.joinl button{color:var(--tera);font-weight:800;text-decoration:underline}
+.co-join{display:flex;gap:12px;align-items:flex-start;background:var(--tera-l);border-radius:14px;padding:12px 14px;margin-top:14px;cursor:pointer}
+.co-join input{width:20px;height:20px;margin-top:2px;accent-color:var(--tera);flex:none}
+.co-join b{display:block;font-size:14px}
+.co-join small{display:block;color:var(--ink2);font-size:12px;line-height:1.4;margin-top:2px}
+.co-join a{color:var(--tera);text-decoration:underline}
+.co-club{display:flex;gap:8px;align-items:center;color:#35502f;font-weight:700;font-size:14px;margin:12px 0 0}
+.mcard{margin-top:16px;aspect-ratio:1.586;border-radius:20px;background:linear-gradient(135deg,#2b1f17,#5a3220);color:#f6f1ea;padding:22px 24px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;box-shadow:0 20px 40px rgba(43,31,23,.35)}
+.mcard::after{content:"";position:absolute;right:-60px;bottom:-90px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+.mc-top{display:flex;justify-content:space-between;align-items:center}
+.mc-top .logo-svg{height:34px}
+.mc-top .lg-i{fill:#f6f1ea}.mc-top .lg-t{fill:#e9a27a}.mc-top .lg-r{stroke:#e9a27a}
+.mc-top span{font-weight:800;letter-spacing:.2em;font-size:12px;color:#e9a27a}
+.mc-mid small{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.7;font-weight:700}
+.mc-mid b{font-family:var(--serif);font-weight:600;font-size:26px}
+.mc-bot{display:flex;justify-content:space-between;align-items:flex-end;position:relative;z-index:1}
+.mc-nr{font-weight:800;font-size:28px;letter-spacing:.04em}
+.mc-pop{background:var(--sun);color:var(--ink);font-weight:800;padding:6px 12px;border-radius:999px;font-size:14px}
+.jbtn{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.jbtn .btn{flex:1;margin-top:0;width:auto}
 /* listing page */
 .lp{padding-top:22px}
 .crumb{font-size:13px;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap}
@@ -475,6 +505,7 @@ button{cursor:pointer;background:none;border:0;padding:0}
     <span><svg class="ic ic-s"><use href="#i-cash"/></svg>Plaćanje <b>pouzećem</b></span>
     <span><svg class="ic ic-s"><use href="#i-truck"/></svg>Besplatna dostava iznad <b>100 KM</b></span>
     <span><svg class="ic ic-s"><use href="#i-back"/></svg>30 dana za povrat</span>
+    <span><svg class="ic ic-s"><use href="#i-tag"/></svg><a href="#klub" style="opacity:1">Članovi kluba <b>−10%</b></a></span>
   </div>
   <a href="mailto:bellora.home1@gmail.com">Pišite nam: bellora.home1@gmail.com</a>
 </div></div>
@@ -518,6 +549,8 @@ button{cursor:pointer;background:none;border:0;padding:0}
       <a href="#kako-naruciti">Kako naručiti</a>
       <a href="#dostava">Dostava i plaćanje</a>
       <a href="#dostava">Povrat u 30 dana</a>
+      <a href="#klub">BelloraHome Klub</a>
+      <a href="#privatnost">Privatnost</a>
     </div>
     <div><h4>Kontakt</h4>
       <a href="mailto:bellora.home1@gmail.com">bellora.home1@gmail.com</a>
@@ -548,7 +581,7 @@ const GR = [
 const TILE = { jastuci: 'p/rj-009.webp', posteljina: 'p/rj-021.webp', jorgani: 'p/rj-016.webp', carsafi: 'p/rj-036.webp', prekrivaci: 'p/rj-071.webp', posudje: 'p/kn-46.webp', aparati: 'p/kn-05.webp',
   pribor: 'p/kn-59.webp', servis: 'p/kn-54.webp', kupatilo: 'p/kn-38.webp', ciscenje: 'p/kn-44.webp', razno: 'p/kn-26.webp' };
 const TOP = [6, 46, 149, 28, 190, 164, 47, 5, 160, 198, 34, 175, 208, 15, 165, 217, 174, 211];
-const FREE = 100, SHIP = 8, PROMOS = { BELLORA10: 0.10 };
+const FREE = 100, SHIP = 8, CLUB = 0.10;
 const SLIDES = [
   { img: 'img/zb-fotelja.webp', pos: '65% 50%', big: true, eyb: '❄ Blagdanska ponuda', h: '<span class="hot">Vruće cijene</span><span class="nw">usred zime!</span>', p: 'Deke, jorgani i posteljina koji griju kao zagrljaj.', cta: 'Pogledaj ponudu', href: '#najtrazenije' },
   { img: 'img/zb-kauc.webp', pos: '75% 50%', zara: true, eyb: 'Deka ZARA BUBBLE', h: 'Mekoća <em>koju osjetiš</em>', p: 'Pokrij se na kauču uz knjigu i toplu čokoladu, dok vani pada snijeg.', cta: 'Upoznaj ZARA BUBBLE', href: '#zara-bubble' }
@@ -557,7 +590,7 @@ const SLIDES = [
 let K = [], byId = {};
 const ls = { get(k, d) { try { const v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch (e) { return d; } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } };
 let cart = ls.get('bh_cart3', {}); if (!cart || typeof cart !== 'object') cart = {};
-let promo = null; try { promo = localStorage.getItem('bh_promo3') || null; } catch (e) {}
+let member = ls.get('bh_member', null); if (!member || !member.nr) member = null;
 let wish = ls.get('bh_wish', {}); if (!wish || typeof wish !== 'object') wish = {};
 
 // ---------- helpers ----------
@@ -611,7 +644,7 @@ function home() {
     '<div class="sl-a"><button data-sl="-1" aria-label="Prethodni">' + ic('l') + '</button><button data-sl="1" aria-label="Sljedeći">' + ic('r') + '</button></div></div>' +
     '<div class="side">' +
     '<a class="pr pr-mop pr-zara" href="#zara-bubble"><div class="tx"><span class="tag">Novo u ponudi</span><h3>Deka ZARA BUBBLE</h3><p class="zp">Gusto krzno · 4 boje</p><div class="sw"><i style="background:#e9dccb"></i><i style="background:#b9a0b8"></i><i style="background:#a9a9ad"></i><i style="background:#7a5a46"></i></div><span class="lnk">Pogledaj' + ic('r', 'ic-s') + '</span></div><img src="img/zb-produkt.webp" alt="Deka ZARA BUBBLE u četiri boje"></a>' +
-    '<div class="pr pr-code"><span class="deco"></span><span class="tag" style="background:#fff;color:var(--tera)">Prva narudžba</span><h3>−10% na sve</h3><span>Upiši kod u korpi:</span><button class="code" data-copy="BELLORA10">BELLORA10 ' + ic('tag', 'ic-s') + '</button></div>' +
+    '<div class="pr pr-code"><span class="deco"></span><span class="tag" style="background:#fff;color:var(--tera)">BelloraHome Klub</span><h3>' + (member ? 'Tvoja kartica ' + esc(member.nr) : '−10% na sve, uvijek') + '</h3><span>' + (member ? 'Popust od 10% se sam računa u korpi.' : 'Učlani se besplatno i dobij člansku karticu.') + '</span><button class="code" data-join>' + (member ? 'Prikaži karticu' : 'Učlani se') + ' ' + ic('r', 'ic-s') + '</button></div>' +
     '</div></section>';
   // usp
   h += '<section class="usp" aria-label="Zašto BelloraHome">' +
@@ -634,14 +667,16 @@ function home() {
   h += '<section class="band"><div class="sh"><div><span class="eyb">★ Najprodavanije</span><h2>Najtraženije <em>ovog mjeseca</em></h2><p>Ono što kupci najčešće stavljaju u korpu.</p></div><a class="more" style="color:#f2b38f" href="#najtrazenije">Pogledaj sve' + ic('r', 'ic-s') + '</a></div>' + rail('r-top', top) + '</section>';
   // rows
   h += '<section class="sec"><div class="sh"><div><h2>Za tvoju <em>spavaću sobu</em></h2><p>Jastuci, posteljina, jorgani i deke.</p></div><a class="more" href="#g-soba">Pogledaj sve (' + countIn(GR[0].cats) + ')' + ic('r', 'ic-s') + '</a></div>' + rail('r-soba', pick(GR[0].cats.slice(0, 3), 14)) + '</section>';
-  h += '</div><div class="mq" aria-hidden="true"><div class="mq-t">' + [0, 1].map(() => '<span>Vruće cijene usred zime <i>❄</i> Dom koji te čeka <i>✦</i> Plaćanje pouzećem <i>✦</i> Dostava u cijeloj BiH <i>✦</i> 30 dana za povrat <i>✦</i> Kod BELLORA10 za −10% <i>✦</i></span>').join('') + '</div></div><div class="wrap">';
+  h += '</div><div class="mq" aria-hidden="true"><div class="mq-t">' + [0, 1].map(() => '<span>Vruće cijene usred zime <i>❄</i> Dom koji te čeka <i>✦</i> Plaćanje pouzećem <i>✦</i> Dostava u cijeloj BiH <i>✦</i> 30 dana za povrat <i>✦</i> Članovi kluba −10% <i>✦</i></span>').join('') + '</div></div><div class="wrap">';
   h += '<section class="sec"><div class="sh"><div><h2>Kuhinja <em>za uživanje</em></h2><p>Šerpe, tave, noževi, čaše i servisi.</p></div><a class="more" href="#g-kuhinja">Pogledaj sve (' + countIn(GR[1].cats) + ')' + ic('r', 'ic-s') + '</a></div>' + rail('r-kuh', pick(['posudje', 'pribor', 'servis'], 14)) + '</section>';
   h += '<section class="sec duo">' +
     '<a class="ban" href="#k-prekrivaci"><img loading="lazy" src="img/eBN71NgyPU8.webp" alt=""><div><span class="eyb">Prekrivači za sofu</span><h3>Nova sofa, <em>bez nove sofe</em></h3><span>Više boja i veličina, od ' + fmt(Math.min.apply(null, K.filter((p) => p.c === 'prekrivaci').map(minP).concat([999]))) + '</span></div></a>' +
     '<a class="ban" href="#k-aparati"><img loading="lazy" src="img/hi-kit.webp" alt=""><div><span class="eyb">Kućanski aparati</span><h3>Pomoćnici <em>u kuhinji</em></h3><span>Blenderi, sokovnici, kuhala i friteze</span></div></a></section>';
   h += '<section class="sec"><div class="sh"><div><h2>Mali <em>kućanski aparati</em></h2><p>Blenderi, sokovnici, kuhala, tosteri i više.</p></div><a class="more" href="#k-aparati">Pogledaj sve (' + countIn(['aparati']) + ')' + ic('r', 'ic-s') + '</a></div>' + rail('r-ap', pick(['aparati'], 14)) + '</section>';
   h += '<section class="sec"><div class="sh"><div><h2>Čist i <em>uredan dom</em></h2><p>Mopovi, police i pokloni.</p></div><a class="more" href="#g-dom">Pogledaj sve' + ic('r', 'ic-s') + '</a></div>' + rail('r-dom', pick(['ciscenje', 'kupatilo', 'razno'], 14)) + '</section>';
-  h += '<section class="nl"><div><h2>Prva narudžba? <em>−10% na sve.</em></h2><p>Upiši kod u korpi prije narudžbe. Važi za sve proizvode na sajtu.</p></div><div class="nl-c"><div><span>Tvoj kod za popust</span><b>BELLORA10</b></div><button class="btn btn-t" data-copy="BELLORA10">Kopiraj kod</button></div></section>';
+  h += '<section class="nl" id="klub"><div><span class="eyb">BelloraHome Klub</span><h2 style="margin-top:12px">Postani član. <em>−10% na sve, uvijek.</em></h2><p>Učlanjenje je besplatno i traje minut. Dobiješ člansku karticu, popust od 10% na svaku narudžbu i prvi saznaš za akcije i nove proizvode.</p>' +
+    '<ul class="nl-b"><li>' + ic('tag', 'ic-s') + '10% popusta na svaku narudžbu</li><li>' + ic('check', 'ic-s') + 'Digitalna članska kartica odmah</li><li>' + ic('heart', 'ic-s') + 'Posebne ponude samo za članove</li></ul></div>' +
+    '<div class="nl-c">' + (member ? '<div><span>Tvoja članska kartica</span><b>' + esc(member.nr) + '</b></div><button class="btn btn-t" data-join>Prikaži karticu</button>' : '<div><span>Besplatno učlanjenje</span><b>−10%</b></div><button class="btn btn-t" data-join>Učlani se</button>') + '</div></section>';
   h += '</div>';
   return h;
 }
@@ -696,6 +731,12 @@ function route() {
     const items = K.filter((p) => { const t = norm(p.n + ' ' + CN[p.c] + ' ' + p.v.map(VL).join(' ')); return words.every((w) => t.indexOf(w) > -1); });
     html = listing('Rezultati za „' + esc(q) + '“', items.length + ' proizvoda', items, [{ t: 'Pretraga' }]);
     $('#q').value = q;
+  } else if (h === 'privatnost') {
+    html = '<div class="wrap lp"><nav class="crumb"><a href="#">Početna</a><span>›</span><span>Privatnost</span></nav><div class="lp-h"><div><h1>Privatnost i BelloraHome Klub</h1></div></div>' +
+      '<div class="empty" style="text-align:left;max-width:760px"><h3>Koje podatke čuvamo</h3><p>Kad naručiš ili se učlaniš u Klub, čuvamo ime i prezime, telefon, grad, adresu za dostavu i email ako ga upišeš.</p>' +
+      '<h3 style="margin-top:18px">Zašto</h3><p>Podatke koristimo da isporučimo narudžbu, da ti damo popust za članove i, ako si dao/la saglasnost, da te kontaktiramo telefonom, Viberom ili mailom s ponudama Kluba.</p>' +
+      '<h3 style="margin-top:18px">Ko ih vidi</h3><p>Samo BelloraHome i naši prodajni saradnici. Podatke ne prodajemo i ne dajemo trećim stranama, osim kurirskoj službi adresu za dostavu.</p>' +
+      '<h3 style="margin-top:18px">Odjava i brisanje</h3><p>Možeš se odjaviti iz Kluba ili tražiti da obrišemo tvoje podatke u svakom trenutku: piši na bellora.home1@gmail.com ili reci agentu koji te nazove.</p><a class="btn btn-t" href="#">Nazad u shop</a></div></div>';
   } else if (h === 'dostava' || h === 'kako-naruciti') {
     html = '<div class="wrap lp"><nav class="crumb"><a href="#">Početna</a><span>›</span><span>Kupovina</span></nav><div class="lp-h"><div><h1>Kako naručiti</h1></div></div>' +
       '<div class="empty" style="text-align:left;max-width:760px"><h3>Narudžba za minut</h3><p>1. Dodaj proizvode u korpu.<br>2. Klikni „Naruči“ i upiši ime, telefon i adresu. Registracija nije potrebna.<br>3. Javimo ti se telefonom da potvrdimo narudžbu.<br>4. Paket plaćaš kuriru gotovinom kad stigne.</p>' +
@@ -779,7 +820,9 @@ function suggest() {
 }
 
 // ---------- cart ----------
-function saveCart() { ls.set('bh_cart3', cart); try { localStorage.setItem('bh_promo3', promo || ''); } catch (e) {} }
+function saveCart() { ls.set('bh_cart3', cart); ls.set('bh_member', member); }
+const clubOn = () => !!member || !!(ov === 'co' && coState && !coState.done && coState.v.join);
+const discLabel = () => member ? 'Klub ' + member.nr : 'Klub, novi član';
 function lines() {
   return Object.keys(cart).map((key) => {
     const pr = key.split(':'); if (pr[0] !== 'k') return null;
@@ -789,7 +832,7 @@ function lines() {
 }
 function totals() {
   const L = lines(); const sub = L.reduce((a, l) => a + l.sum, 0); const cnt = L.reduce((a, l) => a + l.q, 0);
-  const disc = promo && PROMOS[promo] ? Math.round(sub * PROMOS[promo] * 100) / 100 : 0;
+  const disc = clubOn() ? Math.round(sub * CLUB * 100) / 100 : 0;
   const ship = sub === 0 || sub - disc >= FREE ? 0 : SHIP;
   return { L: L, sub: sub, cnt: cnt, disc: disc, ship: ship, total: sub - disc + ship };
 }
@@ -815,7 +858,7 @@ function toast(msg, withCart) {
 let ov = null, lastFocus = null, qvState = null, coState = null;
 function openOv(kind, data) { lastFocus = document.activeElement; ov = kind; if (kind === 'qv') qvState = { id: data, vi: 0, q: 1 }; renderOv(); document.body.style.overflow = 'hidden'; setTimeout(() => { const x = $('#ov .xb'); if (x) x.focus(); }, 30); }
 function closeOv() { ov = null; $('#ov').innerHTML = ''; document.body.style.overflow = ''; if (lastFocus && lastFocus.focus) try { lastFocus.focus(); } catch (e) {} }
-function renderOv() { if (ov === 'cart') renderCart(); else if (ov === 'qv') renderQv(); else if (ov === 'co') renderCo(); else if (ov === 'menu') renderMenu(); }
+function renderOv() { if (ov === 'cart') renderCart(); else if (ov === 'qv') renderQv(); else if (ov === 'co') renderCo(); else if (ov === 'menu') renderMenu(); else if (ov === 'join') renderJoin(); }
 function renderCart() {
   if (ov !== 'cart') return;
   const t = totals(); const left = Math.max(0, FREE - (t.sub - t.disc));
@@ -824,9 +867,10 @@ function renderCart() {
   else {
     h += '<div class="shipb">' + (left > 0 ? 'Još <b>' + fmt(left) + '</b> do besplatne dostave' : '<b>Dostava je besplatna!</b>') + '<div class="bar"><i style="width:' + Math.min(100, (t.sub - t.disc) / FREE * 100) + '%"></i></div></div>';
     h += '<div class="dl">' + t.L.map((l) => '<div class="ci"><img src="' + esc(l.v.i) + '" alt=""><div style="flex:1;min-width:0"><div class="n">' + esc(l.name) + '</div><div class="r"><div class="qty"><button data-q="' + l.key + '" data-d="-1" aria-label="Manje">' + ic('minus', 'ic-s') + '</button><span>' + l.q + '</span><button data-q="' + l.key + '" data-d="1" aria-label="Više">' + ic('plus', 'ic-s') + '</button></div><b>' + fmt(l.sum) + '</b></div><button class="rm" data-rm="' + l.key + '">Ukloni</button></div></div>').join('') + '</div>';
-    h += '<div class="df"><form class="promo" id="promoF"><label for="promoIn" class="sr">Kod za popust</label><input id="promoIn" placeholder="Kod za popust" value="' + esc(promo || '') + '"><button type="submit">Primijeni</button></form>' +
-      '<p class="pmsg" id="pmsg"' + (promo ? '' : ' hidden') + '>' + (promo ? 'Kod ' + esc(promo) + ' je aktivan (−10%).' : '') + '</p>' +
-      '<div class="ds"><span>Međuzbir</span><span>' + fmt(t.sub) + '</span></div>' + (t.disc ? '<div class="ds"><span>Popust (' + esc(promo) + ')</span><span>−' + fmt(t.disc) + '</span></div>' : '') +
+    h += '<div class="df">' + (member ? '<div class="clubok">' + ic('check', 'ic-s') + '<span>Član kluba <b>' + esc(member.nr) + '</b>' + (member.first ? ' · ' + esc(member.first) : '') + '<br><small>Popust od 10% je uračunat.</small></span><button data-unmember>Nije moja</button></div>' :
+      '<form class="promo" id="clubF"><label for="clubIn" class="sr">Broj članske kartice ili telefon</label><input id="clubIn" placeholder="Član? Broj kartice ili telefon"><button type="submit">Primijeni</button></form><p class="pmsg" id="pmsg" hidden></p>' +
+      '<p class="joinl">Nisi član? <button data-join>Učlani se besplatno</button> i odmah dobij −10%.</p>') +
+      '<div class="ds"><span>Međuzbir</span><span>' + fmt(t.sub) + '</span></div>' + (t.disc ? '<div class="ds"><span>Popust (' + esc(discLabel()) + ', −10%)</span><span>−' + fmt(t.disc) + '</span></div>' : '') +
       '<div class="ds"><span>Dostava</span><span>' + (t.ship ? fmt(t.ship) : 'Besplatno') + '</span></div><div class="ds t"><span>Ukupno</span><span>' + fmt(t.total) + '</span></div>' +
       '<button class="btn btn-t" data-co>Naruči · plaćam pouzećem</button><p class="note">Bez kartice. Plaćaš kuriru kad paket stigne.</p></div>';
   }
@@ -851,7 +895,7 @@ function renderCo() {
   const t = totals(); const s = coState;
   let h = '<div class="scrim" data-close></div><div class="modal co" role="dialog" aria-modal="true" aria-label="Naplata"><button class="xb" data-close aria-label="Zatvori">' + ic('x') + '</button>';
   if (s.done) {
-    h += '<div class="done"><div class="ok">' + ic('check') + '</div><h3 class="serif" style="font-size:28px;margin:0">Hvala, ' + esc(s.done.name) + '!</h3><p>Narudžba <b>' + esc(s.done.nr) + '</b> je primljena. Za plaćanje pouzećem: <b>' + fmt(s.done.total) + '</b>.</p><p style="color:var(--muted)">Javit ćemo ti se telefonom da potvrdimo narudžbu prije slanja.</p><button class="btn btn-t" data-close style="margin-top:12px">Nazad u shop</button></div>';
+    h += '<div class="done"><div class="ok">' + ic('check') + '</div><h3 class="serif" style="font-size:28px;margin:0">Hvala, ' + esc(s.done.name) + '!</h3><p>Narudžba <b>' + esc(s.done.nr) + '</b> je primljena. Za plaćanje pouzećem: <b>' + fmt(s.done.total) + '</b>.</p><p style="color:var(--muted)">Javit ćemo ti se telefonom da potvrdimo narudžbu prije slanja.</p>' + (s.done.club ? '<p class="co-club" style="justify-content:center">' + ic('check', 'ic-s') + 'Dobrodošao/la u BelloraHome Klub! Tvoja kartica: <b>' + esc(s.done.club) + '</b></p><button class="btn btn-o" data-join style="margin-top:8px">Prikaži karticu</button>' : '') + '<button class="btn btn-t" data-close style="margin-top:12px">Nazad u shop</button></div>';
   } else {
     const fld = (f, label, type, ac, full, extra) => '<label class="fld' + (full ? ' full' : '') + '"><span>' + label + '</span>' +
       (f === 'note' ? '<textarea id="co-note" rows="2" maxlength="500">' + esc(s.v.note || '') + '</textarea>' :
@@ -861,8 +905,10 @@ function renderCo() {
       fld('address', 'Adresa *', 'text', 'street-address', true, ' maxlength="150"') + fld('city', 'Grad *', 'text', 'address-level2', false, ' maxlength="60"') +
       fld('zip', 'Poštanski broj *', 'text', 'postal-code', false, ' maxlength="10" inputmode="numeric"') + fld('email', 'Email (nije obavezno)', 'email', 'email', true, ' maxlength="120"') +
       fld('note', 'Napomena (nije obavezno)', '', '', true) + '</div>' +
+      (member ? '<p class="co-club">' + ic('check', 'ic-s') + 'Član kluba ' + esc(member.nr) + ': popust od 10% je uračunat.</p>' :
+        '<label class="co-join"><input type="checkbox" id="co-join"' + (s.v.join ? ' checked' : '') + '><span><b>Učlani me u BelloraHome Klub i odmah dobijem −10%</b><small>Besplatno. Slažem se da me BelloraHome kontaktira telefonom, Viberom ili mailom s ponudama kluba. <a href="#privatnost" data-close>Privatnost</a></small></span></label>') +
       '<div class="co-s">' + t.L.map((l) => '<div class="ds"><span>' + l.q + ' × ' + esc(l.name) + '</span><span>' + fmt(l.sum) + '</span></div>').join('') +
-      '<div class="ds" style="margin-top:6px"><span>Međuzbir</span><span>' + fmt(t.sub) + '</span></div>' + (t.disc ? '<div class="ds"><span>Popust (' + esc(promo) + ')</span><span>−' + fmt(t.disc) + '</span></div>' : '') +
+      '<div class="ds" style="margin-top:6px"><span>Međuzbir</span><span>' + fmt(t.sub) + '</span></div>' + (t.disc ? '<div class="ds"><span>Popust (' + esc(discLabel()) + ', −10%)</span><span>−' + fmt(t.disc) + '</span></div>' : '') +
       '<div class="ds"><span>Dostava</span><span>' + (t.ship ? fmt(t.ship) : 'Besplatno') + '</span></div><div class="ds t"><span>Ukupno za plaćanje</span><span>' + fmt(t.total) + '</span></div></div>' +
       (s.err ? '<p class="co-err" role="alert">' + esc(s.err) + '</p>' : '') +
       '<button class="btn btn-t" type="submit"' + (s.sending ? ' disabled' : '') + '>' + (s.sending ? 'Šaljem narudžbu…' : 'Potvrdi narudžbu · ' + fmt(t.total)) + '</button></form>';
@@ -886,18 +932,98 @@ async function submitOrder(e) {
   const items = lines().map((l) => ({ id: l.p.id, v: l.vi, qty: l.q }));
   s.sending = true; s.err = ''; renderCo();
   try {
-    const r = await fetch('/api/order', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ customer: { name: s.v.name, phone: s.v.phone, address: s.v.address, city: s.v.city, zip: s.v.zip, email: s.v.email || '', note: s.v.note || '' }, pay: 'cod', promo: promo, website: '', items: items }) });
+    const r = await fetch('/api/order', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ customer: { name: s.v.name, phone: s.v.phone, address: s.v.address, city: s.v.city, zip: s.v.zip, email: s.v.email || '', note: s.v.note || '' }, pay: 'cod', member: member ? member.nr : '', joinClub: !member && !!s.v.join, consent: !member && !!s.v.join, website: '', items: items }) });
     const data = await r.json().catch(() => ({}));
     if (!r.ok || !data.ok) throw new Error(data.error || 'Narudžba nije poslana. Pokušaj ponovo za minut.');
     if (data.notify) { try { fetch(data.notify.url, { method: 'POST', headers: { 'content-type': 'application/json', accept: 'application/json' }, body: JSON.stringify(data.notify.body), keepalive: true }).catch(() => {}); } catch (x) {} }
-    s.done = { nr: data.nr, total: data.total, name: String(s.v.name).trim().split(' ')[0] }; s.sending = false;
-    cart = {}; promo = null; s.v.note = ''; saveCart(); updHeader(); renderCo();
+    s.done = { nr: data.nr, total: data.total, name: String(s.v.name).trim().split(' ')[0], club: data.member && data.member.joined ? data.member.nr : '' }; s.sending = false;
+    if (data.member) member = { nr: data.member.nr, first: data.member.first, name: String(s.v.name).trim() };
+    cart = {}; s.v.note = ''; s.v.join = false; saveCart(); updHeader(); renderCo();
   } catch (err) { s.sending = false; s.err = err.message || 'Greška pri slanju.'; renderCo(); }
+}
+
+// ---------- BelloraHome Klub ----------
+let joinState = null;
+function cardHTML(m) {
+  return '<div class="mcard" id="mcard"><div class="mc-top">' + LOGO + '<span>Klub</span></div><div class="mc-mid"><small>Članska kartica</small><b>' + esc(m.name || m.first || '') + '</b></div>' +
+    '<div class="mc-bot"><span class="mc-nr">' + esc(m.nr) + '</span><span class="mc-pop">−10% na sve</span></div></div>';
+}
+function renderJoin() {
+  if (!joinState) joinState = { v: Object.assign({ name: '', phone: '', city: '', email: '' }, (function () { const c = ls.get('bh_co', {}) || {}; return { name: c.name || '', phone: c.phone || '', city: c.city || '', email: c.email || '' }; })()), consent: false, err: '', sending: false };
+  const j = joinState;
+  let h = '<div class="scrim" data-close></div><div class="modal co" role="dialog" aria-modal="true" aria-label="BelloraHome Klub"><button class="xb" data-close aria-label="Zatvori">' + ic('x') + '</button>';
+  if (member) {
+    h += '<div class="co-in jdone"><span class="eyb">BelloraHome Klub</span><h3 style="margin-top:10px">' + (j.justJoined ? 'Dobrodošao/la u klub!' : 'Tvoja članska kartica') + '</h3>' + cardHTML(member) +
+      '<p style="color:var(--muted);margin:14px 0 0">Popust od 10% se sam računa u korpi na ovom uređaju. Na drugom telefonu ili računaru upiši u korpi broj kartice ili svoj telefon.</p>' +
+      '<div class="jbtn"><button class="btn btn-o" data-savecard>Sačuvaj karticu kao sliku</button><button class="btn btn-t" data-close>Kreni u kupovinu</button></div></div>';
+  } else {
+    const fld = (f, label, type, ac, extra) => '<label class="fld' + (f === 'email' || f === 'name' ? ' full' : '') + '"><span>' + label + '</span><input id="j-' + f + '" type="' + type + '" autocomplete="' + ac + '" value="' + esc(j.v[f] || '') + '"' + (extra || '') + '></label>';
+    h += '<form class="co-in" id="joinF" novalidate><span class="eyb">BelloraHome Klub</span><h3 style="margin-top:10px">Učlani se i dobij <em style="color:var(--tera)">−10% na sve</em></h3><p style="color:var(--muted);margin:4px 0 0">Besplatno je. Karticu dobiješ odmah, a popust važi za svaku narudžbu.</p><div class="co-g">' +
+      fld('name', 'Ime i prezime *', 'text', 'name', ' maxlength="80"') + fld('phone', 'Telefon *', 'tel', 'tel', ' maxlength="30" placeholder="06x xxx xxx"') + fld('city', 'Grad', 'text', 'address-level2', ' maxlength="60"') +
+      fld('email', 'Email (nije obavezno)', 'email', 'email', ' maxlength="120"') + '</div>' +
+      '<label class="co-join"><input type="checkbox" id="j-consent"' + (j.consent ? ' checked' : '') + '><span><b>Saglasnost *</b><small>Slažem se da me BelloraHome kontaktira telefonom, Viberom ili mailom u vezi s ponudama i pogodnostima kluba. Mogu se odjaviti u svakom trenutku. <a href="#privatnost" data-close>Privatnost</a></small></span></label>' +
+      '<input type="text" id="j-website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">' +
+      (j.err ? '<p class="co-err" role="alert">' + esc(j.err) + '</p>' : '') +
+      '<button class="btn btn-t" type="submit"' + (j.sending ? ' disabled' : '') + '>' + (j.sending ? 'Šaljem…' : 'Učlani me i daj mi karticu') + '</button></form>';
+  }
+  $('#ov').innerHTML = h + '</div>';
+}
+async function submitJoin(e) {
+  e.preventDefault(); const j = joinState; if (j.sending) return;
+  ['name', 'phone', 'city', 'email'].forEach((f) => { const el = $('#j-' + f); if (el) j.v[f] = el.value.trim(); });
+  j.consent = $('#j-consent').checked;
+  if (j.v.name.length < 2) j.err = 'Upiši ime i prezime.';
+  else if (j.v.phone.replace(/\D/g, '').length < 6) j.err = 'Upiši ispravan broj telefona.';
+  else if (j.v.email && !/^\S+@\S+\.\S+$/.test(j.v.email)) j.err = 'Email adresa nije ispravna.';
+  else if (!j.consent) j.err = 'Označi saglasnost da bismo te mogli učlaniti.';
+  else j.err = '';
+  if (j.err) { renderJoin(); return; }
+  j.sending = true; renderJoin();
+  try {
+    const r = await fetch('/api/club', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(Object.assign({}, j.v, { consent: true, website: ($('#j-website') || {}).value || '' })) });
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok || !d.ok) throw new Error(d.error || 'Učlanjenje nije uspjelo. Pokušaj ponovo.');
+    if (d.notify) { try { fetch(d.notify.url, { method: 'POST', headers: { 'content-type': 'application/json', accept: 'application/json' }, body: JSON.stringify(d.notify.body), keepalive: true }).catch(() => {}); } catch (x) {} }
+    member = { nr: d.nr, first: d.first, name: d.name || j.v.name }; saveCart(); updHeader();
+    j.sending = false; j.justJoined = !d.existing; renderJoin();
+    if (d.existing) toast('Već si član, evo tvoje kartice.');
+    if (!$('#klub') || location.hash) {} else route();
+  } catch (err) { j.sending = false; j.err = err.message; renderJoin(); }
+}
+async function checkMember(e) {
+  e.preventDefault(); const q = $('#clubIn').value.trim(); const m = $('#pmsg');
+  if (!q) { m.hidden = false; m.className = 'pmsg bad'; m.textContent = 'Upiši broj kartice (npr. BH-1001) ili telefon.'; return; }
+  m.hidden = false; m.className = 'pmsg'; m.textContent = 'Provjeravam…';
+  try {
+    const r = await fetch('/api/club?q=' + encodeURIComponent(q)); const d = await r.json().catch(() => ({}));
+    if (!r.ok || !d.ok) throw new Error(d.error || 'Nismo našli člana.');
+    member = { nr: d.nr, first: d.first }; saveCart(); updHeader(); renderCart();
+  } catch (err) { m.className = 'pmsg bad'; m.textContent = err.message; }
+}
+function saveCard() {
+  if (!member) return;
+  const W = 1012, H = 638, c = document.createElement('canvas'); c.width = W; c.height = H; const x = c.getContext('2d');
+  const g = x.createLinearGradient(0, 0, W, H); g.addColorStop(0, '#2b1f17'); g.addColorStop(1, '#5a3220');
+  const rr = (X, Y, w, h, r) => { x.beginPath(); x.moveTo(X + r, Y); x.arcTo(X + w, Y, X + w, Y + h, r); x.arcTo(X + w, Y + h, X, Y + h, r); x.arcTo(X, Y + h, X, Y, r); x.arcTo(X, Y, X + w, Y, r); x.closePath(); };
+  rr(0, 0, W, H, 44); x.fillStyle = g; x.fill();
+  x.fillStyle = 'rgba(255,255,255,.06)'; x.beginPath(); x.arc(W - 120, H - 60, 260, 0, 7); x.fill();
+  const svg = LOGO.replace(/class="lg-r"/, 'stroke="#e9a27a"').replace(/class="lg-i"/g, 'fill="#f6f1ea"').replace(/class="lg-t"/g, 'fill="#e9a27a"').replace('class="logo-svg"', 'width="420" height="160"');
+  const img = new Image();
+  const finish = () => {
+    x.fillStyle = '#e9a27a'; x.font = '800 26px Manrope, sans-serif'; x.fillText('KLUB', W - 150, 98);
+    x.fillStyle = 'rgba(246,241,234,.7)'; x.font = '700 24px Manrope, sans-serif'; x.fillText('ČLANSKA KARTICA', 64, 330);
+    x.fillStyle = '#f6f1ea'; x.font = '600 52px Fraunces, Georgia, serif'; x.fillText(member.name || member.first || '', 64, 392);
+    x.font = '800 64px Manrope, sans-serif'; x.fillText(member.nr, 64, 560);
+    x.fillStyle = '#e8a33d'; rr(W - 330, 505, 266, 70, 35); x.fill(); x.fillStyle = '#1e1b18'; x.font = '800 30px Manrope, sans-serif'; x.fillText('−10% na sve', W - 310, 551);
+    c.toBlob((b) => { const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'BelloraHome-Klub-' + member.nr + '.png'; document.body.appendChild(a); a.click(); setTimeout(() => a.remove(), 500); toast('Kartica je sačuvana'); });
+  };
+  img.onload = () => { x.drawImage(img, 56, 40, 330, 126); finish(); }; img.onerror = finish;
+  img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
 }
 
 // ---------- events ----------
 document.addEventListener('click', (e) => {
-  const t = e.target.closest('[data-qv],[data-add],[data-wish],[data-rail],[data-slide],[data-sl],[data-close],[data-q],[data-rm],[data-vi],[data-qq],[data-qvadd],[data-co],[data-more],[data-copy],[data-open-cart]');
+  const t = e.target.closest('[data-qv],[data-add],[data-wish],[data-rail],[data-slide],[data-sl],[data-close],[data-q],[data-rm],[data-vi],[data-qq],[data-qvadd],[data-co],[data-more],[data-join],[data-unmember],[data-savecard],[data-open-cart]');
   if (!t) { if (!e.target.closest('#srch')) $('#sug').hidden = true; if (!e.target.closest('#mega,#allcBtn')) closeMega(); return; }
   const d = t.dataset;
   if (d.qv) { $('#sug').hidden = true; if (ov) closeOv(); openOv('qv', +d.qv); }
@@ -914,28 +1040,31 @@ document.addEventListener('click', (e) => {
   else if (d.qvadd !== undefined) { addToCart(qvState.id, qvState.vi, qvState.q); closeOv(); }
   else if (d.co !== undefined) { coState = null; ov = 'co'; renderCo(); setTimeout(() => { const i = $('#co-name'); if (i && !i.value) i.focus(); }, 40); }
   else if (d.more !== undefined) { listState.shown += 20; const y = scrollY; route(); scrollTo(0, y); }
-  else if (d.copy) { const code = d.copy; promo = code; saveCart(); updHeader(); try { navigator.clipboard.writeText(code).catch(() => {}); } catch (x) {} toast('Kod ' + code + ' je dodan u korpu (−10%)'); }
+  else if (d.join !== undefined) { if (ov) closeOv(); openOv('join'); }
+  else if (d.unmember !== undefined) { member = null; saveCart(); renderCart(); }
+  else if (d.savecard !== undefined) { saveCard(); }
   else if (d.openCart !== undefined) { $('#toast').hidden = true; openOv('cart'); }
 });
 document.addEventListener('submit', (e) => {
-  if (e.target.id === 'promoF') { e.preventDefault(); const v = $('#promoIn').value.trim().toUpperCase(); const m = $('#pmsg'); if (PROMOS[v]) { promo = v; saveCart(); renderCart(); } else { m.hidden = false; m.className = 'pmsg bad'; m.textContent = v ? 'Kod „' + v + '“ ne postoji.' : 'Upiši kod za popust.'; } }
+  if (e.target.id === 'joinF') submitJoin(e);
+  else if (e.target.id === 'clubF') checkMember(e);
   else if (e.target.id === 'coF') submitOrder(e);
   else if (e.target.id === 'srchF') { e.preventDefault(); const q = $('#q').value.trim(); $('#sug').hidden = true; if (q) { location.hash = 'trazi-' + encodeURIComponent(q); $('#q').blur(); } }
 });
 document.addEventListener('change', (e) => { if (e.target.id === 'sort') { listState.sort = e.target.value; listState.shown = 20; route(); } });
-document.addEventListener('input', (e) => { if (e.target.id === 'q') suggest(); if (coState && e.target.id && e.target.id.indexOf('co-') === 0) { const f = e.target.id.slice(3); coState.v[f] = e.target.value; if (coState.bad[f]) { delete coState.bad[f]; e.target.classList.remove('bad'); } } });
+document.addEventListener('input', (e) => { if (e.target.id === 'q') suggest(); if (coState && e.target.id === 'co-join') { coState.v.join = e.target.checked; renderCo(); return; } if (coState && e.target.id && e.target.id.indexOf('co-') === 0) { const f = e.target.id.slice(3); coState.v[f] = e.target.value; if (coState.bad[f]) { delete coState.bad[f]; e.target.classList.remove('bad'); } } });
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { if (ov) closeOv(); $('#sug').hidden = true; closeMega(); } });
 $('#q').addEventListener('focus', suggest);
 $('#cartBtn').addEventListener('click', () => openOv('cart'));
 $('#menuBtn').addEventListener('click', () => openOv('menu'));
 $('#allcBtn').addEventListener('click', () => { const m = $('#mega'); m.hidden = !m.hidden; $('#allcBtn').setAttribute('aria-expanded', String(!m.hidden)); });
-window.addEventListener('hashchange', () => { listState = { sort: 'pre', shown: 20 }; closeMega(); $('#sug').hidden = true; if (ov === 'menu') closeOv(); route(); if (location.hash === '#zara-bubble') { const z = document.getElementById('zara-bubble'); if (z) z.scrollIntoView({ behavior: 'smooth' }); } else scrollTo(0, 0); });
+window.addEventListener('hashchange', () => { listState = { sort: 'pre', shown: 20 }; closeMega(); $('#sug').hidden = true; if (ov === 'menu') closeOv(); route(); if (location.hash === '#zara-bubble' || location.hash === '#klub') { const z = document.getElementById(location.hash.slice(1)); if (z) z.scrollIntoView({ behavior: 'smooth' }); } else scrollTo(0, 0); });
 
 // ---------- boot ----------
 fetch('katalog.json').then((r) => r.json()).then((k) => {
   K = k; K.forEach((p) => { byId[p.id] = p; });
   Object.keys(cart).forEach((key) => { const pr = key.split(':'); if (pr[0] !== 'k' || !byId[pr[1]] || !byId[pr[1]].v[+pr[2]]) delete cart[key]; }); saveCart();
-  buildNav(); updHeader(); route(); if (location.hash === '#zara-bubble') setTimeout(() => { const z = document.getElementById('zara-bubble'); if (z) z.scrollIntoView(); }, 100);
+  buildNav(); updHeader(); route(); if (location.hash === '#zara-bubble' || location.hash === '#klub') setTimeout(() => { const z = document.getElementById(location.hash.slice(1)); if (z) z.scrollIntoView(); }, 100);
 }).catch(() => { $('#main').innerHTML = '<div class="wrap lp"><div class="empty"><h3>Katalog se nije učitao</h3><p>Provjeri internet vezu i osvježi stranicu.</p></div></div>'; });
 })();
 </script>

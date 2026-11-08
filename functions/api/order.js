@@ -1,10 +1,10 @@
 // POST /api/order — prima narudžbu iz korpe i sprema je u KV (binding ORDERS).
 // Cijene se uvijek računaju ovdje, iz serverskog kataloga, nikad iz onoga što pošalje preglednik.
 import { PRODUCTS } from "../_lib/products.js";
+import { joinClub, findMember, CLUB_DISCOUNT } from "../_lib/club.js";
 
 const FREE_SHIP = 100;
 const SHIP_COST = 8;
-const PROMOS = { BELLORA10: 0.1 };
 // Obavijesti idu preko Web3Forms na bellora.home1@gmail.com (javni ključ, nije tajna).
 const WEB3FORMS_KEY = "c00081f8-2e26-4152-963f-f15308caa13a";
 const MAX_ORDERS_PER_IP_PER_10_MIN = 8;
@@ -54,8 +54,17 @@ export async function onRequestPost({ request, env }) {
   });
 
   const sub = round2(items.reduce((s, i) => s + i.sum, 0));
-  const promo = typeof body.promo === "string" && PROMOS[body.promo.toUpperCase()] ? body.promo.toUpperCase() : null;
-  const disc = promo ? round2(sub * PROMOS[promo]) : 0;
+  // Popust 10% samo za članove BelloraHome Kluba (postojeći član ili učlanjenje uz narudžbu).
+  const ipAddr = request.headers.get("cf-connecting-ip") || "";
+  let member = null, joined = false;
+  if (body.joinClub) {
+    const r = await joinClub(env.ORDERS, { name: customer.name, phone: customer.phone, email: customer.email, city: customer.city, consent: !!body.consent }, ipAddr, "narudzba");
+    if (r.member) { member = r.member; joined = !r.existing; }
+  } else if (typeof body.member === "string" && body.member.trim()) {
+    member = await findMember(env.ORDERS, body.member);
+  }
+  const promo = member ? "KLUB " + member.nr : null;
+  const disc = member ? round2(sub * CLUB_DISCOUNT) : 0;
   const ship = sub - disc >= FREE_SHIP ? 0 : SHIP_COST;
   const total = round2(sub - disc + ship);
 
@@ -74,9 +83,19 @@ export async function onRequestPost({ request, env }) {
   const key = "order:" + now.getTime() + ":" + nr;
   const order = {
     nr, created: now.toISOString(), status: "nova", customer, pay: "cod",
-    items, sub, promo, disc, ship, total, adminNote: "", ip, updated: now.toISOString(),
+    items, sub, promo, disc, ship, total, member: member ? member.nr : null, adminNote: "", ip, updated: now.toISOString(),
   };
   await env.ORDERS.put(key, JSON.stringify(order));
+  if (member) {
+    const fresh = (await env.ORDERS.get("member:" + member.nr, "json")) || member;
+    fresh.orders = (fresh.orders || []).concat(nr).slice(-50);
+    fresh.spent = round2((fresh.spent || 0) + total);
+    fresh.lastOrderAt = now.toISOString();
+    if (fresh.status === "novi") fresh.status = "kupio";
+    if (!fresh.address) fresh.address = `${customer.address}, ${customer.zip} ${customer.city}`;
+    fresh.updated = now.toISOString();
+    await env.ORDERS.put("member:" + member.nr, JSON.stringify(fresh));
+  }
 
   // Obavijest na mail šalje preglednik kupca (Web3Forms), da narudžba nikad ne čeka na mail servis.
   const lines = items.map((i) => `${i.qty} × ${i.name}${i.variant ? " (" + i.variant + ")" : ""}${i.code ? " [" + i.code + "]" : ""} — ${km(i.sum)}`).join("\n");
@@ -95,13 +114,14 @@ export async function onRequestPost({ request, env }) {
       Proizvodi: lines,
       Medjuzbir: km(sub),
       Popust: disc ? `${km(disc)} (${promo})` : "—",
+      Klub: member ? (joined ? `Novi član ${member.nr}` : `Član ${member.nr}`) : "—",
       Dostava: ship ? km(ship) : "Besplatno",
       Ukupno: km(total),
       Admin: "https://bellorahome.com/admin",
     },
   };
 
-  return json({ ok: true, nr, total, notify });
+  return json({ ok: true, nr, total, member: member ? { nr: member.nr, first: String(member.name).split(" ")[0], joined } : null, notify });
 }
 
 export async function onRequest() {

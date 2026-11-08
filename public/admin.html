@@ -95,6 +95,18 @@
     .toast { position: fixed; left: 50%; bottom: 20px; transform: translate(-50%, 160%); background: var(--ink); color: var(--cream); padding: 12px 20px; border-radius: 999px; font-size: .9rem; transition: transform .3s; z-index: 50; }
     .toast.show { transform: translate(-50%, 0); }
 
+    .tabs { display: flex; gap: 4px; padding: 4px; background: var(--sand); border-radius: 999px; }
+    .tabs button { padding: 7px 14px; border-radius: 999px; font-size: .86rem; font-weight: 700; color: var(--ink-2); }
+    .tabs button.active { background: var(--white); color: var(--ink); box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+    .tabs i { font-style: normal; font-size: .72rem; background: var(--accent); color: #fff; border-radius: 999px; padding: 1px 7px; margin-left: 4px; }
+    .tabs i:empty { display: none; }
+    .mrow { display: grid; grid-template-columns: 110px 1.3fr 1fr 1fr 140px 24px; gap: 14px; align-items: center; padding: 14px 18px; cursor: pointer; text-align: left; width: 100%; }
+    .mrow:hover { background: #fffaf3; }
+    .call { text-decoration: none; display: inline-flex; align-items: center; gap: 6px; background: var(--sage); color: #fff; padding: 6px 12px; border-radius: 999px; font-weight: 700; font-size: .85rem; }
+    .call.viber { background: #7360f2; }
+    .mdetail { border-top: 1px solid var(--line); padding: 18px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; background: #fffbf6; }
+    .actions input { padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--white); }
+    @media (max-width: 860px) { .mrow { grid-template-columns: 1fr auto; } .mrow .hide-m { display: none; } .mdetail { grid-template-columns: 1fr; } }
     @media (max-width: 860px) {
       .stats { grid-template-columns: 1fr 1fr; }
       .row { grid-template-columns: 1fr auto; gap: 6px 12px; }
@@ -130,7 +142,7 @@
     <header>
       <div class="wrap">
         <div class="logo">Bellora<span>Home</span></div>
-        <span class="tag">Narudžbe</span>
+        <nav class="tabs" id="tabs"><button data-tab="orders" class="active">Narudžbe</button><button data-tab="klub">Klub <i id="klubN"></i></button></nav>
         <div class="right">
           <span class="updated" id="updated"></span>
           <button class="btn btn--ghost" id="refresh">Osvježi</button>
@@ -139,13 +151,22 @@
       </div>
     </header>
 
-    <main class="wrap">
+    <main class="wrap" id="ordersView">
       <section class="stats" id="stats"></section>
       <div class="bar">
         <div class="filters" id="filters"></div>
         <input class="search" id="search" type="search" placeholder="Traži: broj, ime, telefon, grad…" aria-label="Pretraga narudžbi">
       </div>
       <section class="orders" id="orders"></section>
+    </main>
+    <main class="wrap" id="klubView" hidden>
+      <section class="stats" id="mstats"></section>
+      <div class="bar">
+        <div class="filters" id="mfilters"></div>
+        <input class="search" id="msearch" type="search" placeholder="Traži: ime, telefon, grad, kartica, agent…" aria-label="Pretraga članova">
+        <button class="btn btn--ghost" id="csv">Preuzmi Excel (CSV)</button>
+      </div>
+      <section class="orders" id="members"></section>
     </main>
   </div>
 
@@ -300,13 +321,107 @@ $("#search").addEventListener("input", e => { query = e.target.value; render(); 
 $("#refresh").onclick = () => load();
 $("#logout").onclick = () => logout();
 
+// ---------- Klub ----------
+const MST = {
+  novi:          { label: "Novi, za pozvati", color: "var(--s-nova)" },
+  pozvan:        { label: "Pozvan",           color: "var(--s-poslana)" },
+  ne_javlja:     { label: "Ne javlja se",     color: "var(--s-potvrdjena)" },
+  zainteresovan: { label: "Zainteresovan",    color: "#a0662a" },
+  kupio:         { label: "Kupio",            color: "var(--s-isporucena)" },
+  ne_zeli:       { label: "Ne želi poziv",    color: "var(--s-otkazana)" },
+};
+let members = [], mfilter = "novi", mquery = "", mopen = new Set(), tab = location.hash === "#klub" ? "klub" : "orders";
+const telHref = p => String(p || "").replace(/[^+0-9]/g, "");
+const viberHref = p => { let d = String(p || "").replace(/\D/g, ""); if (d.startsWith("0")) d = "387" + d.slice(1); return "viber://chat?number=%2B" + d; };
+async function loadMembers(silent) {
+  try {
+    const before = new Set(members.map(m => m.nr));
+    const data = await api("members"); members = data.members || [];
+    if (before.size) members.forEach(m => { if (!before.has(m.nr)) toast(`Novi član ${m.nr}: ${m.name}`); });
+    renderMembers();
+  } catch (e) { if (!silent && e.message !== "401") toast(e.message); }
+}
+function renderMembers() {
+  const nNew = members.filter(m => m.status === "novi").length;
+  $("#klubN").textContent = nNew || "";
+  if (tab !== "klub") return;
+  const today = new Date().toDateString();
+  const buyers = members.filter(m => (m.orders || []).length).length;
+  $("#mstats").innerHTML = `
+    <div class="stat ${nNew ? "hot" : ""}"><small>Za pozvati</small><b>${nNew}</b></div>
+    <div class="stat"><small>Ukupno članova</small><b>${members.length}</b></div>
+    <div class="stat"><small>Novi danas</small><b>${members.filter(m => new Date(m.created).toDateString() === today).length}</b></div>
+    <div class="stat"><small>Članovi koji su kupili</small><b>${buyers}</b></div>`;
+  const counts = { sve: members.length }; Object.keys(MST).forEach(k => counts[k] = members.filter(m => m.status === k).length);
+  $("#mfilters").innerHTML = [...Object.entries(MST).map(([k, v]) => [k, v.label.split(",")[0]]), ["sve", "Svi"]]
+    .map(([k, l]) => `<button class="${mfilter === k ? "active" : ""}" data-mf="${k}">${l}<i>${counts[k]}</i></button>`).join("");
+  const q = mquery.toLowerCase();
+  const list = members.filter(m => (mfilter === "sve" || m.status === mfilter) && (!q || [m.nr, m.name, m.phone, m.city, m.email, m.agent, m.note].join(" ").toLowerCase().includes(q)));
+  if (!members.length) { $("#members").innerHTML = `<div class="empty"><b>Još nema članova</b>Kad se neko učlani na sajtu ili označi učlanjenje uz narudžbu, pojavi se ovdje i stigne ti mail.</div>`; return; }
+  if (!list.length) { $("#members").innerHTML = `<div class="empty"><b>Nema članova u ovom pregledu</b>Probaj drugi filter ili pretragu.</div>`; return; }
+  $("#members").innerHTML = list.map(m => {
+    const st = MST[m.status] || MST.novi, isOpen = mopen.has(m.nr);
+    return `<article class="order ${isOpen ? "open" : ""}" data-nr="${esc(m.nr)}">
+      <button class="mrow" data-mtoggle aria-expanded="${isOpen}">
+        <div><div class="nr">${esc(m.nr)}</div><div class="date">${when(m.created)}</div></div>
+        <div class="who"><b>${esc(m.name)}</b><span>${esc(m.phone)}</span></div>
+        <div class="where hide-m">${esc(m.city || "—")}</div>
+        <div class="where hide-m">${(m.orders || []).length ? `${m.orders.length} ${m.orders.length === 1 ? "narudžba" : m.orders.length < 5 ? "narudžbe" : "narudžbi"} · ${km(m.spent || 0)}` : "Još nije kupio"}${m.agent ? `<br>Agent: ${esc(m.agent)}` : ""}</div>
+        <span class="pill" style="background:${st.color}">${st.label.split(",")[0]}</span>
+        <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      ${isOpen ? `<div class="mdetail"><div>
+        <h4>Kontakt</h4>
+        <dl class="kv"><dt>Ime</dt><dd>${esc(m.name)}</dd><dt>Telefon</dt><dd>${esc(m.phone)}</dd><dt>Email</dt><dd>${m.email ? `<a href="mailto:${esc(m.email)}">${esc(m.email)}</a>` : "—"}</dd>
+        <dt>Grad</dt><dd>${esc(m.city || "—")}</dd>${m.address ? `<dt>Adresa</dt><dd>${esc(m.address)}</dd>` : ""}<dt>Izvor</dt><dd>${m.source === "narudzba" ? "Učlanjen uz narudžbu" : "Prijava na sajtu"}</dd>
+        <dt>Saglasnost</dt><dd>Da, ${when(m.consentAt || m.created)}</dd>${(m.orders || []).length ? `<dt>Narudžbe</dt><dd>${m.orders.map(esc).join(", ")}</dd>` : ""}</dl>
+        <div class="line" style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap"><a class="call" href="tel:${esc(telHref(m.phone))}">Pozovi</a><a class="call viber" href="${viberHref(m.phone)}">Viber</a></div>
+      </div><div class="actions">
+        <label>Status poziva<select data-mstatus>${Object.entries(MST).map(([k, v]) => `<option value="${k}" ${m.status === k ? "selected" : ""}>${v.label}</option>`).join("")}</select></label>
+        <label>Agent<input data-magent value="${esc(m.agent || "")}" placeholder="Ime agenta koji zove"></label>
+        <label>Bilješka<textarea data-mnote rows="3" placeholder="npr. zainteresovana za ZARA BUBBLE deku, nazvati u petak">${esc(m.note || "")}</textarea></label>
+        <div class="line"><button class="btn" data-msave>Sačuvaj</button></div>
+        ${m.lastContactAt ? `<p class="date">Zadnja promjena statusa: ${when(m.lastContactAt)}</p>` : ""}
+      </div></div>` : ""}
+    </article>`;
+  }).join("");
+}
+$("#members").addEventListener("click", async e => {
+  const art = e.target.closest(".order"); if (!art) return;
+  const nr = art.dataset.nr, m = members.find(x => x.nr === nr);
+  if (e.target.closest("[data-mtoggle]")) { mopen.has(nr) ? mopen.delete(nr) : mopen.add(nr); renderMembers(); return; }
+  if (e.target.closest("[data-msave]")) {
+    try {
+      const res = await api("members/" + encodeURIComponent(nr), { method: "PATCH", body: JSON.stringify({ status: art.querySelector("[data-mstatus]").value, agent: art.querySelector("[data-magent]").value, note: art.querySelector("[data-mnote]").value }) });
+      Object.assign(m, res.member); toast("Sačuvano"); renderMembers();
+    } catch (err) { if (err.message !== "401") toast(err.message); }
+  }
+});
+$("#mfilters").addEventListener("click", e => { const b = e.target.closest("[data-mf]"); if (b) { mfilter = b.dataset.mf; renderMembers(); } });
+$("#msearch").addEventListener("input", e => { mquery = e.target.value; renderMembers(); });
+$("#csv").onclick = () => {
+  const cols = [["nr", "Kartica"], ["name", "Ime i prezime"], ["phone", "Telefon"], ["city", "Grad"], ["email", "Email"], ["address", "Adresa"], ["status", "Status"], ["agent", "Agent"], ["note", "Bilješka"], ["created", "Učlanjen"], ["source", "Izvor"], ["spent", "Potrošio KM"]];
+  const cell = v => '"' + String(v ?? "").replace(/"/g, '""') + '"';
+  const rows = members.map(m => cols.map(([k]) => k === "status" ? (MST[m.status] || {}).label || m.status : k === "created" ? when(m.created) : k === "spent" ? String(m.spent || 0).replace(".", ",") : m[k]).map(cell).join(";"));
+  const blob = new Blob(["﻿" + [cols.map(c => cell(c[1])).join(";")].concat(rows).join("\r\n")], { type: "text/csv;charset=utf-8" });
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "BelloraHome-Klub-" + new Date().toISOString().slice(0, 10) + ".csv"; a.click();
+};
+function setTab(t) {
+  tab = t; document.querySelectorAll("#tabs button").forEach(b => b.classList.toggle("active", b.dataset.tab === t));
+  $("#ordersView").hidden = t !== "orders"; $("#klubView").hidden = t !== "klub";
+  try { history.replaceState(null, "", t === "klub" ? "#klub" : location.pathname); } catch {}
+  if (t === "klub") renderMembers();
+}
+$("#tabs").addEventListener("click", e => { const b = e.target.closest("[data-tab]"); if (b) setTab(b.dataset.tab); });
+
 function logout(msg) {
   token = null; ss.del("bh_admin"); orders = [];
   $("#app").hidden = true; $("#login").hidden = false; $("#loginErr").textContent = msg || "";
 }
 async function start() {
   $("#login").hidden = true; $("#app").hidden = false;
-  await load();
+  setTab(tab);
+  await Promise.all([load(), loadMembers()]);
 }
 $("#loginForm").onsubmit = async e => {
   e.preventDefault();
@@ -316,7 +431,7 @@ $("#loginForm").onsubmit = async e => {
   } catch (err) { if (err.message !== "401") $("#loginErr").textContent = err.message; }
 };
 if (token) start();
-setInterval(() => { if (token && !document.hidden) load(true); }, 60000);
+setInterval(() => { if (token && !document.hidden) { load(true); loadMembers(true); } }, 60000);
 </script>
 </body>
 </html>
