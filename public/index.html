@@ -96,7 +96,7 @@ button{cursor:pointer;background:none;border:0;padding:0}
 
 /* hero */
 .hero{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(0,1fr);gap:16px;margin-top:22px}
-.sl{position:relative;border-radius:22px;overflow:hidden;min-height:400px;background:var(--night)}
+.sl{container-type:inline-size;position:relative;border-radius:22px;overflow:hidden;min-height:400px;background:var(--night)}
 .sl-i{position:absolute;inset:0;opacity:0;transition:opacity .7s;pointer-events:none}
 .sl-i.on{opacity:1;pointer-events:auto}
 .sl-i img{width:100%;height:100%;object-fit:cover}
@@ -117,8 +117,9 @@ button{cursor:pointer;background:none;border:0;padding:0}
 .sl-i.win::after{background:radial-gradient(ellipse at 50% 55%,rgba(20,14,10,.35) 0%,rgba(20,14,10,.62) 70%),linear-gradient(0deg,rgba(20,14,10,.55),rgba(20,14,10,0) 50%)}
 .sl-i.win .sl-t{left:50%;right:auto;transform:translate(-50%,-50%);text-align:center;max-width:min(760px,92%)}
 .sl-i.win .sl-t p{margin-inline:auto}
-.sl-i.win .sl-t h1,.sl-i.win .sl-t h2{font-family:var(--sans);font-weight:800;text-transform:uppercase;font-size:clamp(40px,6.4vw,86px);line-height:.95;letter-spacing:-.025em;text-shadow:0 4px 30px rgba(0,0,0,.45)}
-.sl-i.win .hot{display:block;color:#ffb07a;background:linear-gradient(180deg,#ffd29a 0%,#ff8a4c 55%,#e0532a 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 22px rgba(255,120,60,.55))}
+.sl-i.win .sl-t h1,.sl-i.win .sl-t h2{font-family:var(--sans);font-weight:800;text-transform:uppercase;font-size:clamp(30px,8.4cqw,74px);line-height:.98;letter-spacing:-.025em;text-shadow:0 4px 30px rgba(0,0,0,.45)}
+.sl-i.win .nw{display:block;white-space:nowrap}
+.sl-i.win .hot{display:block;white-space:nowrap;color:#ffb07a;background:linear-gradient(180deg,#ffd29a 0%,#ff8a4c 55%,#e0532a 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 22px rgba(255,120,60,.55))}
 .sl-i.win .eyb{background:#fff;color:var(--tera)}
 .snow{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
 .sl-t{z-index:2}
@@ -380,7 +381,7 @@ button{cursor:pointer;background:none;border:0;padding:0}
   .sl-i::after{background:linear-gradient(0deg,rgba(25,18,13,.85) 0%,rgba(25,18,13,.35) 60%,rgba(25,18,13,.1))}
   .sl-t{top:auto;bottom:56px;transform:none;max-width:none;right:22px}
   .sl-i.win .sl-t{left:22px;right:22px;top:50%;bottom:auto;transform:translateY(-50%);max-width:none}
-  .sl-i.win .sl-t h1{font-size:clamp(40px,11vw,56px)}
+  .sl-i.win .sl-t h1{font-size:clamp(28px,10.4cqw,56px)}
   .sl-t p{font-size:15px;margin-bottom:16px}
   .sl-a{display:none}
   .side{grid-template-columns:1fr}
@@ -514,7 +515,7 @@ const TILE = { jastuci: 'p/rj-009.webp', posteljina: 'p/rj-021.webp', jorgani: '
 const TOP = [6, 46, 149, 28, 190, 164, 47, 5, 160, 198, 34, 175, 208, 15, 165, 217, 174, 211];
 const FREE = 100, SHIP = 8, PROMOS = { BELLORA10: 0.10 };
 const SLIDES = [
-  { img: 'https://images.unsplash.com/photo-1613831491601-7e7634b7f622?auto=format&fit=crop&w=1800&q=75', win: true, eyb: '❄ Blagdanska ponuda', h: '<span class="hot">Vruće cijene</span> usred zime!', p: 'Deke, jorgani, posteljina i sve za praznike po cijenama koje griju.', cta: 'Pogledaj ponudu', href: '#najtrazenije' },
+  { img: 'https://images.unsplash.com/photo-1613831491601-7e7634b7f622?auto=format&fit=crop&w=1800&q=75', win: true, eyb: '❄ Blagdanska ponuda', h: '<span class="hot">Vruće cijene</span><span class="nw">usred zime!</span>', p: 'Deke, jorgani, posteljina i sve za praznike po cijenama koje griju.', cta: 'Pogledaj ponudu', href: '#najtrazenije' },
   { img: 'img/pg3.webp', eyb: 'Zimska kolekcija', h: 'Ušuškaj se <em>ove zime</em>', p: 'Deke, jorgani i prekrivači koji griju cijeli dom.', cta: 'Pogledaj jorgane i deke', href: '#k-jorgani' },
   { img: 'img/bed2f.webp', eyb: 'Royal Jelly posteljina', h: 'Spavaj kao <em>u hotelu</em>', p: 'Mekana posteljina i jastuci za mirne noći, već od 7 KM.', cta: 'Pogledaj spavaću sobu', href: '#g-soba' },
   { img: 'img/WHwu_Pzo37s.webp', eyb: 'Kuhinja', h: 'Kuhinja u kojoj <em>se okuplja</em>', p: 'Šerpe, tave, noževi i aparati za svaki dan.', cta: 'Pogledaj kuhinju', href: '#g-kuhinja' },
