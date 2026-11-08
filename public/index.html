@@ -206,7 +206,9 @@ button{cursor:pointer;background:none;border:0;padding:0}
 /* product card */
 .pc{color:var(--ink);background:var(--card);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;position:relative;transition:box-shadow .15s,transform .15s;min-width:0}
 .pc:hover{box-shadow:0 14px 34px rgba(30,27,24,.1);transform:translateY(-2px)}
-.pc .im{aspect-ratio:1;background:#f3eee7;overflow:hidden;display:block;width:100%}
+.pc .qb{position:absolute;left:10px;bottom:10px;display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.94);color:#35502f;font-size:11px;font-weight:800;padding:4px 9px 4px 7px;border-radius:999px;box-shadow:0 2px 8px rgba(30,27,24,.08)}
+.pc .qb .ic{width:13px;height:13px;stroke-width:2.6}
+.pc .im{position:relative;aspect-ratio:1;background:#f3eee7;overflow:hidden;display:block;width:100%}
 .pc .im img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
 .pc:hover .im img{transform:scale(1.04)}
 .pc .bd{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
@@ -630,7 +632,7 @@ function card(p, opt) {
   return '<article class="pc">' +
     (badges.length ? '<div class="bdg">' + badges.join('') + '</div>' : '') +
     '<button class="wl' + (wish[p.id] ? ' on' : '') + '" data-wish="' + p.id + '" aria-label="' + (wish[p.id] ? 'Ukloni s liste želja' : 'Dodaj na listu želja') + '" aria-pressed="' + (wish[p.id] ? 'true' : 'false') + '">' + ic('heart', 'ic-s') + '</button>' +
-    '<button class="im" data-qv="' + p.id + '" aria-label="Pogledaj ' + esc(p.n) + '"><img loading="lazy" src="' + esc(v0.i) + '" alt="' + esc(p.n) + '"></button>' +
+    '<button class="im" data-qv="' + p.id + '" aria-label="Pogledaj ' + esc(p.n) + '"><img loading="lazy" src="' + esc(v0.i) + '" alt="' + esc(p.n) + '"><span class="qb">' + ic('check', 'ic-s') + 'Garancija kvaliteta</span></button>' +
     '<div class="bd"><span class="ct">' + esc(SHORT[p.c] || '') + '</span>' +
     '<button class="nm" data-qv="' + p.id + '">' + esc(p.n) + '</button>' +
     (vn ? '<span class="vr">' + vn + '</span>' : '') +
@@ -902,7 +904,7 @@ function renderQv() {
     '<h3>' + esc(p.n) + '</h3><div class="pz">' + fmt(v.p) + '</div>' + (p.d ? '<p class="ds2">' + esc(p.d) + '</p>' : '');
   if (p.v.length > 1) h += '<div class="vl">Izaberi: <b>' + esc(VL(v)) + '</b></div><div class="vs">' + p.v.map((x, i) => '<button class="vb' + (i === qvState.vi ? ' on' : '') + '" data-vi="' + i + '" aria-pressed="' + (i === qvState.vi) + '">' + esc(VL(x)) + '<small>' + fmt(x.p) + '</small></button>').join('') + '</div>';
   h += '<div class="qv-r"><div class="qty"><button data-qq="-1" aria-label="Manje">' + ic('minus', 'ic-s') + '</button><span>' + qvState.q + '</span><button data-qq="1" aria-label="Više">' + ic('plus', 'ic-s') + '</button></div><button class="btn btn-t" data-qvadd>' + ic('cart', 'ic-s') + 'Dodaj u korpu · ' + fmt(v.p * qvState.q) + '</button></div>' +
-    '<ul class="trust"><li>' + ic('cash', 'ic-s') + 'Plaćanje pouzećem</li><li>' + ic('truck', 'ic-s') + 'Besplatna dostava iznad 100 KM</li><li>' + ic('back', 'ic-s') + '30 dana za povrat</li></ul></div></div></div>';
+    '<ul class="trust"><li>' + ic('check', 'ic-s') + 'Garancija kvaliteta: 30 dana za povrat ako nisi zadovoljan/na</li><li>' + ic('cash', 'ic-s') + 'Plaćanje pouzećem</li><li>' + ic('truck', 'ic-s') + 'Besplatna dostava iznad 100 KM</li><li>' + ic('back', 'ic-s') + '30 dana za povrat</li></ul></div></div></div>';
   $('#ov').innerHTML = h;
 }
 const F = ['name', 'phone', 'address', 'city', 'zip', 'email', 'note'];
