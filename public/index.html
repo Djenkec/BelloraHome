@@ -206,7 +206,10 @@ button{cursor:pointer;background:none;border:0;padding:0}
 /* product card */
 .pc{color:var(--ink);background:var(--card);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;position:relative;transition:box-shadow .15s,transform .15s;min-width:0}
 .pc:hover{box-shadow:0 14px 34px rgba(30,27,24,.1);transform:translateY(-2px)}
-.pc .qb{position:absolute;left:10px;bottom:10px;display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.94);color:#35502f;font-size:11px;font-weight:800;padding:4px 9px 4px 7px;border-radius:999px;box-shadow:0 2px 8px rgba(30,27,24,.08)}
+.pc .qbw{position:absolute;left:10px;bottom:10px;right:10px;display:flex;flex-direction:column;align-items:flex-start;gap:4px;pointer-events:none}
+.pc .fb{background:rgba(53,80,47,.92);color:#fff;font-size:10.5px;font-weight:800;letter-spacing:.02em;padding:3px 9px;border-radius:999px}
+@media(max-width:600px){.pc .fb:nth-child(2){display:none}}
+.pc .qb{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.94);color:#35502f;font-size:11px;font-weight:800;padding:4px 9px 4px 7px;border-radius:999px;box-shadow:0 2px 8px rgba(30,27,24,.08)}
 .pc .qb .ic{width:13px;height:13px;stroke-width:2.6}
 .pc .im{position:relative;aspect-ratio:1;background:#f3eee7;overflow:hidden;display:block;width:100%}
 .pc .im img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
@@ -383,7 +386,11 @@ button{cursor:pointer;background:none;border:0;padding:0}
 @keyframes pop{from{opacity:0;transform:translate(-50%,-46%)}}
 .modal .xb{position:absolute;top:12px;right:12px;background:#fff;z-index:2}
 .qv{display:grid;grid-template-columns:1fr 1fr}
-.qv-i{background:#f3eee7;aspect-ratio:1}
+.qv-i{background:#f3eee7;aspect-ratio:1;position:relative}
+.qv-t{position:absolute;left:10px;bottom:10px;display:flex;gap:6px}
+.qv-t button{width:52px;height:52px;border-radius:10px;overflow:hidden;border:2px solid #fff;box-shadow:0 2px 8px rgba(30,27,24,.15);background:#fff;padding:0}
+.qv-t button.on{border-color:var(--ink,#35502f)}
+.qv-t img{width:100%;height:100%;object-fit:cover}
 .qv-i img{width:100%;height:100%;object-fit:cover}
 .qv-b{padding:30px 28px;display:flex;flex-direction:column;gap:12px}
 .qv-b h3{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.15;margin:0;padding-right:30px}
@@ -632,7 +639,7 @@ function card(p, opt) {
   return '<article class="pc">' +
     (badges.length ? '<div class="bdg">' + badges.join('') + '</div>' : '') +
     '<button class="wl' + (wish[p.id] ? ' on' : '') + '" data-wish="' + p.id + '" aria-label="' + (wish[p.id] ? 'Ukloni s liste želja' : 'Dodaj na listu želja') + '" aria-pressed="' + (wish[p.id] ? 'true' : 'false') + '">' + ic('heart', 'ic-s') + '</button>' +
-    '<button class="im" data-qv="' + p.id + '" aria-label="Pogledaj ' + esc(p.n) + '"><img loading="lazy" src="' + esc(v0.i) + '" alt="' + esc(p.n) + '"><span class="qb">' + ic('check', 'ic-s') + 'Garancija kvaliteta</span></button>' +
+    '<button class="im" data-qv="' + p.id + '" aria-label="Pogledaj ' + esc(p.n) + '"><img loading="lazy" src="' + esc(v0.i) + '" alt="' + esc(p.n) + '"><span class="qbw">' + (p.b || []).slice(0, 2).map((t) => '<span class="fb">' + esc(t) + '</span>').join('') + '<span class="qb">' + ic('check', 'ic-s') + 'Garancija kvaliteta</span></span></button>' +
     '<div class="bd"><span class="ct">' + esc(SHORT[p.c] || '') + '</span>' +
     '<button class="nm" data-qv="' + p.id + '">' + esc(p.n) + '</button>' +
     (vn ? '<span class="vr">' + vn + '</span>' : '') +
@@ -898,8 +905,9 @@ function renderQv() {
   const p = byId[qvState.id]; if (!p) return closeOv();
   const v = p.v[qvState.vi];
   const g = catOf(p.c);
+  const gal = [v.i].concat(v.g || p.g || []);
   let h = '<div class="scrim" data-close></div><div class="modal" role="dialog" aria-modal="true" aria-label="' + esc(p.n) + '"><button class="xb" data-close aria-label="Zatvori">' + ic('x') + '</button><div class="qv">' +
-    '<div class="qv-i"><img src="' + esc(v.i) + '" alt="' + esc(p.n) + '"></div><div class="qv-b">' +
+    '<div class="qv-i"><img src="' + esc(gal[qvState.gi || 0] || v.i) + '" alt="' + esc(p.n) + '">' + (gal.length > 1 ? '<div class="qv-t">' + gal.map((x, i) => '<button data-gi="' + i + '" class="' + ((qvState.gi || 0) === i ? 'on' : '') + '" aria-label="Slika ' + (i + 1) + '"><img src="' + esc(x) + '" alt=""></button>').join('') + '</div>' : '') + '</div><div class="qv-b">' +
     '<nav class="crumb"><a href="#g-' + g.k + '" data-close>' + g.name + '</a><span>›</span><a href="#k-' + p.c + '" data-close>' + SHORT[p.c] + '</a></nav>' +
     '<h3>' + esc(p.n) + '</h3><div class="pz">' + fmt(v.p) + '</div>' + (p.d ? '<p class="ds2">' + esc(p.d) + '</p>' : '');
   if (p.v.length > 1) h += '<div class="vl">Izaberi: <b>' + esc(VL(v)) + '</b></div><div class="vs">' + p.v.map((x, i) => '<button class="vb' + (i === qvState.vi ? ' on' : '') + '" data-vi="' + i + '" aria-pressed="' + (i === qvState.vi) + '">' + esc(VL(x)) + '<small>' + fmt(x.p) + '</small></button>').join('') + '</div>';
@@ -1041,7 +1049,7 @@ function saveCard() {
 
 // ---------- events ----------
 document.addEventListener('click', (e) => {
-  const t = e.target.closest('[data-qv],[data-add],[data-wish],[data-rail],[data-slide],[data-sl],[data-close],[data-q],[data-rm],[data-vi],[data-qq],[data-qvadd],[data-co],[data-more],[data-join],[data-unmember],[data-savecard],[data-open-cart]');
+  const t = e.target.closest('[data-qv],[data-add],[data-wish],[data-rail],[data-slide],[data-sl],[data-close],[data-q],[data-rm],[data-vi],[data-gi],[data-qq],[data-qvadd],[data-co],[data-more],[data-join],[data-unmember],[data-savecard],[data-open-cart]');
   if (!t) { if (!e.target.closest('#srch')) $('#sug').hidden = true; if (!e.target.closest('#mega,#allcBtn')) closeMega(); return; }
   const d = t.dataset;
   if (d.qv) { $('#sug').hidden = true; if (ov) closeOv(); openOv('qv', +d.qv); }
@@ -1053,7 +1061,8 @@ document.addEventListener('click', (e) => {
   else if (d.close !== undefined) { if (ov === 'co' && coState && coState.done) coState = null; closeOv(); }
   else if (d.q) { setQ(d.q, (cart[d.q] || 0) + +d.d); }
   else if (d.rm) { setQ(d.rm, 0); }
-  else if (d.vi) { qvState.vi = +d.vi; renderQv(); }
+  else if (d.vi) { qvState.vi = +d.vi; qvState.gi = 0; renderQv(); }
+  else if (d.gi) { qvState.gi = +d.gi; renderQv(); }
   else if (d.qq) { qvState.q = Math.max(1, Math.min(99, qvState.q + +d.qq)); renderQv(); }
   else if (d.qvadd !== undefined) { addToCart(qvState.id, qvState.vi, qvState.q); closeOv(); }
   else if (d.co !== undefined) { coState = null; ov = 'co'; renderCo(); setTimeout(() => { const i = $('#co-name'); if (i && !i.value) i.focus(); }, 40); }
