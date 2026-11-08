@@ -114,6 +114,14 @@ button{cursor:pointer;background:none;border:0;padding:0}
 .btn-k{background:var(--ink);color:#fff}
 .btn-o{border:1.5px solid var(--line);background:var(--card)}
 .btn[disabled]{opacity:.55;transform:none;cursor:default}
+.sl-i.win::after{background:radial-gradient(ellipse at 50% 55%,rgba(20,14,10,.35) 0%,rgba(20,14,10,.62) 70%),linear-gradient(0deg,rgba(20,14,10,.55),rgba(20,14,10,0) 50%)}
+.sl-i.win .sl-t{left:50%;right:auto;transform:translate(-50%,-50%);text-align:center;max-width:min(760px,92%)}
+.sl-i.win .sl-t p{margin-inline:auto}
+.sl-i.win .sl-t h1,.sl-i.win .sl-t h2{font-family:var(--sans);font-weight:800;text-transform:uppercase;font-size:clamp(40px,6.4vw,86px);line-height:.95;letter-spacing:-.025em;text-shadow:0 4px 30px rgba(0,0,0,.45)}
+.sl-i.win .hot{display:block;color:#ffb07a;background:linear-gradient(180deg,#ffd29a 0%,#ff8a4c 55%,#e0532a 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 22px rgba(255,120,60,.55))}
+.sl-i.win .eyb{background:#fff;color:var(--tera)}
+.snow{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.sl-t{z-index:2}
 .sl-n{position:absolute;z-index:3;bottom:18px;left:clamp(22px,4.5vw,52px);display:flex;gap:8px}
 .sl-n button{width:10px;height:10px;border-radius:5px;background:rgba(255,255,255,.45);transition:width .25s,background .25s}
 .sl-n button.on{width:30px;background:#fff}
@@ -371,6 +379,8 @@ button{cursor:pointer;background:none;border:0;padding:0}
   .sl{min-height:360px}
   .sl-i::after{background:linear-gradient(0deg,rgba(25,18,13,.85) 0%,rgba(25,18,13,.35) 60%,rgba(25,18,13,.1))}
   .sl-t{top:auto;bottom:56px;transform:none;max-width:none;right:22px}
+  .sl-i.win .sl-t{left:22px;right:22px;top:50%;bottom:auto;transform:translateY(-50%);max-width:none}
+  .sl-i.win .sl-t h1{font-size:clamp(40px,11vw,56px)}
   .sl-t p{font-size:15px;margin-bottom:16px}
   .sl-a{display:none}
   .side{grid-template-columns:1fr}
@@ -504,6 +514,7 @@ const TILE = { jastuci: 'p/rj-009.webp', posteljina: 'p/rj-021.webp', jorgani: '
 const TOP = [6, 46, 149, 28, 190, 164, 47, 5, 160, 198, 34, 175, 208, 15, 165, 217, 174, 211];
 const FREE = 100, SHIP = 8, PROMOS = { BELLORA10: 0.10 };
 const SLIDES = [
+  { img: 'https://images.unsplash.com/photo-1613831491601-7e7634b7f622?auto=format&fit=crop&w=1800&q=75', win: true, eyb: '❄ Blagdanska ponuda', h: '<span class="hot">Vruće cijene</span> usred zime!', p: 'Deke, jorgani, posteljina i sve za praznike po cijenama koje griju.', cta: 'Pogledaj ponudu', href: '#najtrazenije' },
   { img: 'img/pg3.webp', eyb: 'Zimska kolekcija', h: 'Ušuškaj se <em>ove zime</em>', p: 'Deke, jorgani i prekrivači koji griju cijeli dom.', cta: 'Pogledaj jorgane i deke', href: '#k-jorgani' },
   { img: 'img/bed2f.webp', eyb: 'Royal Jelly posteljina', h: 'Spavaj kao <em>u hotelu</em>', p: 'Mekana posteljina i jastuci za mirne noći, već od 7 KM.', cta: 'Pogledaj spavaću sobu', href: '#g-soba' },
   { img: 'img/WHwu_Pzo37s.webp', eyb: 'Kuhinja', h: 'Kuhinja u kojoj <em>se okuplja</em>', p: 'Šerpe, tave, noževi i aparati za svaki dan.', cta: 'Pogledaj kuhinju', href: '#g-kuhinja' },
@@ -560,9 +571,9 @@ function home() {
   let h = '<div class="wrap">';
   // hero
   h += '<section class="hero" aria-label="Ponuda"><div class="sl" id="sl">' + SLIDES.map((s, i) =>
-    '<div class="sl-i' + (i === 0 ? ' on' : '') + '" aria-hidden="' + (i === 0 ? 'false' : 'true') + '"><img src="' + s.img + '" alt="" ' + (i ? 'loading="lazy"' : 'fetchpriority="high"') + '>' +
+    '<div class="sl-i' + (i === 0 ? ' on' : '') + (s.win ? ' win' : '') + '" aria-hidden="' + (i === 0 ? 'false' : 'true') + '"><img src="' + s.img + '" alt="" ' + (i ? 'loading="lazy"' : 'fetchpriority="high"') + '>' +
     '<div class="sl-t"><span class="eyb">' + s.eyb + '</span>' + (i === 0 ? '<h1>' : '<h2>') + s.h + (i === 0 ? '</h1>' : '</h2>') + '<p>' + s.p + '</p><a class="btn btn-t" href="' + s.href + '">' + s.cta + ic('r', 'ic-s') + '</a></div></div>').join('') +
-    '<div class="sl-n">' + SLIDES.map((s, i) => '<button data-slide="' + i + '" class="' + (i === 0 ? 'on' : '') + '" aria-label="Slajd ' + (i + 1) + '"></button>').join('') + '</div>' +
+    '<canvas class="snow" id="snow" aria-hidden="true"></canvas><div class="sl-n">' + SLIDES.map((s, i) => '<button data-slide="' + i + '" class="' + (i === 0 ? 'on' : '') + '" aria-label="Slajd ' + (i + 1) + '"></button>').join('') + '</div>' +
     '<div class="sl-a"><button data-sl="-1" aria-label="Prethodni">' + ic('l') + '</button><button data-sl="1" aria-label="Sljedeći">' + ic('r') + '</button></div></div>' +
     '<div class="side">' +
     (mop ? '<button class="pr pr-mop" data-qv="208"><div class="tx"><span class="tag">Hit cijena</span><h3>' + esc(mop.n) + '</h3><div class="big">' + fmt(minP(mop)).replace(' KM', '<small> KM</small>') + '</div><span class="lnk">Kupi odmah' + ic('r', 'ic-s') + '</span></div><img src="' + esc(mop.v[0].i) + '" alt=""></button>' : '') +
@@ -581,7 +592,7 @@ function home() {
   h += '<section class="band"><div class="sh"><div><span class="eyb">★ Najprodavanije</span><h2>Najtraženije <em>ovog mjeseca</em></h2><p>Ono što kupci najčešće stavljaju u korpu.</p></div><a class="more" style="color:#f2b38f" href="#najtrazenije">Pogledaj sve' + ic('r', 'ic-s') + '</a></div>' + rail('r-top', top) + '</section>';
   // rows
   h += '<section class="sec"><div class="sh"><div><h2>Za tvoju <em>spavaću sobu</em></h2><p>Jastuci, posteljina, jorgani i deke.</p></div><a class="more" href="#g-soba">Pogledaj sve (' + countIn(GR[0].cats) + ')' + ic('r', 'ic-s') + '</a></div>' + rail('r-soba', pick(GR[0].cats.slice(0, 3), 14)) + '</section>';
-  h += '</div><div class="mq" aria-hidden="true"><div class="mq-t">' + [0, 1].map(() => '<span>Dom koji te čeka <i>✦</i> Plaćanje pouzećem <i>✦</i> Dostava u cijeloj BiH <i>✦</i> 30 dana za povrat <i>✦</i> Kod BELLORA10 za −10% <i>✦</i></span>').join('') + '</div></div><div class="wrap">';
+  h += '</div><div class="mq" aria-hidden="true"><div class="mq-t">' + [0, 1].map(() => '<span>Vruće cijene usred zime <i>❄</i> Dom koji te čeka <i>✦</i> Plaćanje pouzećem <i>✦</i> Dostava u cijeloj BiH <i>✦</i> 30 dana za povrat <i>✦</i> Kod BELLORA10 za −10% <i>✦</i></span>').join('') + '</div></div><div class="wrap">';
   h += '<section class="sec"><div class="sh"><div><h2>Kuhinja <em>za uživanje</em></h2><p>Šerpe, tave, noževi, čaše i servisi.</p></div><a class="more" href="#g-kuhinja">Pogledaj sve (' + countIn(GR[1].cats) + ')' + ic('r', 'ic-s') + '</a></div>' + rail('r-kuh', pick(['posudje', 'pribor', 'servis'], 14)) + '</section>';
   h += '<section class="sec duo">' +
     '<a class="ban" href="#k-prekrivaci"><img loading="lazy" src="img/eBN71NgyPU8.webp" alt=""><div><span class="eyb">Prekrivači za sofu</span><h3>Nova sofa, <em>bez nove sofe</em></h3><span>Više boja i veličina, od ' + fmt(Math.min.apply(null, K.filter((p) => p.c === 'prekrivaci').map(minP).concat([999]))) + '</span></div></a>' +
@@ -658,8 +669,37 @@ function route() {
 }
 function startSlides() {
   if (!$('#sl')) return;
+  startSnow();
   slideI = 0; clearInterval(slideT);
   slideT = setInterval(() => { if (!document.hidden && !$('#sl:hover')) goSlide(slideI + 1); }, 6500);
+}
+
+// ---------- snow ----------
+let snowRaf = 0;
+function startSnow() {
+  cancelAnimationFrame(snowRaf);
+  const c = document.getElementById('snow'); if (!c) return;
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const ctx = c.getContext('2d'); let W = 0, H = 0, dpr = Math.min(2, window.devicePixelRatio || 1);
+  const fit = () => { const r = c.getBoundingClientRect(); W = r.width; H = r.height; c.width = W * dpr; c.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
+  fit(); window.addEventListener('resize', fit);
+  const N = Math.round(Math.min(160, W / 6));
+  const F = Array.from({ length: N }, () => ({ x: Math.random() * W, y: Math.random() * H, r: 0.8 + Math.random() * 2.6, s: 0.35 + Math.random() * 1.1, w: Math.random() * Math.PI * 2, o: 0.45 + Math.random() * 0.5 }));
+  let t = 0;
+  const tick = () => {
+    if (!document.body.contains(c)) return;
+    if (!document.hidden) {
+      t += 0.01; ctx.clearRect(0, 0, W, H);
+      for (const f of F) {
+        f.y += f.s; f.x += Math.sin(t * 2 + f.w) * 0.35 + 0.15;
+        if (f.y > H + 4) { f.y = -4; f.x = Math.random() * W; }
+        if (f.x > W + 4) f.x = -4;
+        ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2); ctx.fillStyle = 'rgba(255,255,255,' + f.o + ')'; ctx.fill();
+      }
+    }
+    snowRaf = requestAnimationFrame(tick);
+  };
+  tick();
 }
 function goSlide(i) {
   const items = document.querySelectorAll('.sl-i'); if (!items.length) return;
