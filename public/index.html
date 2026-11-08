@@ -505,7 +505,7 @@ button{cursor:pointer;background:none;border:0;padding:0}
     <span><svg class="ic ic-s"><use href="#i-cash"/></svg>Plaćanje <b>pouzećem</b></span>
     <span><svg class="ic ic-s"><use href="#i-truck"/></svg>Besplatna dostava iznad <b>100 KM</b></span>
     <span><svg class="ic ic-s"><use href="#i-back"/></svg>30 dana za povrat</span>
-    <span><svg class="ic ic-s"><use href="#i-tag"/></svg><a href="#klub" style="opacity:1">Članovi kluba <b>−10%</b></a></span>
+    <span><svg class="ic ic-s"><use href="#i-tag"/></svg><a href="#klub" style="opacity:1">Bellora Club <b>−10%</b></a></span>
   </div>
   <a href="mailto:bellora.home1@gmail.com">Pišite nam: bellora.home1@gmail.com</a>
 </div></div>
@@ -549,7 +549,7 @@ button{cursor:pointer;background:none;border:0;padding:0}
       <a href="#kako-naruciti">Kako naručiti</a>
       <a href="#dostava">Dostava i plaćanje</a>
       <a href="#dostava">Povrat u 30 dana</a>
-      <a href="#klub">BelloraHome Klub</a>
+      <a href="#klub">Bellora Club</a>
       <a href="#privatnost">Privatnost</a>
     </div>
     <div><h4>Kontakt</h4>
@@ -644,7 +644,7 @@ function home() {
     '<div class="sl-a"><button data-sl="-1" aria-label="Prethodni">' + ic('l') + '</button><button data-sl="1" aria-label="Sljedeći">' + ic('r') + '</button></div></div>' +
     '<div class="side">' +
     '<a class="pr pr-mop pr-zara" href="#zara-bubble"><div class="tx"><span class="tag">Novo u ponudi</span><h3>Deka ZARA BUBBLE</h3><p class="zp">Gusto krzno · 4 boje</p><div class="sw"><i style="background:#e9dccb"></i><i style="background:#b9a0b8"></i><i style="background:#a9a9ad"></i><i style="background:#7a5a46"></i></div><span class="lnk">Pogledaj' + ic('r', 'ic-s') + '</span></div><img src="img/zb-produkt.webp" alt="Deka ZARA BUBBLE u četiri boje"></a>' +
-    '<div class="pr pr-code"><span class="deco"></span><span class="tag" style="background:#fff;color:var(--tera)">BelloraHome Klub</span><h3>' + (member ? 'Tvoja kartica ' + esc(member.nr) : '−10% na sve, uvijek') + '</h3><span>' + (member ? 'Popust od 10% se sam računa u korpi.' : 'Učlani se besplatno i dobij člansku karticu.') + '</span><button class="code" data-join>' + (member ? 'Prikaži karticu' : 'Učlani se') + ' ' + ic('r', 'ic-s') + '</button></div>' +
+    '<div class="pr pr-code"><span class="deco"></span><span class="tag" style="background:#fff;color:var(--tera)">Bellora Club</span><h3>' + (member ? 'Tvoja kartica ' + esc(member.nr) : '−10% na sve, uvijek') + '</h3><span>' + (member ? 'Popust od 10% se sam računa u korpi.' : 'Učlani se besplatno i dobij člansku karticu.') + '</span><button class="code" data-join>' + (member ? 'Prikaži karticu' : 'Učlani se') + ' ' + ic('r', 'ic-s') + '</button></div>' +
     '</div></section>';
   // usp
   h += '<section class="usp" aria-label="Zašto BelloraHome">' +
@@ -667,14 +667,14 @@ function home() {
   h += '<section class="band"><div class="sh"><div><span class="eyb">★ Najprodavanije</span><h2>Najtraženije <em>ovog mjeseca</em></h2><p>Ono što kupci najčešće stavljaju u korpu.</p></div><a class="more" style="color:#f2b38f" href="#najtrazenije">Pogledaj sve' + ic('r', 'ic-s') + '</a></div>' + rail('r-top', top) + '</section>';
   // rows
   h += '<section class="sec"><div class="sh"><div><h2>Za tvoju <em>spavaću sobu</em></h2><p>Jastuci, posteljina, jorgani i deke.</p></div><a class="more" href="#g-soba">Pogledaj sve (' + countIn(GR[0].cats) + ')' + ic('r', 'ic-s') + '</a></div>' + rail('r-soba', pick(GR[0].cats.slice(0, 3), 14)) + '</section>';
-  h += '</div><div class="mq" aria-hidden="true"><div class="mq-t">' + [0, 1].map(() => '<span>Vruće cijene usred zime <i>❄</i> Dom koji te čeka <i>✦</i> Plaćanje pouzećem <i>✦</i> Dostava u cijeloj BiH <i>✦</i> 30 dana za povrat <i>✦</i> Članovi kluba −10% <i>✦</i></span>').join('') + '</div></div><div class="wrap">';
+  h += '</div><div class="mq" aria-hidden="true"><div class="mq-t">' + [0, 1].map(() => '<span>Vruće cijene usred zime <i>❄</i> Dom koji te čeka <i>✦</i> Plaćanje pouzećem <i>✦</i> Dostava u cijeloj BiH <i>✦</i> 30 dana za povrat <i>✦</i> Bellora Club −10% <i>✦</i></span>').join('') + '</div></div><div class="wrap">';
   h += '<section class="sec"><div class="sh"><div><h2>Kuhinja <em>za uživanje</em></h2><p>Šerpe, tave, noževi, čaše i servisi.</p></div><a class="more" href="#g-kuhinja">Pogledaj sve (' + countIn(GR[1].cats) + ')' + ic('r', 'ic-s') + '</a></div>' + rail('r-kuh', pick(['posudje', 'pribor', 'servis'], 14)) + '</section>';
   h += '<section class="sec duo">' +
     '<a class="ban" href="#k-prekrivaci"><img loading="lazy" src="img/eBN71NgyPU8.webp" alt=""><div><span class="eyb">Prekrivači za sofu</span><h3>Nova sofa, <em>bez nove sofe</em></h3><span>Više boja i veličina, od ' + fmt(Math.min.apply(null, K.filter((p) => p.c === 'prekrivaci').map(minP).concat([999]))) + '</span></div></a>' +
     '<a class="ban" href="#k-aparati"><img loading="lazy" src="img/hi-kit.webp" alt=""><div><span class="eyb">Kućanski aparati</span><h3>Pomoćnici <em>u kuhinji</em></h3><span>Blenderi, sokovnici, kuhala i friteze</span></div></a></section>';
   h += '<section class="sec"><div class="sh"><div><h2>Mali <em>kućanski aparati</em></h2><p>Blenderi, sokovnici, kuhala, tosteri i više.</p></div><a class="more" href="#k-aparati">Pogledaj sve (' + countIn(['aparati']) + ')' + ic('r', 'ic-s') + '</a></div>' + rail('r-ap', pick(['aparati'], 14)) + '</section>';
   h += '<section class="sec"><div class="sh"><div><h2>Čist i <em>uredan dom</em></h2><p>Mopovi, police i pokloni.</p></div><a class="more" href="#g-dom">Pogledaj sve' + ic('r', 'ic-s') + '</a></div>' + rail('r-dom', pick(['ciscenje', 'kupatilo', 'razno'], 14)) + '</section>';
-  h += '<section class="nl" id="klub"><div><span class="eyb">BelloraHome Klub</span><h2 style="margin-top:12px">Postani član. <em>−10% na sve, uvijek.</em></h2><p>Učlanjenje je besplatno i traje minut. Dobiješ člansku karticu, popust od 10% na svaku narudžbu i prvi saznaš za akcije i nove proizvode.</p>' +
+  h += '<section class="nl" id="klub"><div><span class="eyb">Bellora Club</span><h2 style="margin-top:12px">Postani član. <em>−10% na sve, uvijek.</em></h2><p>Učlanjenje je besplatno i traje minut. Dobiješ člansku karticu, popust od 10% na svaku narudžbu i prvi saznaš za akcije i nove proizvode.</p>' +
     '<ul class="nl-b"><li>' + ic('tag', 'ic-s') + '10% popusta na svaku narudžbu</li><li>' + ic('check', 'ic-s') + 'Digitalna članska kartica odmah</li><li>' + ic('heart', 'ic-s') + 'Posebne ponude samo za članove</li></ul></div>' +
     '<div class="nl-c">' + (member ? '<div><span>Tvoja članska kartica</span><b>' + esc(member.nr) + '</b></div><button class="btn btn-t" data-join>Prikaži karticu</button>' : '<div><span>Besplatno učlanjenje</span><b>−10%</b></div><button class="btn btn-t" data-join>Učlani se</button>') + '</div></section>';
   h += '</div>';
@@ -732,11 +732,11 @@ function route() {
     html = listing('Rezultati za „' + esc(q) + '“', items.length + ' proizvoda', items, [{ t: 'Pretraga' }]);
     $('#q').value = q;
   } else if (h === 'privatnost') {
-    html = '<div class="wrap lp"><nav class="crumb"><a href="#">Početna</a><span>›</span><span>Privatnost</span></nav><div class="lp-h"><div><h1>Privatnost i BelloraHome Klub</h1></div></div>' +
-      '<div class="empty" style="text-align:left;max-width:760px"><h3>Koje podatke čuvamo</h3><p>Kad naručiš ili se učlaniš u Klub, čuvamo ime i prezime, telefon, grad, adresu za dostavu i email ako ga upišeš.</p>' +
-      '<h3 style="margin-top:18px">Zašto</h3><p>Podatke koristimo da isporučimo narudžbu, da ti damo popust za članove i, ako si dao/la saglasnost, da te kontaktiramo telefonom, Viberom ili mailom s ponudama Kluba.</p>' +
+    html = '<div class="wrap lp"><nav class="crumb"><a href="#">Početna</a><span>›</span><span>Privatnost</span></nav><div class="lp-h"><div><h1>Privatnost i Bellora Club</h1></div></div>' +
+      '<div class="empty" style="text-align:left;max-width:760px"><h3>Koje podatke čuvamo</h3><p>Kad naručiš ili se učlaniš u Bellora Club, čuvamo ime i prezime, telefon, grad, adresu za dostavu i email ako ga upišeš.</p>' +
+      '<h3 style="margin-top:18px">Zašto</h3><p>Podatke koristimo da isporučimo narudžbu, da ti damo popust za članove Bellora Cluba i, ako si dao/la saglasnost, da te kontaktiramo telefonom, Viberom ili mailom s ponudama Bellora Cluba.</p>' +
       '<h3 style="margin-top:18px">Ko ih vidi</h3><p>Samo BelloraHome i naši prodajni saradnici. Podatke ne prodajemo i ne dajemo trećim stranama, osim kurirskoj službi adresu za dostavu.</p>' +
-      '<h3 style="margin-top:18px">Odjava i brisanje</h3><p>Možeš se odjaviti iz Kluba ili tražiti da obrišemo tvoje podatke u svakom trenutku: piši na bellora.home1@gmail.com ili reci agentu koji te nazove.</p><a class="btn btn-t" href="#">Nazad u shop</a></div></div>';
+      '<h3 style="margin-top:18px">Odjava i brisanje</h3><p>Možeš se odjaviti iz Bellora Cluba ili tražiti da obrišemo tvoje podatke u svakom trenutku: piši na bellora.home1@gmail.com ili reci agentu koji te nazove.</p><a class="btn btn-t" href="#">Nazad u shop</a></div></div>';
   } else if (h === 'dostava' || h === 'kako-naruciti') {
     html = '<div class="wrap lp"><nav class="crumb"><a href="#">Početna</a><span>›</span><span>Kupovina</span></nav><div class="lp-h"><div><h1>Kako naručiti</h1></div></div>' +
       '<div class="empty" style="text-align:left;max-width:760px"><h3>Narudžba za minut</h3><p>1. Dodaj proizvode u korpu.<br>2. Klikni „Naruči“ i upiši ime, telefon i adresu. Registracija nije potrebna.<br>3. Javimo ti se telefonom da potvrdimo narudžbu.<br>4. Paket plaćaš kuriru gotovinom kad stigne.</p>' +
@@ -822,7 +822,7 @@ function suggest() {
 // ---------- cart ----------
 function saveCart() { ls.set('bh_cart3', cart); ls.set('bh_member', member); }
 const clubOn = () => !!member || !!(ov === 'co' && coState && !coState.done && coState.v.join);
-const discLabel = () => member ? 'Klub ' + member.nr : 'Klub, novi član';
+const discLabel = () => member ? 'Bellora Club ' + member.nr : 'Bellora Club, novi član';
 function lines() {
   return Object.keys(cart).map((key) => {
     const pr = key.split(':'); if (pr[0] !== 'k') return null;
@@ -867,7 +867,7 @@ function renderCart() {
   else {
     h += '<div class="shipb">' + (left > 0 ? 'Još <b>' + fmt(left) + '</b> do besplatne dostave' : '<b>Dostava je besplatna!</b>') + '<div class="bar"><i style="width:' + Math.min(100, (t.sub - t.disc) / FREE * 100) + '%"></i></div></div>';
     h += '<div class="dl">' + t.L.map((l) => '<div class="ci"><img src="' + esc(l.v.i) + '" alt=""><div style="flex:1;min-width:0"><div class="n">' + esc(l.name) + '</div><div class="r"><div class="qty"><button data-q="' + l.key + '" data-d="-1" aria-label="Manje">' + ic('minus', 'ic-s') + '</button><span>' + l.q + '</span><button data-q="' + l.key + '" data-d="1" aria-label="Više">' + ic('plus', 'ic-s') + '</button></div><b>' + fmt(l.sum) + '</b></div><button class="rm" data-rm="' + l.key + '">Ukloni</button></div></div>').join('') + '</div>';
-    h += '<div class="df">' + (member ? '<div class="clubok">' + ic('check', 'ic-s') + '<span>Član kluba <b>' + esc(member.nr) + '</b>' + (member.first ? ' · ' + esc(member.first) : '') + '<br><small>Popust od 10% je uračunat.</small></span><button data-unmember>Nije moja</button></div>' :
+    h += '<div class="df">' + (member ? '<div class="clubok">' + ic('check', 'ic-s') + '<span>Bellora Club član <b>' + esc(member.nr) + '</b>' + (member.first ? ' · ' + esc(member.first) : '') + '<br><small>Popust od 10% je uračunat.</small></span><button data-unmember>Nije moja</button></div>' :
       '<form class="promo" id="clubF"><label for="clubIn" class="sr">Broj članske kartice ili telefon</label><input id="clubIn" placeholder="Član? Broj kartice ili telefon"><button type="submit">Primijeni</button></form><p class="pmsg" id="pmsg" hidden></p>' +
       '<p class="joinl">Nisi član? <button data-join>Učlani se besplatno</button> i odmah dobij −10%.</p>') +
       '<div class="ds"><span>Međuzbir</span><span>' + fmt(t.sub) + '</span></div>' + (t.disc ? '<div class="ds"><span>Popust (' + esc(discLabel()) + ', −10%)</span><span>−' + fmt(t.disc) + '</span></div>' : '') +
@@ -895,7 +895,7 @@ function renderCo() {
   const t = totals(); const s = coState;
   let h = '<div class="scrim" data-close></div><div class="modal co" role="dialog" aria-modal="true" aria-label="Naplata"><button class="xb" data-close aria-label="Zatvori">' + ic('x') + '</button>';
   if (s.done) {
-    h += '<div class="done"><div class="ok">' + ic('check') + '</div><h3 class="serif" style="font-size:28px;margin:0">Hvala, ' + esc(s.done.name) + '!</h3><p>Narudžba <b>' + esc(s.done.nr) + '</b> je primljena. Za plaćanje pouzećem: <b>' + fmt(s.done.total) + '</b>.</p><p style="color:var(--muted)">Javit ćemo ti se telefonom da potvrdimo narudžbu prije slanja.</p>' + (s.done.club ? '<p class="co-club" style="justify-content:center">' + ic('check', 'ic-s') + 'Dobrodošao/la u BelloraHome Klub! Tvoja kartica: <b>' + esc(s.done.club) + '</b></p><button class="btn btn-o" data-join style="margin-top:8px">Prikaži karticu</button>' : '') + '<button class="btn btn-t" data-close style="margin-top:12px">Nazad u shop</button></div>';
+    h += '<div class="done"><div class="ok">' + ic('check') + '</div><h3 class="serif" style="font-size:28px;margin:0">Hvala, ' + esc(s.done.name) + '!</h3><p>Narudžba <b>' + esc(s.done.nr) + '</b> je primljena. Za plaćanje pouzećem: <b>' + fmt(s.done.total) + '</b>.</p><p style="color:var(--muted)">Javit ćemo ti se telefonom da potvrdimo narudžbu prije slanja.</p>' + (s.done.club ? '<p class="co-club" style="justify-content:center">' + ic('check', 'ic-s') + 'Dobrodošao/la u Bellora Club! Tvoja kartica: <b>' + esc(s.done.club) + '</b></p><button class="btn btn-o" data-join style="margin-top:8px">Prikaži karticu</button>' : '') + '<button class="btn btn-t" data-close style="margin-top:12px">Nazad u shop</button></div>';
   } else {
     const fld = (f, label, type, ac, full, extra) => '<label class="fld' + (full ? ' full' : '') + '"><span>' + label + '</span>' +
       (f === 'note' ? '<textarea id="co-note" rows="2" maxlength="500">' + esc(s.v.note || '') + '</textarea>' :
@@ -905,8 +905,8 @@ function renderCo() {
       fld('address', 'Adresa *', 'text', 'street-address', true, ' maxlength="150"') + fld('city', 'Grad *', 'text', 'address-level2', false, ' maxlength="60"') +
       fld('zip', 'Poštanski broj *', 'text', 'postal-code', false, ' maxlength="10" inputmode="numeric"') + fld('email', 'Email (nije obavezno)', 'email', 'email', true, ' maxlength="120"') +
       fld('note', 'Napomena (nije obavezno)', '', '', true) + '</div>' +
-      (member ? '<p class="co-club">' + ic('check', 'ic-s') + 'Član kluba ' + esc(member.nr) + ': popust od 10% je uračunat.</p>' :
-        '<label class="co-join"><input type="checkbox" id="co-join"' + (s.v.join ? ' checked' : '') + '><span><b>Učlani me u BelloraHome Klub i odmah dobijem −10%</b><small>Besplatno. Slažem se da me BelloraHome kontaktira telefonom, Viberom ili mailom s ponudama kluba. <a href="#privatnost" data-close>Privatnost</a></small></span></label>') +
+      (member ? '<p class="co-club">' + ic('check', 'ic-s') + 'Bellora Club član ' + esc(member.nr) + ': popust od 10% je uračunat.</p>' :
+        '<label class="co-join"><input type="checkbox" id="co-join"' + (s.v.join ? ' checked' : '') + '><span><b>Učlani me u Bellora Club i odmah dobijem −10%</b><small>Besplatno. Slažem se da me BelloraHome kontaktira telefonom, Viberom ili mailom s ponudama Bellora Cluba. <a href="#privatnost" data-close>Privatnost</a></small></span></label>') +
       '<div class="co-s">' + t.L.map((l) => '<div class="ds"><span>' + l.q + ' × ' + esc(l.name) + '</span><span>' + fmt(l.sum) + '</span></div>').join('') +
       '<div class="ds" style="margin-top:6px"><span>Međuzbir</span><span>' + fmt(t.sub) + '</span></div>' + (t.disc ? '<div class="ds"><span>Popust (' + esc(discLabel()) + ', −10%)</span><span>−' + fmt(t.disc) + '</span></div>' : '') +
       '<div class="ds"><span>Dostava</span><span>' + (t.ship ? fmt(t.ship) : 'Besplatno') + '</span></div><div class="ds t"><span>Ukupno za plaćanje</span><span>' + fmt(t.total) + '</span></div></div>' +
@@ -942,26 +942,26 @@ async function submitOrder(e) {
   } catch (err) { s.sending = false; s.err = err.message || 'Greška pri slanju.'; renderCo(); }
 }
 
-// ---------- BelloraHome Klub ----------
+// ---------- Bellora Club ----------
 let joinState = null;
 function cardHTML(m) {
-  return '<div class="mcard" id="mcard"><div class="mc-top">' + LOGO + '<span>Klub</span></div><div class="mc-mid"><small>Članska kartica</small><b>' + esc(m.name || m.first || '') + '</b></div>' +
+  return '<div class="mcard" id="mcard"><div class="mc-top">' + LOGO + '<span>CLUB</span></div><div class="mc-mid"><small>Članska kartica</small><b>' + esc(m.name || m.first || '') + '</b></div>' +
     '<div class="mc-bot"><span class="mc-nr">' + esc(m.nr) + '</span><span class="mc-pop">−10% na sve</span></div></div>';
 }
 function renderJoin() {
   if (!joinState) joinState = { v: Object.assign({ name: '', phone: '', city: '', email: '' }, (function () { const c = ls.get('bh_co', {}) || {}; return { name: c.name || '', phone: c.phone || '', city: c.city || '', email: c.email || '' }; })()), consent: false, err: '', sending: false };
   const j = joinState;
-  let h = '<div class="scrim" data-close></div><div class="modal co" role="dialog" aria-modal="true" aria-label="BelloraHome Klub"><button class="xb" data-close aria-label="Zatvori">' + ic('x') + '</button>';
+  let h = '<div class="scrim" data-close></div><div class="modal co" role="dialog" aria-modal="true" aria-label="Bellora Club"><button class="xb" data-close aria-label="Zatvori">' + ic('x') + '</button>';
   if (member) {
-    h += '<div class="co-in jdone"><span class="eyb">BelloraHome Klub</span><h3 style="margin-top:10px">' + (j.justJoined ? 'Dobrodošao/la u klub!' : 'Tvoja članska kartica') + '</h3>' + cardHTML(member) +
+    h += '<div class="co-in jdone"><span class="eyb">Bellora Club</span><h3 style="margin-top:10px">' + (j.justJoined ? 'Dobrodošao/la u Bellora Club!' : 'Tvoja članska kartica') + '</h3>' + cardHTML(member) +
       '<p style="color:var(--muted);margin:14px 0 0">Popust od 10% se sam računa u korpi na ovom uređaju. Na drugom telefonu ili računaru upiši u korpi broj kartice ili svoj telefon.</p>' +
       '<div class="jbtn"><button class="btn btn-o" data-savecard>Sačuvaj karticu kao sliku</button><button class="btn btn-t" data-close>Kreni u kupovinu</button></div></div>';
   } else {
     const fld = (f, label, type, ac, extra) => '<label class="fld' + (f === 'email' || f === 'name' ? ' full' : '') + '"><span>' + label + '</span><input id="j-' + f + '" type="' + type + '" autocomplete="' + ac + '" value="' + esc(j.v[f] || '') + '"' + (extra || '') + '></label>';
-    h += '<form class="co-in" id="joinF" novalidate><span class="eyb">BelloraHome Klub</span><h3 style="margin-top:10px">Učlani se i dobij <em style="color:var(--tera)">−10% na sve</em></h3><p style="color:var(--muted);margin:4px 0 0">Besplatno je. Karticu dobiješ odmah, a popust važi za svaku narudžbu.</p><div class="co-g">' +
+    h += '<form class="co-in" id="joinF" novalidate><span class="eyb">Bellora Club</span><h3 style="margin-top:10px">Učlani se i dobij <em style="color:var(--tera)">−10% na sve</em></h3><p style="color:var(--muted);margin:4px 0 0">Besplatno je. Karticu dobiješ odmah, a popust važi za svaku narudžbu.</p><div class="co-g">' +
       fld('name', 'Ime i prezime *', 'text', 'name', ' maxlength="80"') + fld('phone', 'Telefon *', 'tel', 'tel', ' maxlength="30" placeholder="06x xxx xxx"') + fld('city', 'Grad', 'text', 'address-level2', ' maxlength="60"') +
       fld('email', 'Email (nije obavezno)', 'email', 'email', ' maxlength="120"') + '</div>' +
-      '<label class="co-join"><input type="checkbox" id="j-consent"' + (j.consent ? ' checked' : '') + '><span><b>Saglasnost *</b><small>Slažem se da me BelloraHome kontaktira telefonom, Viberom ili mailom u vezi s ponudama i pogodnostima kluba. Mogu se odjaviti u svakom trenutku. <a href="#privatnost" data-close>Privatnost</a></small></span></label>' +
+      '<label class="co-join"><input type="checkbox" id="j-consent"' + (j.consent ? ' checked' : '') + '><span><b>Saglasnost *</b><small>Slažem se da me BelloraHome kontaktira telefonom, Viberom ili mailom u vezi s ponudama i pogodnostima Bellora Cluba. Mogu se odjaviti u svakom trenutku. <a href="#privatnost" data-close>Privatnost</a></small></span></label>' +
       '<input type="text" id="j-website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">' +
       (j.err ? '<p class="co-err" role="alert">' + esc(j.err) + '</p>' : '') +
       '<button class="btn btn-t" type="submit"' + (j.sending ? ' disabled' : '') + '>' + (j.sending ? 'Šaljem…' : 'Učlani me i daj mi karticu') + '</button></form>';
@@ -1010,12 +1010,12 @@ function saveCard() {
   const svg = LOGO.replace(/class="lg-r"/, 'stroke="#e9a27a"').replace(/class="lg-i"/g, 'fill="#f6f1ea"').replace(/class="lg-t"/g, 'fill="#e9a27a"').replace('class="logo-svg"', 'width="420" height="160"');
   const img = new Image();
   const finish = () => {
-    x.fillStyle = '#e9a27a'; x.font = '800 26px Manrope, sans-serif'; x.fillText('KLUB', W - 150, 98);
+    x.fillStyle = '#e9a27a'; x.font = '800 26px Manrope, sans-serif'; x.fillText('CLUB', W - 150, 98);
     x.fillStyle = 'rgba(246,241,234,.7)'; x.font = '700 24px Manrope, sans-serif'; x.fillText('ČLANSKA KARTICA', 64, 330);
     x.fillStyle = '#f6f1ea'; x.font = '600 52px Fraunces, Georgia, serif'; x.fillText(member.name || member.first || '', 64, 392);
     x.font = '800 64px Manrope, sans-serif'; x.fillText(member.nr, 64, 560);
     x.fillStyle = '#e8a33d'; rr(W - 330, 505, 266, 70, 35); x.fill(); x.fillStyle = '#1e1b18'; x.font = '800 30px Manrope, sans-serif'; x.fillText('−10% na sve', W - 310, 551);
-    c.toBlob((b) => { const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'BelloraHome-Klub-' + member.nr + '.png'; document.body.appendChild(a); a.click(); setTimeout(() => a.remove(), 500); toast('Kartica je sačuvana'); });
+    c.toBlob((b) => { const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'Bellora-Club-' + member.nr + '.png'; document.body.appendChild(a); a.click(); setTimeout(() => a.remove(), 500); toast('Kartica je sačuvana'); });
   };
   img.onload = () => { x.drawImage(img, 56, 40, 330, 126); finish(); }; img.onerror = finish;
   img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);

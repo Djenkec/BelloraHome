@@ -54,7 +54,7 @@ export async function onRequestPost({ request, env }) {
   });
 
   const sub = round2(items.reduce((s, i) => s + i.sum, 0));
-  // Popust 10% samo za članove BelloraHome Kluba (postojeći član ili učlanjenje uz narudžbu).
+  // Popust 10% samo za članove Bellora Cluba (postojeći član ili učlanjenje uz narudžbu).
   const ipAddr = request.headers.get("cf-connecting-ip") || "";
   let member = null, joined = false;
   if (body.joinClub) {
@@ -63,7 +63,7 @@ export async function onRequestPost({ request, env }) {
   } else if (typeof body.member === "string" && body.member.trim()) {
     member = await findMember(env.ORDERS, body.member);
   }
-  const promo = member ? "KLUB " + member.nr : null;
+  const promo = member ? "CLUB " + member.nr : null;
   const disc = member ? round2(sub * CLUB_DISCOUNT) : 0;
   const ship = sub - disc >= FREE_SHIP ? 0 : SHIP_COST;
   const total = round2(sub - disc + ship);
@@ -114,7 +114,7 @@ export async function onRequestPost({ request, env }) {
       Proizvodi: lines,
       Medjuzbir: km(sub),
       Popust: disc ? `${km(disc)} (${promo})` : "—",
-      Klub: member ? (joined ? `Novi član ${member.nr}` : `Član ${member.nr}`) : "—",
+      Bellora_Club: member ? (joined ? `Novi član ${member.nr}` : `Član ${member.nr}`) : "—",
       Dostava: ship ? km(ship) : "Besplatno",
       Ukupno: km(total),
       Admin: "https://bellorahome.com/admin",

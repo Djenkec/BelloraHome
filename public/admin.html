@@ -142,7 +142,7 @@
     <header>
       <div class="wrap">
         <div class="logo">Bellora<span>Home</span></div>
-        <nav class="tabs" id="tabs"><button data-tab="orders" class="active">Narudžbe</button><button data-tab="klub">Klub <i id="klubN"></i></button></nav>
+        <nav class="tabs" id="tabs"><button data-tab="orders" class="active">Narudžbe</button><button data-tab="klub">Bellora Club <i id="klubN"></i></button></nav>
         <div class="right">
           <span class="updated" id="updated"></span>
           <button class="btn btn--ghost" id="refresh">Osvježi</button>
@@ -404,7 +404,7 @@ $("#csv").onclick = () => {
   const cell = v => '"' + String(v ?? "").replace(/"/g, '""') + '"';
   const rows = members.map(m => cols.map(([k]) => k === "status" ? (MST[m.status] || {}).label || m.status : k === "created" ? when(m.created) : k === "spent" ? String(m.spent || 0).replace(".", ",") : m[k]).map(cell).join(";"));
   const blob = new Blob(["﻿" + [cols.map(c => cell(c[1])).join(";")].concat(rows).join("\r\n")], { type: "text/csv;charset=utf-8" });
-  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "BelloraHome-Klub-" + new Date().toISOString().slice(0, 10) + ".csv"; a.click();
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "Bellora-Club-" + new Date().toISOString().slice(0, 10) + ".csv"; a.click();
 };
 function setTab(t) {
   tab = t; document.querySelectorAll("#tabs button").forEach(b => b.classList.toggle("active", b.dataset.tab === t));

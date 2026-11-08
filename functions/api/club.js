@@ -1,4 +1,4 @@
-// POST /api/club — učlanjenje u BelloraHome Klub.
+// POST /api/club — učlanjenje u Bellora Club.
 // GET  /api/club?q=<broj kartice ili telefon> — provjera članstva za popust u korpi.
 import { joinClub, findMember, publicMember } from "../_lib/club.js";
 
@@ -14,7 +14,7 @@ async function limited(kv, key, max) {
 }
 
 export async function onRequestPost({ request, env }) {
-  if (!env.ORDERS) return json({ ok: false, error: "Klub trenutno nije dostupan." }, 503);
+  if (!env.ORDERS) return json({ ok: false, error: "Bellora Club trenutno nije dostupan." }, 503);
   let body;
   try { body = await request.json(); } catch { return json({ ok: false, error: "Neispravan zahtjev." }, 400); }
   if (body && body.website) return json({ ok: true, nr: "BH-0000", first: "" });
@@ -28,8 +28,8 @@ export async function onRequestPost({ request, env }) {
     url: "https://api.web3forms.com/submit",
     body: {
       access_key: env.WEB3FORMS_KEY || NOTIFY_KEY,
-      subject: `Novi član kluba ${m.nr} — ${m.name}`,
-      from_name: "BelloraHome Klub",
+      subject: `Novi član Bellora Cluba ${m.nr} — ${m.name}`,
+      from_name: "Bellora Club",
       Kartica: m.nr, Ime: m.name, Telefon: m.phone, Grad: m.city || "—", Email: m.email || "—",
       Admin: "https://bellorahome.com/admin#klub",
     },

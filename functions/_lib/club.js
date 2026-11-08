@@ -1,11 +1,11 @@
-// BelloraHome Klub: članovi se čuvaju u KV (binding ORDERS).
+// Bellora Club: članovi se čuvaju u KV (binding ORDERS).
 //   member:<BH-1001>   → podaci člana
 //   mphone:<061...>    → broj kartice (za provjeru po telefonu)
 //   club:seq           → posljednji dodijeljeni broj
 export const CLUB_DISCOUNT = 0.1;
 export const MEMBER_STATUSES = ["novi", "pozvan", "ne_javlja", "zainteresovan", "kupio", "ne_zeli"];
 export const CONSENT_TEXT =
-  "Slažem se da me BelloraHome kontaktira telefonom, Viberom ili mailom u vezi s ponudama i pogodnostima kluba. Mogu se odjaviti u svakom trenutku.";
+  "Slažem se da me BelloraHome kontaktira telefonom, Viberom ili mailom u vezi s ponudama i pogodnostima Bellora Cluba. Mogu se odjaviti u svakom trenutku.";
 
 export const clean = (v, max) => String(v ?? "").replace(/[\u0000-\u001f\u007f]/g, " ").trim().slice(0, max);
 
