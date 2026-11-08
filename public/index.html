@@ -132,6 +132,16 @@ button{cursor:pointer;background:none;border:0;padding:0}
 .sl-brand{position:absolute;z-index:3;top:18px;right:18px;display:flex;align-items:center;gap:12px;background:rgba(246,241,234,.94);border-radius:999px;padding:8px 16px 8px 14px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
 .sl-brand .logo-svg{height:28px}
 .sl-brand span{font-weight:800;letter-spacing:.14em;font-size:12px;color:var(--ink);border-left:1px solid var(--line);padding-left:12px}
+.sl-i.light::after,.sl-i.light::before{display:none}
+.sl-i.light{background:linear-gradient(180deg,#e4cab5,#e8d1c1 50%,#e3c9b6)}
+.sl-i.light img{position:absolute;top:0;height:100%;filter:none;left:auto;right:0;width:80%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 22%);mask-image:linear-gradient(90deg,transparent 0,#000 22%)}
+.sl-i.light .sl-t{color:var(--ink);max-width:min(420px,42%)}
+.sl-i.light .sl-t h1,.sl-i.light .sl-t h2{font-size:clamp(36px,6.4cqw,64px);line-height:1.02}
+.sl-i.light .sl-t h2 em{color:var(--tera)}
+.sl-i.light .sl-t p{opacity:1;color:var(--ink2);font-size:18px}
+.sl-i.light .eyb{background:var(--tera);color:#fff}
+.sl.lighton .snow{opacity:0}
+.snow{transition:opacity .6s}
 .snow{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
 .sl-t{z-index:2}
 .sl-n{position:absolute;z-index:3;bottom:18px;left:clamp(22px,4.5vw,52px);display:flex;gap:8px}
@@ -446,6 +456,11 @@ button{cursor:pointer;background:none;border:0;padding:0}
   .sl-i.win .sl-t{left:22px;right:22px;top:50%;bottom:auto;transform:translateY(-50%);max-width:none}
   .sl-i.win .sl-t h1,.sl-i.win .sl-t h2{font-size:clamp(26px,9cqw,46px)}
   .sl-i.big .sl-t h1{font-size:clamp(28px,10.4cqw,56px)}
+  .sl-i.light img{width:100%;height:56%;top:0;bottom:auto;object-position:62% 35%!important;-webkit-mask-image:linear-gradient(0deg,transparent 0,#000 18%);mask-image:linear-gradient(0deg,transparent 0,#000 18%)}
+  .sl-i.light .sl-t{top:auto;bottom:50px;max-width:none;right:22px}
+  .sl-i.light .sl-t h2{font-size:clamp(26px,9cqw,40px)}
+  .sl-i.light .sl-t p{font-size:14px}
+  .sl-i.light .sl-t .btn{height:44px;padding:0 16px;font-size:14px}
   .sl-i.big::after{background:linear-gradient(0deg,rgba(20,12,6,.88) 0%,rgba(20,12,6,.4) 55%,rgba(20,12,6,.05))}
   .sl-t p{font-size:15px;margin-bottom:16px}
   .sl-a{display:none}
@@ -584,7 +599,7 @@ const TOP = [6, 46, 149, 28, 190, 164, 47, 5, 160, 198, 34, 175, 208, 15, 165, 2
 const FREE = 100, SHIP = 8, CLUB = 0.10;
 const SLIDES = [
   { img: 'img/zb-fotelja.webp', pos: '65% 50%', big: true, eyb: '❄ Blagdanska ponuda', h: '<span class="hot">Vruće cijene</span><span class="nw">usred zime!</span>', p: 'Deke, jorgani i posteljina koji griju kao zagrljaj.', cta: 'Pogledaj ponudu', href: '#najtrazenije' },
-  { img: 'img/zb-kauc.webp', pos: '75% 50%', zara: true, eyb: 'Deka ZARA BUBBLE', h: 'Mekoća <em>koju osjetiš</em>', p: 'Pokrij se na kauču uz knjigu i toplu čokoladu, dok vani pada snijeg.', cta: 'Upoznaj ZARA BUBBLE', href: '#zara-bubble' }
+  { img: 'img/club-studio.webp', pos: '70% 40%', light: true, join: true, eyb: 'Bellora Club', h: 'Nagrađujemo <em>vjernost!</em>', p: 'Postani dio Bellora Cluba potpuno besplatno i ostvari trajni popust od 10% na sve.', cta: 'Učlani se besplatno', href: '#klub' }
 ];
 
 let K = [], byId = {};
@@ -638,8 +653,8 @@ function home() {
   let h = '<div class="wrap">';
   // hero
   h += '<section class="hero" aria-label="Ponuda"><div class="sl" id="sl">' + SLIDES.map((s, i) =>
-    '<div class="sl-i' + (i === 0 ? ' on' : '') + (s.win ? ' win' : '') + (s.big ? ' big' : '') + '" aria-hidden="' + (i === 0 ? 'false' : 'true') + '"><img src="' + s.img + '" style="object-position:' + (s.pos || '50% 50%') + '" alt="" ' + (i ? 'loading="lazy"' : 'fetchpriority="high"') + '>' +
-    (s.zara ? '<div class="sl-brand">' + LOGO + '<span>ZARA BUBBLE</span></div>' : '') + '<div class="sl-t"><span class="eyb">' + s.eyb + '</span>' + (i === 0 ? '<h1>' : '<h2>') + s.h + (i === 0 ? '</h1>' : '</h2>') + '<p>' + s.p + '</p><a class="btn btn-t" href="' + s.href + '">' + s.cta + ic('r', 'ic-s') + '</a></div></div>').join('') +
+    '<div class="sl-i' + (i === 0 ? ' on' : '') + (s.win ? ' win' : '') + (s.big ? ' big' : '') + (s.light ? ' light' : '') + '" aria-hidden="' + (i === 0 ? 'false' : 'true') + '"><img src="' + s.img + '" style="object-position:' + (s.pos || '50% 50%') + '" alt="" ' + (i ? 'loading="lazy"' : 'fetchpriority="high"') + '>' +
+    (s.zara ? '<div class="sl-brand">' + LOGO + '<span>ZARA BUBBLE</span></div>' : '') + '<div class="sl-t"><span class="eyb">' + s.eyb + '</span>' + (i === 0 ? '<h1>' : '<h2>') + s.h + (i === 0 ? '</h1>' : '</h2>') + '<p>' + s.p + '</p>' + (s.join ? '<button class="btn btn-t" data-join>' + s.cta + ic('r', 'ic-s') + '</button>' : '<a class="btn btn-t" href="' + s.href + '">' + s.cta + ic('r', 'ic-s') + '</a>') + '</div></div>').join('') +
     '<canvas class="snow" id="snow" aria-hidden="true"></canvas><div class="sl-n">' + SLIDES.map((s, i) => '<button data-slide="' + i + '" class="' + (i === 0 ? 'on' : '') + '" aria-label="Slajd ' + (i + 1) + '"></button>').join('') + '</div>' +
     '<div class="sl-a"><button data-sl="-1" aria-label="Prethodni">' + ic('l') + '</button><button data-sl="1" aria-label="Sljedeći">' + ic('r') + '</button></div></div>' +
     '<div class="side">' +
@@ -788,6 +803,7 @@ function goSlide(i) {
   const items = document.querySelectorAll('.sl-i'); if (!items.length) return;
   slideI = (i + items.length) % items.length;
   items.forEach((el, j) => { el.classList.toggle('on', j === slideI); el.setAttribute('aria-hidden', j === slideI ? 'false' : 'true'); });
+  const sl = $('#sl'); if (sl) sl.classList.toggle('lighton', items[slideI].classList.contains('light'));
   document.querySelectorAll('.sl-n button').forEach((b, j) => b.classList.toggle('on', j === slideI));
 }
 function railArrows() {
