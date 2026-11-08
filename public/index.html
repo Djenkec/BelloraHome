@@ -129,6 +129,9 @@ button{cursor:pointer;background:none;border:0;padding:0}
 .sl-i.big .eyb{background:#fff;color:var(--tera)}
 .sl-i.big img{transform:scaleX(-1)}
 .sl-i.big::after{background:linear-gradient(90deg,rgba(20,12,6,.82) 0%,rgba(20,12,6,.55) 42%,rgba(20,12,6,.05) 75%)}
+.sl-brand{position:absolute;z-index:3;top:18px;right:18px;display:flex;align-items:center;gap:12px;background:rgba(246,241,234,.94);border-radius:999px;padding:8px 16px 8px 14px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.sl-brand .logo-svg{height:28px}
+.sl-brand span{font-weight:800;letter-spacing:.14em;font-size:12px;color:var(--ink);border-left:1px solid var(--line);padding-left:12px}
 .snow{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
 .sl-t{z-index:2}
 .sl-n{position:absolute;z-index:3;bottom:18px;left:clamp(22px,4.5vw,52px);display:flex;gap:8px}
@@ -141,6 +144,11 @@ button{cursor:pointer;background:none;border:0;padding:0}
 .pr-mop{background:#fff;text-align:left;width:100%;align-items:center;gap:10px}
 .pr-mop .tx{flex:1;min-width:0;position:relative;z-index:1}
 .pr-mop img{width:46%;max-width:180px;aspect-ratio:1;object-fit:contain}
+.pr-zara{padding:0 0 0 22px;overflow:hidden}
+.pr-zara .tx{padding-block:18px}
+.pr-zara img{width:52%;max-width:none;height:100%;aspect-ratio:auto;object-fit:cover;object-position:100% 20%;align-self:stretch}
+.pr-zara .zp{margin:0 0 8px;color:var(--muted);font-size:14px}
+.sw{display:flex;gap:6px;margin-bottom:8px}.sw i{width:18px;height:18px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px var(--line)}
 .pr .tag{display:inline-block;align-self:flex-start;background:var(--tera);color:#fff;font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:6px}
 .pr h3{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.1;margin:10px 0 6px}
 .pr .big{font-size:32px;font-weight:800;color:var(--tera);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
@@ -526,7 +534,8 @@ const TOP = [6, 46, 149, 28, 190, 164, 47, 5, 160, 198, 34, 175, 208, 15, 165, 2
 const FREE = 100, SHIP = 8, PROMOS = { BELLORA10: 0.10 };
 const SLIDES = [
   { img: 'https://images.unsplash.com/photo-1672130474124-171fb4a9b20f?auto=format&fit=crop&w=1800&q=75', pos: '62% 50%', big: true, eyb: '❄ Blagdanska ponuda', h: '<span class="hot">Vruće cijene</span><span class="nw">usred zime!</span>', p: 'Deke, jorgani i posteljina koji griju kao zagrljaj.', cta: 'Pogledaj ponudu', href: '#najtrazenije' },
-  { img: 'https://images.unsplash.com/photo-1731936757627-f2a1ea5893e6?auto=format&fit=crop&w=1800&q=75', pos: '70% 50%', eyb: 'Deke i jorgani', h: 'Toplina <em>koja grli</em>', p: 'Mekane deke i jorgani za duge zimske večeri, već od 39,90 KM.', cta: 'Pogledaj deke i jorgane', href: '#k-jorgani' },
+  { img: 'img/bh-zara-scena.webp', pos: '70% 50%', zara: true, eyb: 'Novo · ZARA PRINT deka', h: 'Toplina <em>koja grli</em>', p: 'Mekana krznena deka u četiri boje: bež, smeđa, siva i lila.', cta: 'Pogledaj deke', href: '#k-jorgani' },
+  { img: 'img/bh-zara-fotelja.webp', pos: '70% 50%', zara: true, eyb: 'ZARA PRINT kolekcija', h: 'Mekoća <em>koju osjetiš</em>', p: 'Razmotaj je preko fotelje ili se umotaj uz kamin. Gusto krzno, topla kao zagrljaj.', cta: 'Pogledaj deke', href: '#k-jorgani' },
   { img: 'https://images.unsplash.com/photo-1764267704172-9f28b4cc44ee?auto=format&fit=crop&w=1800&q=75', pos: '55% 50%', eyb: 'Za cijelu porodicu', h: 'Ušuškani <em>zajedno</em>', p: 'Prekrivači i deke za praznična okupljanja, već od 16,90 KM.', cta: 'Pogledaj prekrivače', href: '#k-prekrivaci' }
 ];
 
@@ -573,6 +582,7 @@ function rail(id, items) {
 
 // ---------- pages ----------
 let slideI = 0, slideT = null;
+const LOGO = (document.querySelector('.logo') || { innerHTML: '' }).innerHTML;
 function home() {
   const mop = byId[208];
   const top = TOP.map((i) => byId[i]).filter(Boolean);
@@ -581,11 +591,11 @@ function home() {
   // hero
   h += '<section class="hero" aria-label="Ponuda"><div class="sl" id="sl">' + SLIDES.map((s, i) =>
     '<div class="sl-i' + (i === 0 ? ' on' : '') + (s.win ? ' win' : '') + (s.big ? ' big' : '') + '" aria-hidden="' + (i === 0 ? 'false' : 'true') + '"><img src="' + s.img + '" style="object-position:' + (s.pos || '50% 50%') + '" alt="" ' + (i ? 'loading="lazy"' : 'fetchpriority="high"') + '>' +
-    '<div class="sl-t"><span class="eyb">' + s.eyb + '</span>' + (i === 0 ? '<h1>' : '<h2>') + s.h + (i === 0 ? '</h1>' : '</h2>') + '<p>' + s.p + '</p><a class="btn btn-t" href="' + s.href + '">' + s.cta + ic('r', 'ic-s') + '</a></div></div>').join('') +
+    (s.zara ? '<div class="sl-brand">' + LOGO + '<span>ZARA PRINT</span></div>' : '') + '<div class="sl-t"><span class="eyb">' + s.eyb + '</span>' + (i === 0 ? '<h1>' : '<h2>') + s.h + (i === 0 ? '</h1>' : '</h2>') + '<p>' + s.p + '</p><a class="btn btn-t" href="' + s.href + '">' + s.cta + ic('r', 'ic-s') + '</a></div></div>').join('') +
     '<canvas class="snow" id="snow" aria-hidden="true"></canvas><div class="sl-n">' + SLIDES.map((s, i) => '<button data-slide="' + i + '" class="' + (i === 0 ? 'on' : '') + '" aria-label="Slajd ' + (i + 1) + '"></button>').join('') + '</div>' +
     '<div class="sl-a"><button data-sl="-1" aria-label="Prethodni">' + ic('l') + '</button><button data-sl="1" aria-label="Sljedeći">' + ic('r') + '</button></div></div>' +
     '<div class="side">' +
-    (mop ? '<button class="pr pr-mop" data-qv="208"><div class="tx"><span class="tag">Hit cijena</span><h3>' + esc(mop.n) + '</h3><div class="big">' + fmt(minP(mop)).replace(' KM', '<small> KM</small>') + '</div><span class="lnk">Kupi odmah' + ic('r', 'ic-s') + '</span></div><img src="' + esc(mop.v[0].i) + '" alt=""></button>' : '') +
+    '<a class="pr pr-mop pr-zara" href="#k-jorgani"><div class="tx"><span class="tag">Novo u ponudi</span><h3>ZARA PRINT deka</h3><p class="zp">Gusto krzno · 4 boje</p><div class="sw"><i style="background:#e9dccb"></i><i style="background:#8a6a55"></i><i style="background:#a9a9ad"></i><i style="background:#b9a0b8"></i></div><span class="lnk">Pogledaj deke' + ic('r', 'ic-s') + '</span></div><img src="img/zara-paket.webp" alt="ZARA PRINT deke u pakovanju, četiri boje"></a>' +
     '<div class="pr pr-code"><span class="deco"></span><span class="tag" style="background:#fff;color:var(--tera)">Prva narudžba</span><h3>−10% na sve</h3><span>Upiši kod u korpi:</span><button class="code" data-copy="BELLORA10">BELLORA10 ' + ic('tag', 'ic-s') + '</button></div>' +
     '</div></section>';
   // usp
