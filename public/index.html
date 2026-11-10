@@ -602,8 +602,8 @@ const GR = [
   { k: 'dom', name: 'Kupatilo i čišćenje', cats: ['kupatilo', 'ciscenje'] },
   { k: 'pokloni', name: 'Pokloni', cats: ['razno'] }
 ];
-const TILE = { jastuci: 'p/rj-009.webp', posteljina: 'p/rj-021.webp', jorgani: 'p/rj-016.webp', carsafi: 'p/rj-c40.webp', prekrivaci: 'p/pr-47-svbez.webp', posudje: 'p/kn-46.webp', aparati: 'p/kn-p187.webp',
-  pribor: 'p/kn-p175.webp', servis: 'p/kn-p164.webp', kupatilo: 'p/kn-p214.webp', ciscenje: 'p/kn-p208.webp', razno: 'p/kn-p216.webp' };
+const TILE = { jastuci: 'p/rj-009.webp?v=3', posteljina: 'p/rj-021.webp?v=3', jorgani: 'p/rj-016.webp?v=3', carsafi: 'p/rj-c40.webp?v=3', prekrivaci: 'p/pr-47-svbez.webp?v=3', posudje: 'p/kn-46.webp?v=3', aparati: 'p/kn-p187.webp?v=3',
+  pribor: 'p/kn-p175.webp?v=3', servis: 'p/kn-p164.webp?v=3', kupatilo: 'p/kn-p214.webp?v=3', ciscenje: 'p/kn-p208.webp?v=3', razno: 'p/kn-p216.webp?v=3' };
 const TOP = [6, 46, 149, 28, 190, 164, 47, 5, 160, 198, 34, 175, 208, 15, 165, 217, 174, 211];
 const FREE = 100, SHIP = 8, CLUB = 0.10;
 const SLIDES = [
@@ -694,8 +694,8 @@ function home() {
   h += '</div><div class="mq" aria-hidden="true"><div class="mq-t">' + [0, 1].map(() => '<span>Vruće cijene usred zime <i>❄</i> Dom koji te čeka <i>✦</i> Plaćanje pouzećem <i>✦</i> Dostava u cijeloj BiH <i>✦</i> 30 dana za povrat <i>✦</i> Bellora Club −10% <i>✦</i></span>').join('') + '</div></div><div class="wrap">';
   h += '<section class="sec"><div class="sh"><div><h2>Kuhinja <em>za uživanje</em></h2><p>Šerpe, tave, noževi, čaše i servisi.</p></div><a class="more" href="#g-kuhinja">Pogledaj sve (' + countIn(GR[1].cats) + ')' + ic('r', 'ic-s') + '</a></div>' + rail('r-kuh', pick(['posudje', 'pribor', 'servis'], 14)) + '</section>';
   h += '<section class="sec duo">' +
-    '<a class="ban" href="#k-prekrivaci"><img loading="lazy" src="img/eBN71NgyPU8.webp" alt=""><div><span class="eyb">Prekrivači za sofu</span><h3>Nova sofa, <em>bez nove sofe</em></h3><span>Više boja i veličina, od ' + fmt(Math.min.apply(null, K.filter((p) => p.c === 'prekrivaci').map(minP).concat([999]))) + '</span></div></a>' +
-    '<a class="ban" href="#k-aparati"><img loading="lazy" src="img/hi-kit.webp" alt=""><div><span class="eyb">Kućanski aparati</span><h3>Pomoćnici <em>u kuhinji</em></h3><span>Blenderi, sokovnici, kuhala i friteze</span></div></a></section>';
+    '<a class="ban" href="#k-prekrivaci"><img loading="lazy" src="p/pr-47-svbez.webp?v=3" alt=""><div><span class="eyb">Prekrivači za sofu</span><h3>Nova sofa, <em>bez nove sofe</em></h3><span>Više boja i veličina, od ' + fmt(Math.min.apply(null, K.filter((p) => p.c === 'prekrivaci').map(minP).concat([999]))) + '</span></div></a>' +
+    '<a class="ban" href="#k-aparati"><img loading="lazy" src="p/kn-p185.webp?v=3" alt=""><div><span class="eyb">Kućanski aparati</span><h3>Pomoćnici <em>u kuhinji</em></h3><span>Blenderi, sokovnici, kuhala i friteze</span></div></a></section>';
   h += '<section class="sec"><div class="sh"><div><h2>Mali <em>kućanski aparati</em></h2><p>Blenderi, sokovnici, kuhala, tosteri i više.</p></div><a class="more" href="#k-aparati">Pogledaj sve (' + countIn(['aparati']) + ')' + ic('r', 'ic-s') + '</a></div>' + rail('r-ap', pick(['aparati'], 14)) + '</section>';
   h += '<section class="sec"><div class="sh"><div><h2>Čist i <em>uredan dom</em></h2><p>Mopovi, police i pokloni.</p></div><a class="more" href="#g-dom">Pogledaj sve' + ic('r', 'ic-s') + '</a></div>' + rail('r-dom', pick(['ciscenje', 'kupatilo', 'razno'], 14)) + '</section>';
   h += '<section class="nl" id="klub"><div><span class="eyb">Bellora Club</span><h2 style="margin-top:12px">Postani član. <em>−10% na sve, uvijek.</em></h2><p>Učlanjenje je besplatno i traje minut. Dobiješ člansku karticu, popust od 10% na svaku narudžbu i prvi saznaš za akcije i nove proizvode.</p>' +
@@ -1094,6 +1094,19 @@ fetch('katalog.json').then((r) => r.json()).then((k) => {
   buildNav(); updHeader(); route(); if (location.hash === '#zara-bubble' || location.hash === '#klub') setTimeout(() => { const z = document.getElementById(location.hash.slice(1)); if (z) z.scrollIntoView(); }, 100);
 }).catch(() => { $('#main').innerHTML = '<div class="wrap lp"><div class="empty"><h3>Katalog se nije učitao</h3><p>Provjeri internet vezu i osvježi stranicu.</p></div></div>'; });
 })();
+
+// Swipe po slikama u brzom pregledu
+let swX = null;
+document.addEventListener('touchstart', (e) => { swX = e.target.closest('.qv-i') ? e.touches[0].clientX : null; }, { passive: true });
+document.addEventListener('touchend', (e) => {
+  if (swX == null) return;
+  const dx = e.changedTouches[0].clientX - swX; swX = null;
+  if (Math.abs(dx) < 40) return;
+  const bs = [...document.querySelectorAll('.qv-t button')]; if (bs.length < 2) return;
+  const cur = bs.findIndex((b) => b.classList.contains('on'));
+  const nx = bs[(cur + (dx < 0 ? 1 : -1) + bs.length) % bs.length];
+  if (nx) nx.click();
+}, { passive: true });
 </script>
 </body>
 </html>
