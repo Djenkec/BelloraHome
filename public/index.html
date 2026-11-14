@@ -285,6 +285,7 @@ button{cursor:pointer;background:none;border:0;padding:0}
 .zb-c li{display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px}
 .zb-c i{width:22px;height:22px;border-radius:50%;border:2px solid rgba(255,255,255,.8)}
 .zb-a{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.zb-p{display:flex;flex-direction:column;line-height:1.1;margin-right:6px}.zb-p b{font:600 34px var(--serif);color:var(--tera)}.zb-p span{font-size:13px;color:var(--muted)}
 .zb-a span{font-size:14px;color:#c9b8a8}
 .zb-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:10px;min-height:420px}
 .zb-g figure{margin:0;position:relative;border-radius:16px;overflow:hidden;min-height:150px}
@@ -604,7 +605,7 @@ const GR = [
 ];
 const TILE = { jastuci: 'p/rj-009.webp?v=3', posteljina: 'p/rj-021.webp?v=3', jorgani: 'p/rj-016.webp?v=3', carsafi: 'p/rj-c40.webp?v=3', prekrivaci: 'p/pr-47-svbez.webp?v=3', posudje: 'p/kn-46.webp?v=3', aparati: 'p/kn-p187.webp?v=3',
   pribor: 'p/kn-p175.webp?v=3', servis: 'p/kn-p164.webp?v=3', kupatilo: 'p/kn-p214.webp?v=3', ciscenje: 'p/kn-p208.webp?v=3', razno: 'p/kn-p216.webp?v=3' };
-const TOP = [6, 46, 149, 28, 190, 164, 47, 5, 160, 198, 34, 175, 208, 15, 165, 217, 174, 211];
+const TOP = [219, 6, 46, 149, 28, 190, 164, 47, 5, 160, 198, 34, 175, 208, 15, 165, 217, 174, 211];
 const FREE = 100, SHIP = 8, CLUB = 0.10;
 const SLIDES = [
   { img: 'img/zb-fotelja.webp', pos: '65% 50%', big: true, eyb: '❄ Blagdanska ponuda', h: '<span class="hot">Vruće cijene</span><span class="nw">usred zime!</span>', p: 'Deke, jorgani i posteljina koji griju kao zagrljaj.', cta: 'Pogledaj ponudu', href: '#najtrazenije' },
@@ -667,7 +668,7 @@ function home() {
     '<canvas class="snow" id="snow" aria-hidden="true"></canvas><div class="sl-n">' + SLIDES.map((s, i) => '<button data-slide="' + i + '" class="' + (i === 0 ? 'on' : '') + '" aria-label="Slajd ' + (i + 1) + '"></button>').join('') + '</div>' +
     '<div class="sl-a"><button data-sl="-1" aria-label="Prethodni">' + ic('l') + '</button><button data-sl="1" aria-label="Sljedeći">' + ic('r') + '</button></div></div>' +
     '<div class="side">' +
-    '<a class="pr pr-mop pr-zara" href="#zara-bubble"><div class="tx"><span class="tag">Novo u ponudi</span><h3>Deka ZARA BUBBLE</h3><p class="zp">Gusto krzno · 4 boje</p><div class="sw"><i style="background:#e9dccb"></i><i style="background:#b9a0b8"></i><i style="background:#a9a9ad"></i><i style="background:#7a5a46"></i></div><span class="lnk">Pogledaj' + ic('r', 'ic-s') + '</span></div><img src="img/zb-produkt.webp" alt="Deka ZARA BUBBLE u četiri boje"></a>' +
+    '<a class="pr pr-mop pr-zara" href="#zara-bubble"><div class="tx"><span class="tag">Novo u ponudi</span><h3>Deka ZARA BUBBLE</h3><p class="zp">200x200 · 4 boje · <b>69 KM</b></p><div class="sw"><i style="background:#e9dccb"></i><i style="background:#b9a0b8"></i><i style="background:#a9a9ad"></i><i style="background:#7a5a46"></i></div><span class="lnk">Pogledaj' + ic('r', 'ic-s') + '</span></div><img src="img/zb-produkt.webp" alt="Deka ZARA BUBBLE u četiri boje"></a>' +
     '<div class="pr pr-code"><span class="deco"></span><span class="tag" style="background:#fff;color:var(--tera)">Bellora Club</span><h3>' + (member ? 'Tvoja kartica ' + esc(member.nr) : '−10% na sve, uvijek') + '</h3><span>' + (member ? 'Popust od 10% se sam računa u korpi.' : 'Učlani se besplatno i dobij člansku karticu.') + '</span><button class="code" data-join>' + (member ? 'Prikaži karticu' : 'Učlani se') + ' ' + ic('r', 'ic-s') + '</button></div>' +
     '</div></section>';
   // usp
@@ -680,7 +681,7 @@ function home() {
   h += '<section class="zb" id="zara-bubble"><div class="zb-tx"><span class="eyb">Novo · Zimska kolekcija</span><h2>Deka <em>ZARA BUBBLE</em></h2>' +
     '<p>Gusto, mekano krzno s mramornim šarama koje grije kao zagrljaj. Lijepo stoji na krevetu, kauču i fotelji, a savršena je i kao poklon za praznike.</p>' +
     '<ul class="zb-c"><li><i style="background:#e9dccb"></i>Bež karamel</li><li><i style="background:#b9a0b8"></i>Lila</li><li><i style="background:#a9a9ad"></i>Siva</li><li><i style="background:#7a5a46"></i>Čokolada</li></ul>' +
-    '<div class="zb-a"><a class="btn btn-t" href="mailto:bellora.home1@gmail.com?subject=Deka%20ZARA%20BUBBLE">Pitaj za cijenu</a><span>Uskoro u online prodaji</span></div></div>' +
+    '<div class="zb-a"><div class="zb-p"><b>69 KM</b><span>200x200 cm · 4 boje</span></div><button class="btn btn-t" data-qv="219">' + ic('cart', 'ic-s') + 'Naruči odmah</button><span>Plaćanje pouzećem · dostava širom BiH</span></div></div>' +
     '<div class="zb-g"><figure class="zb-big"><img loading="lazy" src="img/zb-produkt.webp" alt="Deka ZARA BUBBLE u četiri boje"><figcaption>Sve četiri boje</figcaption></figure>' +
     [['zb-krevet', 'Na krevetu'], ['zb-kauc', 'Na kauču'], ['zb-fotelja', 'U fotelji'], ['zb-detalj', 'Izbliza']].map((x) => '<figure><img loading="lazy" src="img/' + x[0] + '.webp" alt="Deka ZARA BUBBLE: ' + x[1].toLowerCase() + '"><figcaption>' + x[1] + '</figcaption></figure>').join('') +
     '</div></section>';
